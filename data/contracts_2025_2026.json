@@ -1,0 +1,1131 @@
+{
+  "schema": "MN_CABINET_CONTRACT_SOURCE_V1",
+  "source": "SO_CAI_CHINH_THUC_DAU_GIA_MIEN_NAM_V2 / SO_CAI (snapshot; SQL mirror not directly queried)",
+  "years": [
+    2025,
+    2026
+  ],
+  "count": 140,
+  "items": [
+    {
+      "sourceCaseId": "d8196dd3-047b-4e7d-9c48-9d5242e2989a",
+      "code": "2025-001",
+      "name": "Máy móc thiết bị",
+      "year": "2025",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "b43cf48c-bad4-4e55-aaaa-f975018d99b8",
+      "code": "2025-002",
+      "name": "BĐS 61 Ba Vân",
+      "year": "2025",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "21099b05-c2aa-4140-a34c-680c4df5eca4",
+      "code": "2025-003",
+      "name": "BĐS 2-1 Đào Duy Từ",
+      "year": "2025",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "b623675e-6af6-4399-aa56-b603383c38f3",
+      "code": "2025-004",
+      "name": "Khoản nợ Công ty CP ĐT MinhVietCorp",
+      "year": "2025",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "ae7709b0-9add-4324-bec9-4e0e2aac82a8",
+      "code": "2025-005",
+      "name": "Khoản nợ Trần Thị Bích Thủy",
+      "year": "2025",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "ed8fe87c-f0ef-4b06-9f68-951792139d6b",
+      "code": "2025-006",
+      "name": "BĐS 98.14 Tân Hưng, Quận 7",
+      "year": "2025",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "68ed2c0e-e55a-4463-9a4f-16759e593129",
+      "code": "2025-007",
+      "name": "Khoản nợ Công ty Liên Hằng",
+      "year": "2025",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "a52532bb-4466-4f5b-8ae4-31495f02c43b",
+      "code": "2025-008",
+      "name": "Khoản nợ Bệnh viện Đa khoa Toàn Mỹ",
+      "year": "2025",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "e43755b3-ddb1-4374-b68d-7ae1b562e4fe",
+      "code": "2025-009",
+      "name": "BĐS 276 Minh Phụng",
+      "year": "2025",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "b74fd7f2-0375-48e3-820e-6a0dd032918c",
+      "code": "2025-010",
+      "name": "Khoản nợ Công ty Thức ăn Gia súc Hiệp Lợi",
+      "year": "2025",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "54a508c1-410d-48ea-a6ae-baba748bebbb",
+      "code": "2025-012",
+      "name": "Khoản nợ Nguyễn Hiếu Thịnh - Trần Võ Sơn Trà",
+      "year": "2025",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "2973b406-e1ab-4139-a64e-b8631d613b0c",
+      "code": "2025-013",
+      "name": "Khoản nợ Tăng Kỳ Anh - Nguyễn Thị Hạnh",
+      "year": "2025",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "1f824a1d-d1e3-4d54-816e-c41fb06c1ba3",
+      "code": "2025-014",
+      "name": "Thửa đất 1265, TBĐ 9, Thanh Xuân",
+      "year": "2025",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "0eaaa608-62c9-4734-b6c7-5a76712b69e4",
+      "code": "2025-015",
+      "name": "Thửa đất 1231 và 1232, TBĐ 1, Tây Ninh",
+      "year": "2025",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "8b6021d0-39d9-4119-85a5-2682f3647d30",
+      "code": "2025-016",
+      "name": "Thửa đất 184, TBĐ 4, Cần Đước, Long An",
+      "year": "2025",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "15b9d64c-eb5e-4678-9d03-4eb5570bb414",
+      "code": "2025-017",
+      "name": "Khoản nợ Tòa nhà SEM Thảo Điền",
+      "year": "2025",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "e4ef0162-8bfe-4980-b36a-d33129befe03",
+      "code": "2025-018",
+      "name": "Thửa đất 32, xã Nhựt Ninh, Tân Trụ, Long An",
+      "year": "2025",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "222f0752-478f-4764-bb71-86deb4ea16d6",
+      "code": "2025-019",
+      "name": "Khoản nợ Công ty Thời Trang",
+      "year": "2025",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "eeec522a-c9b9-471a-a404-711bb5859eef",
+      "code": "2025-020",
+      "name": "Thửa đất 393, TBĐ 5, xã Long Cang, Tây Ninh",
+      "year": "2025",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "0df07cc7-fc15-4c67-a4b1-d85e17911a56",
+      "code": "2025-021",
+      "name": "Thửa đất 706, Quận 12",
+      "year": "2025",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "10847f87-7db8-4561-93a3-e8bfe5335420",
+      "code": "2025-022",
+      "name": "Khoản nợ Ông Đông - Bà Liên",
+      "year": "2025",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "4f324c79-aa59-4f18-a210-e5691a255ae8",
+      "code": "2025-023",
+      "name": "Khoản nợ Công ty TM ĐT XD Hoàng Vân",
+      "year": "2025",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "5ff39444-12c1-43c7-b805-c579dc3192dd",
+      "code": "2025-024",
+      "name": "Thửa đất 137, TBĐ 10, xã An Nhơn Tây, TP.HCM",
+      "year": "2025",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "8fb4316f-d2bf-44d9-9122-25b4489d1da4",
+      "code": "2025-025",
+      "name": "Khoản nợ Công ty An Phước Thời",
+      "year": "2025",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "d9b771f0-0420-421a-ba0c-f077ef20e3ba",
+      "code": "2025-026",
+      "name": "Thửa đất 469 và 475, TBĐ 22, Phú Mỹ, Bà Rịa - Vũng Tàu",
+      "year": "2025",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "55e9475d-cfd6-4687-b5f4-f508e3d2f9fb",
+      "code": "2025-027",
+      "name": "Thửa đất 454, TBĐ 30, Long Điền, Bà Rịa - Vũng Tàu",
+      "year": "2025",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "acca436f-51d3-4e2e-80ab-91a65055711a",
+      "code": "2025-028",
+      "name": "Khoản nợ Công ty Tín Thương",
+      "year": "2025",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "b4fcccc3-e27d-43ed-a873-4b2c8b2c7c3a",
+      "code": "2025-029",
+      "name": "Thửa đất 507, phường Tam Phú, Thủ Đức",
+      "year": "2025",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "1e35669e-8b3d-48b6-afcd-88856f70d8e1",
+      "code": "2025-030",
+      "name": "Khoản nợ Nhà kho gạo An Giang",
+      "year": "2025",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "ee685e7c-fb38-425a-99d0-581a80b6471e",
+      "code": "2025-031",
+      "name": "Thửa đất 1651, Long Thạnh, Thủ Thừa, Long An",
+      "year": "2025",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "83f0c834-3880-4279-a848-8a59c8fd9a11",
+      "code": "2025-032",
+      "name": "Thửa đất 88 và 89, Bình Trinh Đông, Tân Trụ, Long An",
+      "year": "2025",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "95447fb7-6e4b-4406-bbf6-604f1aea378c",
+      "code": "2025-033",
+      "name": "05 thửa đất, xã Bình Trinh Đông, Tân Trụ",
+      "year": "2025",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "e9ed7d17-1d1b-4e44-94cf-8b3037705f1b",
+      "code": "2025-034",
+      "name": "18 thửa đất, Bảo Lộc",
+      "year": "2025",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "88031e57-ebec-4bb8-ab77-29c33b9de6bb",
+      "code": "2025-035",
+      "name": "Thửa đất 38, 12-19 Đào Duy Từ, Đà Lạt",
+      "year": "2025",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "900863ad-8dd1-4e4b-8649-c588bda723b2",
+      "code": "2025-036",
+      "name": "14 xe ô tô",
+      "year": "2025",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "84ff1d64-e425-4174-9ba2-b8dc40ff0710",
+      "code": "2025-037",
+      "name": "BĐS Cẩm Mỹ",
+      "year": "2025",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "0ed1a5e8-e19d-45c1-b041-7e07cd209e77",
+      "code": "2025-038",
+      "name": "Thửa đất 712, Long Thới, Nhà Bè",
+      "year": "2025",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "d231756b-9053-42a9-ac86-1b5eeb119f06",
+      "code": "01/2026/HĐDVĐG",
+      "name": "Khoản nợ Công ty TNHH Gỗ và Nông Sản An Cát Tường tại VietinBank Chi nhánh Gia Định",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "07854adb-15b0-47e9-85b5-d895b53e292b",
+      "code": "02/2026/HĐDVĐG",
+      "name": "Thửa đất 4085, Quận 12",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "b237a166-5074-4755-9659-63e878174246",
+      "code": "03/2026/HĐDVĐG",
+      "name": "Công ty TNHH Đầu Tư Phát Triển Khoa Nam vay tại VietinBank Thủ Thiêm",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "39c711f8-8c08-4b2a-8421-d40faccbfc17",
+      "code": "04/2026/HĐDVĐG",
+      "name": "Khoản nợ Công ty CP Phú Quốc vay tại VietinBank Thủ Thiêm",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "c41a1b1d-9530-45a4-aa1b-3d419ab58622",
+      "code": "05/2026/HĐDVĐG",
+      "name": "Khoản nợ Công ty TNHH Đầu Tư Phát Triển Đại Thắng Lợi vay tại VietinBank Thủ Thiêm",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "1ff4aabc-754f-4904-a2c0-62cddb6facec",
+      "code": "06/2026/HĐDVĐG",
+      "name": "KN Cty TNHH ĐT PT Hữu Thâu tại ViettinBnak - Thủ Thiẻm",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "19df4024-cef2-4c0c-99d2-45184b045ede",
+      "code": "07/2026/HĐDVĐG",
+      "name": "KN Cty Nhà  Vạn Phát VietinBank Thủ Thiêm",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "bc2f6ad6-c7ac-4b67-b023-eddebc9e579c",
+      "code": "08/2026/HĐDVĐG",
+      "name": "Thanh lý xe ô tô Inova 62A-026.20 VietinBank Bến Lức",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "18dfe645-df6a-4906-a47a-7377386992d1",
+      "code": "09/2026/HĐDVĐG",
+      "name": "Khoản nợ KH Vũ Quang Thắng tại VietinBank Chi nhánh Thủ Thiêm",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "ea85f19b-1eb5-48d8-8ca4-a76ac09730fb",
+      "code": "10/2026/HĐDVĐG",
+      "name": "Thửa đất 1275, xã Hậu Nghĩa, tỉnh Tây Ninh",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "9fced973-0d45-469b-a4f6-0f34fde44c03",
+      "code": "11/2026/HĐDVĐG",
+      "name": "thửa đất 138,338, xã Trừ Văn Thố, TP.HCM",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "c2235423-0e0f-4588-b2cf-98655e578626",
+      "code": "12/2026/HĐDVĐG",
+      "name": "Xe nâng hàng",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "b2a7d560-3832-4f0d-a09e-6b615d3129f5",
+      "code": "13/2026/HĐDVĐG",
+      "name": "Khoản nợ Công ty TNHH Ming Group tại VietinBank Chi nhánh Bến Lức",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "720a3a07-5171-44d2-bf31-81c408933c85",
+      "code": "14/2026/HĐDVĐG",
+      "name": "Khoản nợ Công ty CP Titanium Hưng Thịnh",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "1d515af2-3e9c-4579-a21a-c72e5424ad54",
+      "code": "15/2026/HĐDVĐG",
+      "name": "Khoản nợ Phan Thành Muôn và Phan Thị Long An tại VTB CN4",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "62737e19-3a6b-466a-a179-2b7239cfbe71",
+      "code": "16/2026/HĐDVĐG",
+      "name": "80/4 Tây Thạnh, phường Tây Thạnh, Tp. HCM",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "f0c9882f-d023-4a02-92df-98e02f72c429",
+      "code": "17/2026/HĐDVĐG",
+      "name": "Thửa đất số: 81, 82, tờ bản đồ số: 15-TL2005, địa chỉ: 27/36/75/14/3 Bùi Tư Toàn, khu phố 5, phường An Lạc, Thành phố Hồ Chí Minh",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "e5ee1369-ab62-4882-a420-9950d513c364",
+      "code": "18/2026/HĐDVĐG",
+      "name": "Thửa đất số 571, TBĐ số 42, Phường Tăng Nhơn Phú, Tp.HCM",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "1125d276-df77-4615-bf5f-93043f451bf1",
+      "code": "19/2026/HĐDVĐG",
+      "name": "Thửa đất số: 564, tờ bản đồ số: 20, địa chỉ: xã Tân Hiệp, huyện Phú Giáo, tỉnh Bình Dương (nay là xã Phước Thành, Thành phố Hồ Chí Minh)",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "8ef02aa8-8665-4b3f-be1d-33bdbe1fa97d",
+      "code": "20/2026/HĐDVĐG",
+      "name": "Thửa đất số 18, tờ bản đồ số 11, địa chỉ: Xa Cam 1, Phường Hưng Chiến, TX Bình Long, Tỉnh Bình Phước (Nay là Phường Bình Long, Tỉnh Đồng Nai)",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "57aadcfb-ce82-4270-a324-904a27073fe7",
+      "code": "21/2026/HĐDVĐG",
+      "name": "Thửa đất số: 611, tờ bản đồ số: 22, địa chỉ: Xã Long Tân, Huyện Dầu Tiếng, Tỉnh Bình Dương (Nay là Xã Long Hòa, TPHCM)",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "ebc0979d-e16e-4fd6-abd5-864f84f746bc",
+      "code": "22/2026/HĐDVĐG",
+      "name": "TD số 109 , tờ bản đồ số: 63 xã Long Điền, Tp. Hồ Chí Minh_ Le_Van_Ve",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "e3ccb2fd-76f8-4679-bcf0-15caef4359ee",
+      "code": "23/2026/HĐDVĐG",
+      "name": "TD352_TBD31_Ấp 30/4, xã An Linh_huyện Phú Giáo, tỉnh Bình Dương nay là xã An Long_TP. Hồ Chí Minh_KH_NGUYEN_THI_HANG",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "464deed8-6ccf-44b7-8d0f-eb4ef42ded63",
+      "code": "24/2026/HĐDVĐG",
+      "name": "TD_245_246_248_TBD_8_Kp_2_P_Phan Thiet_Binh Thuan_Agribank_TrungTam_sat_thep_Thinh_Tin_Nghia",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "5f50e938-2f59-4cd7-a80e-6fe54eb5ee51",
+      "code": "25/2026/HĐDVĐG",
+      "name": "TD774_TBD19_dc_27B_d61_PphuoclongB_q9_Agribank_TTam_cty_MuaSamThongMinh_MaiVanuan",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "fc1e60b6-0285-43a1-81f6-c44416f3c0ce",
+      "code": "26/2026/HĐDVĐG",
+      "name": "Khoản nợ của Công ty Tổng Hợp Nam Phát và Công ty Hưng Thịnh Vương",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "e93ee7b9-fccd-498e-8eb3-bb3a4e7ee4b5",
+      "code": "27/2026/HĐDVĐG",
+      "name": "Khoản nợ của Công ty TNHH  Đầu tu và Xây dựng Legi",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "b7c91291-c41e-4966-9651-79c9187296e4",
+      "code": "28/2026/HĐDVĐG",
+      "name": "Thua_dat_161_TBD_52_Kim_Long_Le_Bui_Nghia_VIB",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "c5d26ec3-3dc6-4013-977f-5fce3b1d319a",
+      "code": "29/2026/HĐDVĐG",
+      "name": "DuongMinhSonHai_Thua539_540_To51_CV_Long_VIB",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "d9e16792-02f2-41b8-8b09-3dcc7109237b",
+      "code": "30/2026/HĐDVĐG",
+      "name": "LeBaAn_NguyenThiThu_Thua492_332_To03_72_CV_Long",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "e3b58ef0-a264-4f7f-b911-a9159a0a120c",
+      "code": "31/2026/HĐDVĐG",
+      "name": "TD 10, TBD N3-19, Khu TĐC, P. Đồng Xoài, Tp. Đồng Nai, KH Thu, cvThao",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "dd90a112-f0d8-4b9b-82df-0115a24eebdf",
+      "code": "32/2026/HĐDVĐG",
+      "name": "TD 735, TBD số 2, địa chỉ P. Chơn Thành,Tp. Đồng Nai_Ân, CV Nhã Trân",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "2ac26ae3-67ef-4797-9711-568b3e0ff7bd",
+      "code": "33/2026/HĐDVĐG",
+      "name": "01 Xe Ban  CATERPILAR",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "68463c62-4a59-4e31-bd42-012eee80edff",
+      "code": "34/2026/HĐDVĐG",
+      "name": "04 TD xã Thanh Đức,  Long Chữ Tây Ninh  bán riêng 1,2 bán chung 34",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "c9ac1974-945e-4242-a974-7bcc80f5f59b",
+      "code": "35/2026/HĐDVĐG",
+      "name": "Khoản nợ Công ty TNHH TM Dịch vụ Điện tử Minh Tâm",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "ba97e5fe-ad38-4569-8a05-c5fae79ca6f7",
+      "code": "36/2026/HĐDVĐG",
+      "name": "Khoản nợ Công Nghiệp Đại Dương_Anh Long",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "92afd321-2a4b-4e97-866f-c4dabe2f5572",
+      "code": "37/2026/HĐDVĐG",
+      "name": "Khoản nợ của CÔNG TY TNHH XD&KD NHÀ ANH TUẤN",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "7ca5c5b6-7392-4cd0-973e-f492d1810cc5",
+      "code": "38/2026/HĐDVĐG",
+      "name": "Máy móc oto thanh lý",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "cfdce4fe-229c-457c-91d7-95909bd0eeba",
+      "code": "39/2026/HĐDVĐG",
+      "name": "TD92, TBD32, phường Trung Mỹ Tây, KH Vũ Kiều Oanh, LKLong",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "27fe0f3b-143e-46d3-8ba7-eac30318f966",
+      "code": "40/2026/HĐDVĐG",
+      "name": "TD730, TBD5, P Hưng Phú, Cần Thơ KH Phan Nguyễn Thùy Linh Phượng",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "1b5979a5-b714-43a5-ac4b-00363a885925",
+      "code": "41/2026/HĐDVĐG",
+      "name": "TD: 752, TBD: 16, P Bình Phước, Đồng Nai, KH PHƯƠNG QUẾ_Hiền Thảo",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "0544a3f7-c997-473b-a9ef-a6f96af46dc3",
+      "code": "42/2026/HĐDVĐG",
+      "name": "TD: 514 TBD: 2 Phường Bình Cơ, TP Hồ Chí Minh KH NGỌC SƯƠNG Hiền Thảo",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "97d9489c-d4f1-426c-9c52-a3e723d85ee4",
+      "code": "43/2026/HĐDVĐG",
+      "name": "thửa đất số: 204, tờ bản đồ số: 41,Phường Phú Lợi, TP. Hồ Chí Minh",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "c80566d1-4888-4206-836f-7b4143e1393d",
+      "code": "45/2026/HĐDVĐG",
+      "name": "thửa đất số: 328, tờ bản đồ số: 23, Xã Đồng Phú, thành phố Đồng Nai",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "84f8eea9-94f7-45d2-a71c-bf383b15fc37",
+      "code": "46/2026/HĐDVĐG",
+      "name": "93/9 Phú Châu, Phường Tam Bình, TP. Hồ Chí Minh",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "909ff6a4-5e5a-416c-b601-21999dbc5ad2",
+      "code": "47/2026/HĐDVĐG",
+      "name": "Thửa đất số: 174, tờ bản đồ số: 42, Phường Biên Hòa, TP Đồng Nai",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "d54d9b1a-96e5-417b-af32-80e162d4da27",
+      "code": "48/2026/HĐDVĐG",
+      "name": "04 thửa đất Phường Bình Phước, Tp.ĐN",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "e1b7aa29-8475-4ff3-8507-b21f2ac16006",
+      "code": "49/2026/HĐDVĐG",
+      "name": "03 TS ở Khu vực 21, phường Sóc Trăng, thành phố Cần Thơ",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "bda64ec6-ffc6-456f-81ae-3de7d532d64d",
+      "code": "50/2026/HĐDVĐG",
+      "name": "03 Tài sản của KH TRAN HUU NGHIA - NGUYEN VO TUYET NGOC",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "1bf61845-7818-4fa9-90d9-89b16d9c5e94",
+      "code": "51/2026/HĐDVĐG",
+      "name": "03 KH của KH PHAN VĂN PHÚC",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "6052165f-ee8c-4d42-972c-ee5fd0dce556",
+      "code": "52/2026/HĐDVĐG",
+      "name": "02 TS của ông_Thái_Quốc_Thái_bà_Nguyễn_Thị_Phụng_Kiều",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "80b62988-567e-4a4c-bb42-463b23e42af2",
+      "code": "53/2026/HĐDVĐG",
+      "name": "03 TS của KH ông_Trần_Văn_Nở_và_bà_Nguyễn_Thị_Kim_Hoa",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "7ca7a818-29e2-483e-a44d-0df06ff6eb60",
+      "code": "54/2026/HĐDVĐG",
+      "name": "TD 625, TBD 09 P. Long Xuyên, tỉnh An Giang- KH bà_Vương_Kim_Tiến",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "541df539-987e-49a1-b990-5d0cb65d17b1",
+      "code": "55/2026/HĐDVĐG",
+      "name": "02 ts của KH ông_Phạm_Tín,_bà_Trần_Ánh_Tuyết",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "46e646aa-273d-41a5-9995-795535ccba9b",
+      "code": "56/2026/HĐDVĐG",
+      "name": "04 Ts Của KH ông_Nguyễn_Thanh_Bình_bà_Trần_Thị_Kim_Lan",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "b9b2b640-fcf2-4976-91c3-f22fbc98dd9f",
+      "code": "57/2026/HĐDVĐG",
+      "name": "02 TS Trần Thanh Thế Vuong Thị Kim Chi",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "45bf5bf0-6bbe-4502-a87c-0184d9f59a88",
+      "code": "58/2026/HĐDVĐG",
+      "name": "Khoản nợ Cty Xây Dựng 98SG",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "c4850981-5962-4688-a0ec-cebfe240416d",
+      "code": "59/2026/HĐDVĐG",
+      "name": "02 tài sản của ông ông Trần Thanh Thế và bà Vương Thị Kim Chi",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "d5fcf814-1080-44ba-aa75-9cb0205a702a",
+      "code": "60/2026/HĐDVĐG",
+      "name": "Khoản nợ Nguyễn Anh Lương",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "c734c711-fab9-49f1-8a66-76e0d76817d8",
+      "code": "61/2026/HĐDVĐG",
+      "name": "Khoản nợ Phạm Duy Khiêm",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "b3e80f2a-07a0-4ddd-8ff0-0d0a69ebb9ba",
+      "code": "62/2026/HĐDVĐG",
+      "name": "thửa đất số: 600, tờ bản đồ số: 68, địa chỉ: Lô H3 đường số 7, Khu công nghiệp Liên Chiểu,Đà Nẵng",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "9e4c17b9-92cd-4b99-89aa-7d022e98a08d",
+      "code": "63/2026/HĐDVĐG",
+      "name": "thửa đất số: 38, tờ bản đồ số: 56, địa chỉ: Lô G, Đường số 3, Khu công nghiệp Liên Chiểu, nay là phường Hải Vân, Tp. Đà Nẵng",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "60f5fc58-3cd9-4f70-a386-ad0addf8817d",
+      "code": "64/2026/HĐDVĐG",
+      "name": "02 hệ thống lò hơi tầng sôi (Lò T1 và Lò T2)",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "a137cdd1-dc98-4e12-b7b7-80de6b5deec3",
+      "code": "65/2026/HĐDVĐG",
+      "name": "Khoản nợ Công ty TNHH TMDV Asean Houses",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "53622cba-a6e8-4743-a56d-ebfb206938d0",
+      "code": "66/2026/HĐDVĐG",
+      "name": "Thửa đất số 1869, Tờ bản đồ số 7,phường Cái Răng, Thành phố Cần Thơ, KH Dương Vũ Kha",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "c753f6b7-30a3-4c87-9aad-84c1f0736f06",
+      "code": "67/2026/HĐDVĐG",
+      "name": "Khoản nợ của Công ty TNHH TM DV Tân Nhất Nam",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "22161c8b-0534-45e4-8a3b-26a39a9e5697",
+      "code": "68/2026/HĐDVĐG",
+      "name": "Khoản nợ của Công ty TNHH Thương mại và Dịch vụ HTD Vina",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "b6322f5e-533b-4678-8234-cbca5e702f7e",
+      "code": "69/2026/HĐDVĐG",
+      "name": "Khoản nợ Công ty Whiho",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "07a2bb4e-6ffa-4b16-921a-efcbeabe137b",
+      "code": "70/2026/HĐDVĐG",
+      "name": "Thửa đất số: 101, tờ bản đồ số: 23, địa chỉ: phường Đồng Phú, Thành phố Đồng Nai - KH NGUYỄN THANH PHÚC",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "a90f868f-f5e8-4777-88f6-f30983a2c537",
+      "code": "71/2026/HĐDVĐG",
+      "name": "tại Thửa đất số: 1881, tờ bản đồ số: 12, địa chỉ:  Phường Hòa Lợi, TP Hồ Chí Minh - PHAN THỊ HƯỜNG",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "1f0fa2f0-9917-4acb-b06f-f7dfb2ffb415",
+      "code": "72/2026/HĐDVĐG",
+      "name": "T376_TBD139_LongPhuoc_T130_TBD06_TangNhonPhu_KH_CanhTieu- NgocAnh_CV-Ngoc_Phuong",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "2fb037fa-7118-415a-a84a-e46e652ff0d0",
+      "code": "73/2026/HĐDVĐG",
+      "name": "TD61-TBD8, 138-1_P. Tam Hiệp, Tp. Đồng Nai_KH_VANTHANH_HUYÊNTRAM_CVNGOCPHUONG",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "bc780a9e-9265-4207-95c6-72175825170e",
+      "code": "74/2026/HĐDVĐG",
+      "name": "TD 668 -TBD 69- xã Long Phước- Đồng Nai-KH-Thanh Trúc-CV-NgocPhuong",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "ff7b4950-381a-430e-acbb-4168bb9e1ba7",
+      "code": "75/2026/HĐDVĐG",
+      "name": "TD 469-TBD 22-P Đồng Xoài-Tp. Đồng Nai-KHĐỗ Quyên-CVNgocPhuong",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "ccedc7d9-9ad3-4616-be2a-25bca6bcb632",
+      "code": "76/2026/HĐDVĐG",
+      "name": "TD 36-TBD 45-xã Vạn Hưng-Khánh Hòa-KHThanh Thúy-CVNgocPhuong",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "78fba4ca-0876-4606-a7c8-3d35da711386",
+      "code": "77/2026/HĐDVĐG",
+      "name": "TD 276,272 TBD 9-xã Bảo Lâm 2, tỉnh Lâm Đồng-KH Lam Ngà-CVNgọc Phương",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "4a5dada0-4326-4c4b-9090-7e847d6e1596",
+      "code": "78/2026/HĐDVĐG",
+      "name": "Khoản nợ của Công ty Cổ phần Thương mại Dịch vụ Alpha Green",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "234e0acb-78af-4e3e-8989-13b2e815804e",
+      "code": "79/2026/HĐDVĐG",
+      "name": "KN Cty  Bảo Minh Tiến",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "67c89c84-b23d-40f7-a256-72126b574bda",
+      "code": "80/2026/HĐDVĐG",
+      "name": "KN Công ty Thiên Nam Anh",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "7aa48695-f4c5-40fb-a83c-11911a01b816",
+      "code": "81/2026/HĐDVĐG",
+      "name": "TD: 638, TBĐ: 22, Phường Phú Lợi, TP HCM - KH-Dương Thị Nguyệt-CVThanh Dung",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "b793d1d1-3465-4f7e-a66b-668513c6ea0b",
+      "code": "82/2026/HĐDVĐG",
+      "name": "TĐ 106, TBĐ 19,  124 Trần Quý Cáp P. Rạch Giá, An Giang - KH-Quang Dũng-CVThanh Dung",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "cfd57dd6-8708-4b64-8984-9b5f4444e3e3",
+      "code": "83/2026/HĐDVĐG",
+      "name": "TĐ số 53, TBĐ số 70, phường Mỹ Thới, An Giang - KH Trần Hải Phong",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "62665c7f-340c-462f-bf7d-80fcd08240e1",
+      "code": "84/2026/HĐDVĐG",
+      "name": "TĐ số 120, TBĐ 81, Long Xuyên, An Giang -KH  Vương Tài Nhân",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "4bcd47cc-33f7-44a6-ad51-24ff317a6aad",
+      "code": "85/2026/HĐDVĐG",
+      "name": "TĐ 216, TBĐ 76,  Mỹ Thới, An Giang - KH Nguyễn Hoàng Nam",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "e5918d52-e878-4e40-8026-3936d8444861",
+      "code": "86/2026/HĐDVĐG",
+      "name": "TĐ  249, tờ bản đồ số 70,  Mỹ Thới, An Giang - KH Lê Công Thái",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "429b4110-e111-459a-a3f7-0836cfa472a0",
+      "code": "87/2026/HĐDVĐG",
+      "name": "TĐ 52, TBĐ 81, Long Xuyên, An Giang - KH Vương Tấn Dũng",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "8321ca7e-975d-484a-b3ac-8e755ce35907",
+      "code": "88/2026/HĐDVĐG",
+      "name": "Khoản nợ Vũ Thị Thủy - Anh Nam Agri CN TTSG",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "38dba5ef-8041-4228-8ee2-d98a15b78cca",
+      "code": "90/2026/HĐDVĐG",
+      "name": "TĐ số 501, TBĐ số 41, Bình Trưng Tây, Tp.HCM _Agribank Nhà Bè_CV Đại",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "2efbda53-c214-4910-a976-7b393b014fbc",
+      "code": "91/2026/HĐDVĐG",
+      "name": "TĐ 71, TBĐ số 9, Xã Cam Lâm, Tỉnh Khánh Hòa) -KH Lữ Gia Trí- (Phượng)",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "2d82f080-393f-42f9-b7ac-defd50cd89e6",
+      "code": "92/2026/HĐDVĐG",
+      "name": "TĐ 294, tờ bản đồ số: 117,phường Long Bình, Tp. Đồng Nai-KH TRẦN VĂN SẢN -(Phượng)",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "83324e46-84f6-4be2-b469-1a3430ec442b",
+      "code": "93/2026/HĐDVĐG",
+      "name": "TĐ số 1058, tờ bản đồ số: 145,phường Chánh Hiệp, Thành phố Hồ Chí Minh -KH VÕ THỊ TUYẾT NHUNG- (Thảo)",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "69a2ec3b-e0a9-4476-94ab-e8de4a96abf2",
+      "code": "94/2026/HĐDVĐG",
+      "name": "TĐ số 1726, tờ bản đồ số: 14 ,phường Phú An, Thành phố Hồ Chí Minh",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "147db2a6-6f89-487b-973f-becc8c826494",
+      "code": "95/2026/HĐDVĐG",
+      "name": "TĐ số: 116+117, tờ bản đồ số: 60 Xã Đồng Phú, TP Đồng Nai-KH NGUYỄN THỊ BẠCH LÊ (Dung)",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "8e5d368f-8905-4b67-91b4-5230e6cedb40",
+      "code": "96/2026/HĐDVĐG",
+      "name": "TĐ số 1983+1984+1985, tờ bản đồ số: 6, Xã Mộ Đức, Tỉnh Quảng Ngãi -KH PHẠM MINH ĐỊNH (Dung)",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "c9ef8ad0-7668-4c54-907e-aaccce61a97c",
+      "code": "97/2026/HĐDVĐG",
+      "name": "TĐ số 2125, TBĐ 103, Phường An Phú, TP HCM và TĐ số 2612, TBĐ 22,Phường Tân Đông Hiệp, TP HCM) -  KH TRẦN XUÂN DUNG (Dung)",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "d8e0d9a0-26bc-447a-8d62-041df7492888",
+      "code": "98/2026/HĐDVĐG",
+      "name": "TĐ số 40, tờ bản đồ số 62, Phường Xuân Lộc, TP Đồng Nai - KH TRẦN QUỐC VINH (Dung)",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "aec18afb-88bc-41ae-8064-9a2b2b62e388",
+      "code": "99/2026/HĐDVĐG",
+      "name": "TĐ số 76+77, Phường Đồng Phú, TP. Đồng Nai - KH TRƯƠNG THỊ BÍCH VÂN (Nhã Trân)",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "6eedc4dc-dc10-4b05-bc98-b70afe320fd3",
+      "code": "100/2026/HĐDVĐG",
+      "name": "Đất Củ Chi - Hiệp Lợi",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "38a4082a-a64c-4cd9-8ad1-e4aa722b79a9",
+      "code": "101/2026/HĐDVĐG",
+      "name": "Khoản nợ Công ty Trung Thành - Vietinbank CN Bến Lức",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "39a2ab92-7f98-424e-8bf8-5aff90be6554",
+      "code": "102/2026/HĐDVĐG",
+      "name": "Khoản nợ Công ty Khánh An - Agribank CN Nhà Bè",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "199abfd9-009e-417a-8ee9-d2457afcc403",
+      "code": "103/2026/HĐDVĐG",
+      "name": "Khoản nợ Công ty TNHH TM và DV Trần Tâm - Agribank CN Nhà Bè",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "7cbe64d8-6b1e-4f1f-8d5d-7f8a0c5f3101",
+      "code": "E2E-ADMIN/2026/HĐDVĐG",
+      "name": "[E2E DELETE] Contract Admin Test",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    },
+    {
+      "sourceCaseId": "689ecb11-2723-460d-88a5-2908ceca8dab",
+      "code": "E2E/2026/HĐDVĐG",
+      "name": "[E2E] Hồ sơ kiểm thử Tạo phụ lục Cloud Run Core V2",
+      "year": "2026",
+      "source": "SO_CAI",
+      "status": "READY"
+    }
+  ]
+}

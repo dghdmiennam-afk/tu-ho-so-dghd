@@ -1,400 +1,56 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bản đồ tủ hồ sơ V6.1 | ĐGHD Miền Nam</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <style>
-    body { font-family: 'Inter', sans-serif; background-color: #090d16; color: #f8fafc; overflow: hidden; height: 100vh; }
-    .cabinet-outer {
-      background: linear-gradient(145deg, #5d4037, #3e2723);
-      border: 5px solid #271815;
-      box-shadow: 0 12px 35px rgba(0,0,0,0.7);
-    }
-    .shelf-cavity {
-      background: #1e293b;
-      border: 1.5px solid #475569;
-      border-bottom: 5px solid #8d6e63;
-      position: relative;
-      transition: all 0.22s ease;
-    }
-    .shelf-cavity:hover { border-color: #38bdf8; }
-    .glass-tier {
-      background: linear-gradient(180deg, rgba(141,110,99,0.35), rgba(93,64,55,0.45));
-      border-color: #64748b;
-    }
-    .dimmed-shelf { opacity: 0.22; filter: grayscale(50%); }
-    .spotlight-shelf {
-      opacity: 1 !important;
-      background: #090d16 !important;
-      border: 2px solid #f59e0b !important;
-      border-bottom: 6px solid #f59e0b !important;
-      box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.45), 0 0 25px rgba(245, 158, 11, 0.7);
-      transform: scale(1.03);
-      z-index: 20;
-    }
-    .target-file-bar {
-      background: linear-gradient(90deg, #f59e0b, #fef08a, #f59e0b) !important;
-      height: 7px !important;
-      border-radius: 2px;
-      box-shadow: 0 0 10px #fbbf24;
-      animation: pulseBar 0.8s infinite alternate;
-      position: relative;
-    }
-    @keyframes pulseBar {
-      from { transform: scaleX(1); filter: brightness(1); }
-      to { transform: scaleX(1.04); filter: brightness(1.35); }
-    }
-    .slice-pullout {
-      transform: translateX(10px);
-      box-shadow: -6px 4px 16px rgba(245, 158, 11, 0.4);
-    }
-    ::-webkit-scrollbar { width: 5px; height: 5px; }
-    ::-webkit-scrollbar-track { background: #0f172a; }
-    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
-
-    /* V6.1: Responsive trên điện thoại/iPad, không thay bố cục PC. */
-    .mn-main-grid, .mn-cabinet-panel, .mn-side-panel { min-height: 0; }
-    .mn-red-panel { flex: 1.12 1 0%; height: auto !important; min-height: 0; }
-    .mn-green-panel { flex: 1 1 0%; height: auto !important; min-height: 0; }
-    .mn-tabs { overflow-x: auto; scrollbar-width: thin; }
-    .mn-tabs > div { min-width: max-content; }
-    .mn-tabs button { white-space: nowrap; flex-shrink: 0; }
-    .mn-cell-label { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    @media (max-width: 1100px) {
-      html, body { height: auto !important; min-height: 100dvh; overflow-x: hidden !important; overflow-y: auto !important; }
-      body { width: 100% !important; }
-      .mn-header-inner { flex-wrap: wrap; }
-      .mn-search { order: 3; flex: 1 1 100%; max-width: none; }
-      .mn-main-grid { display: flex !important; flex-direction: column; overflow: visible !important; flex: none !important; }
-      .mn-cabinet-panel { min-height: 570px; }
-      .mn-cabinet-body { min-height: 490px; }
-      .mn-side-panel { min-height: 740px; overflow: visible !important; }
-      .mn-red-panel { flex: none; min-height: 400px; }
-      .mn-green-panel { flex: none; min-height: 340px; }
-      .mn-cell-label { font-size: 10px; }
-    }
-    @media (max-width: 640px) {
-      .mn-cabinet-panel { min-height: 510px; padding: 8px !important; }
-      .mn-cabinet-body { min-height: 440px; padding: 7px !important; }
-      .mn-cabinet-label { display: none !important; }
-      .mn-cabinet-header { gap: 6px !important; }
-      .mn-cabinet-header > div:first-child { grid-column: span 2; }
-      .mn-cabinet-title { font-size: 11px; }
-      .mn-cell-label .mn-full-label { display: none; }
-      .mn-cell-label .mn-compact-label { display: inline !important; }
-      .mn-cabinet-body .shelf-cavity { padding: 3px !important; }
-      .mn-cabinet-body .shelf-cavity > div:first-child { gap: 2px; flex-wrap: wrap; }
-      .mn-neighbors, .mn-return-actions { grid-template-columns: 1fr !important; }
-      .mn-side-panel { min-height: 0; }
-      .mn-red-panel, .mn-green-panel { min-height: 0; }
-      .mn-red-panel > div:last-child { min-height: 335px; }
-      .mn-green-panel > div:last-child { min-height: 280px; }
-      .mn-header-title { font-size: 11px !important; }
-      .mn-red-panel input, .mn-red-panel button, .mn-red-panel select { max-width: 100%; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tủ hồ sơ Miền Nam · V7.0</title>
+<style>
+:root{font-family:Inter,system-ui,-apple-system,'Segoe UI',sans-serif;color:#e5e7eb;background:#0b1220;font-size:13px;--bg:#0b1220;--panel:#111b2e;--panel2:#18253a;--line:#2d3c53;--dim:#98a8bc;--green:#33b780;--amber:#f8b743;--red:#e16c72;--blue:#60a5fa}
+*{box-sizing:border-box}body{margin:0;min-width:320px}button,input,select{font:inherit}button{cursor:pointer;border:1px solid transparent;transition:background .15s,border-color .15s}button:disabled{opacity:.38;cursor:not-allowed}button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #f8b743;outline-offset:2px}button:hover:not(:disabled){filter:brightness(1.08)}input,select{background:#111b2e;color:#f4f6fa;border:1px solid #3b4960;border-radius:7px;padding:8px;min-width:0}input[type=number]{width:88px}input[type=radio],input[type=checkbox]{accent-color:#33b780;min-width:auto}.muted{color:var(--dim)}.tiny{font-size:11px}.mono{font-variant-numeric:tabular-nums}.strong{font-weight:750}.headline{font-size:15px;font-weight:800}.hidden{display:none!important}
+button.btn{padding:8px 11px;border-radius:8px;font-weight:650}.primary{background:#107b54;color:white}.danger{background:#a5313f;color:white}.neutral{background:#293b55;color:#e5e7eb}.warning{background:#bd7d1b;color:#111827}.outline{background:transparent;border-color:#516178;color:#e2e8f0}.btn.small{padding:5px 7px;font-size:11px}.btnrow{display:flex;gap:7px;flex-wrap:wrap;align-items:center}.stack{display:flex;flex-direction:column;gap:9px}.field{display:flex;flex-direction:column;gap:4px;min-width:0}.field>label{font-weight:650;font-size:11px;color:#bfd1e5}.row{display:flex;align-items:center;justify-content:space-between;gap:9px}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.notice{border:1px solid #576679;background:#1c2c42;border-radius:8px;padding:10px;line-height:1.6}.notice.error{border-color:#c0515d;color:#fecdd3;background:#3c1d2d}.notice.success{border-color:#2ca26d;color:#bbf7d0;background:#113629}.notice.amber{border-color:#ac8130;color:#fcdca0;background:#352a16}.chip{display:inline-flex;align-items:center;gap:4px;padding:3px 7px;border-radius:5px;border:1px solid #415269;font-size:11px;white-space:nowrap}.chip.ok{color:#89e2b5;border-color:#266e56}.chip.out{color:#fda4af;border-color:#a83e50}.chip.archive{color:#fbbf62;border-color:#a06a2a}.chip.unplaced{color:#94a3b8}.pill{display:inline-flex;background:#223247;color:#e8ecf4;padding:4px 7px;border-radius:7px;white-space:nowrap}
+header{display:flex;gap:10px;align-items:center;justify-content:space-between;background:#10192a;border-bottom:1px solid #263952;padding:9px 16px}.brand{display:flex;gap:10px;align-items:center}.mark{display:grid;place-items:center;min-width:38px;height:38px;background:#e2a540;color:#162032;border-radius:10px;font-weight:900}.subtitle{font-size:11px;color:#93a4ba;margin-top:3px}.app{height:calc(100dvh - 61px);display:grid;grid-template-columns:minmax(0,3fr) minmax(420px,2fr);gap:12px;padding:12px;max-width:1900px;margin:0 auto}.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;min-height:0}.paneltitle{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:11px 12px;border-bottom:1px solid #24364b;font-weight:800;min-height:41px}.cabinet{display:flex;flex-direction:column}.cabinetbody{flex:1;min-height:0;display:flex;flex-direction:column;gap:6px;overflow:auto;padding:10px;background:linear-gradient(145deg,#42302c,#2b211f);border:5px solid #251914;margin:10px;border-radius:9px}.cabinetheads,.cabrow{display:grid;grid-template-columns:76px repeat(4,minmax(0,1fr));gap:6px}.cabinetheads{min-height:31px;text-align:center}.cabinetheads span{font-size:11px;font-weight:800;background:#1f2937a8;padding:7px 2px;border-radius:5px;color:#ffd78b}.cabrow{flex:1;min-height:62px}.floor{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:#1e293bbd;border:1px solid #806546;border-radius:7px;color:#fde7b0;gap:3px}.floor small{font-size:10px;color:#d2ac88}.shelf{min-height:58px;background:#19263b;border:2px solid #465a6f;border-bottom:6px solid #8d7059;border-radius:7px;padding:5px 7px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;text-align:left}.shelf.archive{border-color:#a77e3b;border-bottom-color:#b58c51;background:#302d32}.shelf.locked{border-style:dashed}.shelf.dim{opacity:.33}.shelf.active{opacity:1;border:2px solid #ffcb64;border-bottom:6px solid #ffc04a;background:#0f1727;box-shadow:0 0 0 2px #e5a53d77,0 0 22px #edac3b72;z-index:3}.shelfline{display:flex;align-items:center;justify-content:space-between;gap:2px;font-weight:800;font-size:12px}.shelfbars{display:flex;flex-direction:column;gap:2px;justify-content:flex-end;min-height:5px}.bar{width:100%;height:5px;border-radius:2px;background:#66a6cf}.bar.y2026{background:#4bd8a9}.bar.selected{height:7px;background:#ffe083;box-shadow:0 0 9px #ffc64b}.shelf .count{font-size:10px;color:#c1cbdb}.shelf .over{color:#fda4af}.cabinetfooter{padding:0 12px 10px;display:flex;flex-wrap:wrap;gap:9px;color:#9eacc0;font-size:11px}
+.side{display:flex;flex-direction:column;gap:10px;min-height:0}.red{border:2px solid #c55663;flex:6 1 0}.green{border:2px solid #2caa80;flex:4 1 0}.tabs{display:flex;gap:2px;overflow-x:auto;padding:7px 7px 0;border-bottom:1px solid var(--line);scrollbar-width:thin}.tabs.redtabs{background:#4a222e}.tabs button{white-space:nowrap;flex:none;font-weight:750;padding:8px 10px;border-radius:7px 7px 0 0;background:transparent;color:#d9deeb}.tabs button.on{background:var(--panel);color:#ffdb96;border:1px solid #a9606b;border-bottom:0}.redbody,.greenbody{padding:10px 11px;overflow:auto;min-height:0;flex:1}.panel.red,.panel.green{display:flex;flex-direction:column}.green .paneltitle{background:#12372e}.redrow{width:100%;display:flex;gap:8px;align-items:center;background:#152137;border:1px solid #31445c;border-radius:8px;padding:7px 8px;min-height:49px}.redrow:hover{border-color:#8091a9}.redrow.sel{border-color:#ffc760;background:#383424}.redrow .docclick{min-width:0;flex:1;background:transparent;text-align:left;border:0;color:#e9eff7;padding:0}.docname{font-weight:650;font-size:12px;margin-top:2px;line-height:1.35;overflow-wrap:anywhere}.redrow .docmeta{font-size:11px;color:#adc0d4;margin-top:3px}.reorder{display:flex;gap:4px}.reorder button{border-color:#506581;background:#263b55;color:white;padding:6px 8px;border-radius:6px;font-weight:900}.reorder button:disabled{opacity:.25}.list{display:flex;flex-direction:column;gap:5px}.searchbar{display:flex;gap:7px;align-items:center;flex-wrap:wrap}.searchbar input{flex:1 1 155px}.searchbar select{max-width:145px;flex:1}.stats{display:flex;flex-wrap:wrap;gap:6px}.rightpreview{display:flex;flex-direction:column;gap:10px}.rightpreview h3{font-size:14px;margin:0;color:#fff}.rightpreview p{margin:0;line-height:1.5}.confirmline{border-top:1px solid #3a5167;padding-top:10px;display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}.logrow{padding:8px;border-bottom:1px solid #283c52;line-height:1.5;font-size:12px}.logrow time{color:#f3bc6e;margin-right:6px}.previewtable{width:100%;border-collapse:collapse;font-size:11px}.previewtable td,.previewtable th{border:1px solid #405167;padding:5px;text-align:left}.previewtable th{background:#29384a;color:#dce6f2}.printpage{display:none}.viewonly{border:1px solid #364b65;border-radius:7px;padding:8px;background:#17263b}.hscroll{overflow:auto}.summary{font-size:11px;line-height:1.6}.screenhint{color:#c8d9ec;font-size:11px}.archivewarn{color:#f9ca7a}.red .paneltitle{display:none}.cancelhint{font-size:11px;color:#fbd18c}
+@media(min-width:1051px){.app{min-height:0}.cabinetbody{overflow:hidden}.cabrow{min-height:48px}.redbody{overflow:auto}.greenbody{overflow:auto}}
+@media(max-width:1050px){.app{height:auto;display:flex;flex-direction:column;padding:9px}.cabinet{min-height:570px}.cabinetbody{min-height:480px}.side{min-height:0}.red,.green{flex:none;min-height:350px}.red{max-height:565px}.redbody{max-height:510px;overflow-y:auto}.greenbody{max-height:none;overflow:visible}.cabrow{min-height:57px}}
+@media(max-width:570px){.headline{font-size:12px}.subtitle{font-size:10px}header{padding:7px 9px}.app{gap:8px}.cabinet{min-height:440px}.cabinetbody{min-height:380px;gap:3px;margin:6px;padding:5px;border-width:3px}.cabinetheads,.cabrow{grid-template-columns:34px repeat(4,minmax(0,1fr));gap:3px}.cabinetheads span{font-size:9px;padding:6px 1px}.floor{font-size:9px}.floor small{display:none}.cabrow{min-height:49px}.shelf{padding:3px;min-height:45px}.shelfline{font-size:10px;display:block}.shelf .count{font-size:8px}.bar{height:4px}.greenbody,.redbody{padding:8px}.redrow{padding:7px 5px}.reorder button{padding:6px}.grid2{grid-template-columns:1fr}.cabinetfooter{gap:3px}}
+@media print{@page{size:A4 landscape;margin:12mm}body{background:white!important;color:black!important;font:10pt Arial,sans-serif!important}header,.app{display:none!important}.printpage{display:block!important}.printpage h1{font-size:14pt;margin:0 0 5mm}.printpage p{font-size:9pt}.printpage table{width:100%;border-collapse:collapse;font-size:8pt}.printpage th,.printpage td{border:1px solid black;padding:4px;vertical-align:top;overflow-wrap:anywhere}.printpage th{background:#e4e4e4!important;color:#000}.printpage thead{display:table-header-group}.printpage tr{break-inside:avoid}.printpage .totals{font-weight:bold}}
+</style>
 </head>
-<body class="h-screen w-screen overflow-hidden flex flex-col select-none">
-
-  <!-- HEADER DUY NHẤT: LOGO + Ô TÌM KIẾM ĐỊNH VỊ TRỰC TIẾP -->
-  <header class="bg-slate-900 border-b border-slate-800 px-4 py-2 shrink-0 z-40">
-    <div class="mn-header-inner max-w-[1800px] mx-auto flex items-center justify-between gap-4">
-      <div class="flex items-center gap-2.5 shrink-0">
-        <div class="w-9 h-9 rounded-xl bg-amber-500 text-slate-950 flex items-center justify-center font-black text-base shadow">MN</div>
-        <div>
-          <h1 class="mn-header-title font-extrabold text-sm text-white tracking-tight uppercase">BẢN ĐỒ ĐỊNH VỊ TỦ HỒ SƠ (TẦNG 1→6 · NGĂN A→D)</h1>
-          <p class="text-[11px] text-slate-400">Công ty Đấu giá Hợp danh Miền Nam</p>
-        </div>
-      </div>
-
-      <!-- THANH TÌM KIẾM CÓ GỢI Ý NHANH -->
-      <div class="mn-search flex-1 max-w-2xl relative">
-        <input
-          id="globalSearch"
-          type="text"
-          placeholder="🔍 Nhập tìm hồ sơ để lấy hoặc trả (VD: Minh Phụng, 61 Ba Vân, Hiệp Lợi, Vũ Thị Thủy, 2025-020)..."
-          class="w-full pl-9 pr-24 py-2 rounded-xl bg-slate-800 border-2 border-amber-500/70 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-amber-400"
-          oninput="handleSearch(this.value)"
-          onfocus="handleSearch(this.value)"
-        />
-        <svg class="w-4 h-4 text-amber-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-        </svg>
-        <button onclick="clearSearch()" class="absolute right-2 top-1.5 px-2.5 py-1 text-[11px] bg-slate-700 hover:bg-slate-600 rounded-lg text-slate-200 font-semibold">
-          Làm mới tìm
-        </button>
-
-        <!-- DROPDOWN KẾT QUẢ KHI GÕ TÌM KIẾM -->
-        <div id="searchDropdown" class="hidden absolute left-0 right-0 top-11 bg-slate-900 border-2 border-amber-500 rounded-xl shadow-2xl max-h-60 overflow-y-auto z-50 divide-y divide-slate-800"></div>
-      </div>
-
-      <!-- CHỈ BÁO NHANH SỐ HỒ SƠ ĐANG RÚT -->
-      <div class="flex items-center gap-2 shrink-0">
-        <button onclick="switchGreenTab('BORROWED')" class="px-3 py-1.5 rounded-xl bg-rose-950/90 hover:bg-rose-900 border border-rose-500/60 flex items-center gap-2 text-xs transition">
-          <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
-          <span class="text-rose-200 font-semibold">Hồ sơ đang rút:</span>
-          <strong id="headerBorrowedCount" class="px-2 py-0.5 rounded bg-rose-600 text-white font-black">0</strong>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <!-- KHÔNG GIAN CHÍNH 1 MÀN HÌNH (KHÔNG CUỘN LĂN) -->
-  <main class="mn-main-grid flex-1 max-w-[1800px] w-full mx-auto p-3 grid grid-cols-12 gap-3 overflow-hidden">
-
-    <!-- ================================================================= -->
-    <!-- BÊN TRÁI (7 CỘT): ĐỒ HỌA TỦ HỒ SƠ (TẦNG 1→6 · NGĂN A, B, C, D)   -->
-    <!-- ================================================================= -->
-    <div class="mn-cabinet-panel col-span-7 bg-slate-900 rounded-2xl border border-slate-800 p-3 flex flex-col overflow-hidden">
-      <div class="flex items-center justify-between mb-2 shrink-0">
-        <div class="flex items-center gap-2">
-          <span class="font-extrabold text-amber-400 text-xs uppercase tracking-wider">1. SƠ ĐỒ TỦ HỒ SƠ TRỰC QUAN</span>
-          <span class="text-[11px] text-slate-400">(6 Tầng từ trên xuống · 4 Ngăn A, B, C, D từ trái sang)</span>
-        </div>
-        <button onclick="resetSpotlight()" class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 font-semibold">
-          💡 Bật sáng toàn bộ tủ
-        </button>
-      </div>
-
-      <!-- KHUNG TỦ GỖ 6 TẦNG x 4 NGĂN (A, B, C, D) -->
-      <div class="mn-cabinet-body cabinet-outer rounded-2xl p-3 flex-1 flex flex-col justify-between overflow-hidden">
-
-        <!-- TIÊU ĐỀ 4 NGĂN A - B - C - D -->
-        <div class="mn-cabinet-header grid grid-cols-12 gap-2 text-center pb-1 border-b border-amber-900/60 shrink-0">
-          <div class="mn-cabinet-label col-span-2 text-[10px] font-black text-amber-300/80 uppercase flex items-center justify-center">TẦNG / NGĂN</div>
-          <div class="col-span-10 grid grid-cols-4 gap-2">
-            <div class="bg-slate-900/80 text-amber-300 font-black text-xs py-1 rounded border border-amber-500/30">NGĂN A (Trái)</div>
-            <div class="bg-slate-900/80 text-amber-300 font-black text-xs py-1 rounded border border-amber-500/30">NGĂN B (Giữa Trái)</div>
-            <div class="bg-slate-900/80 text-amber-300 font-black text-xs py-1 rounded border border-amber-500/30">NGĂN C (Giữa Phải)</div>
-            <div class="bg-slate-900/80 text-amber-300 font-black text-xs py-1 rounded border border-amber-500/30">NGĂN D (Phải)</div>
-          </div>
-        </div>
-
-        <!-- 6 TẦNG TỦ TỪ TẦNG 1 ĐẾN TẦNG 6 -->
-        <div id="cabinetRowsContainer" class="flex-1 flex flex-col justify-between py-1 space-y-1.5 overflow-hidden"></div>
-
-      </div>
-    </div>
-
-    <!-- ================================================================= -->
-    <!-- BÊN PHẢI (5 CỘT): CHIA ĐÔI KHUNG ĐỎ (TRÊN) VÀ KHUNG XANH (DƯỚI)   -->
-    <!-- ================================================================= -->
-    <div class="mn-side-panel col-span-5 flex flex-col gap-3 overflow-hidden">
-
-      <!-- =============================================================== -->
-      <!-- KHUNG ĐỎ (TRÊN): TÁC VỤ RÚT / TRẢ (CHÍNH) & QUẢN LÝ CHUYỂN THẺ   -->
-      <!-- =============================================================== -->
-      <div class="mn-red-panel h-[54%] bg-slate-900 rounded-2xl border-2 border-rose-500/80 shadow-lg flex flex-col overflow-hidden">
-
-        <!-- THANH CHUYỂN THẺ (TABS) CỦA KHUNG ĐỎ -->
-        <div class="mn-tabs bg-rose-950/60 border-b border-rose-500/40 px-2 pt-1.5 flex items-center justify-between gap-1 shrink-0">
-          <div class="flex items-center gap-1">
-            <button id="redTabBtn_LOCATE" onclick="switchRedTab('LOCATE')" class="px-3 py-1.5 rounded-t-lg text-xs font-extrabold transition bg-slate-900 text-amber-400 border-t-2 border-x border-rose-500">
-              🎯 Vị Trí Lấy / Trả (Rút & Trả)
-            </button>
-            <button id="redTabBtn_QUICK" onclick="switchRedTab('QUICK')" class="px-2.5 py-1.5 rounded-t-lg text-xs font-bold transition text-slate-300 hover:text-white">
-              ⚡ Xếp Nhanh
-            </button>
-            <button id="redTabBtn_ADD" onclick="switchRedTab('ADD')" class="px-2.5 py-1.5 rounded-t-lg text-xs font-bold transition text-slate-300 hover:text-white">
-              ➕ Thêm / Sửa
-            </button>
-            <button id="redTabBtn_SAVE" onclick="switchRedTab('SAVE')" class="px-2.5 py-1.5 rounded-t-lg text-xs font-bold transition text-slate-300 hover:text-white">
-              💾 Lưu & Làm Mới
-            </button>
-          </div>
-        </div>
-
-        <!-- NỘI DUNG KHUNG ĐỎ -->
-        <div class="p-3 flex-1 overflow-y-auto">
-
-          <!-- THẺ ĐỎ 1: ĐỊNH VỊ LẤY & TRẢ + NÚT RÚT / NÚT TRẢ LÀM TRUNG TÂM -->
-          <div id="redTabContent_LOCATE" class="h-full flex flex-col justify-between"></div>
-
-          <!-- THẺ ĐỎ 2: XẾP NHANH CHỒNG HỒ SƠ -->
-          <div id="redTabContent_QUICK" class="hidden h-full flex flex-col space-y-2 text-xs">
-            <div class="flex items-center justify-between gap-2">
-              <span class="font-bold text-amber-300">Chọn Tầng/Ngăn để xếp từ dưới lên (#1↑):</span>
-              <select id="qsCell" onchange="renderQuickStackTab()" class="border border-amber-500 bg-slate-800 rounded-lg px-2.5 py-1 font-bold text-amber-300"></select>
-            </div>
-            <div class="grid grid-cols-2 gap-2 flex-1 overflow-hidden">
-              <div class="border border-slate-700 rounded-xl p-2 bg-slate-950 flex flex-col overflow-hidden">
-                <input id="qsSearch" type="text" placeholder="Lọc mã/tên hồ sơ..." oninput="renderQuickStackTab()" class="w-full border border-slate-700 rounded px-2 py-1 mb-1.5 bg-slate-900 text-white text-[11px]" />
-                <div id="qsAvailableList" class="space-y-1 flex-1 overflow-y-auto"></div>
-              </div>
-              <div class="border border-amber-500/50 rounded-xl p-2 bg-slate-950 flex flex-col overflow-hidden">
-                <div class="text-[10px] font-bold text-amber-400 mb-1">Thứ tự trong ngăn (Đỉnh → Đáy #1):</div>
-                <div id="qsCurrentStackList" class="space-y-1 flex-1 overflow-y-auto"></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- THẺ ĐỎ 3: THÊM / SỬA HỒ SƠ -->
-          <div id="redTabContent_ADD" class="hidden h-full flex flex-col justify-between text-xs">
-            <form id="formDossier" onsubmit="saveDossierForm(event)" class="space-y-2.5">
-              <input type="hidden" id="editId" />
-              <div class="flex items-center justify-between">
-                <span id="formTitleLabel" class="font-extrabold text-emerald-400 uppercase">➕ Thêm Hồ Sơ Mới Vào Tủ</span>
-                <button type="button" onclick="resetFormToNew()" class="text-[11px] text-slate-400 hover:text-white underline">Tạo mới trắng</button>
-              </div>
-              <div class="grid grid-cols-3 gap-2">
-                <div>
-                  <label class="text-[10px] text-slate-400 block mb-0.5">Mã Hồ Sơ / Số HĐ *</label>
-                  <input id="fCode" required placeholder="VD: 2025-009" class="w-full border border-slate-700 bg-slate-800 rounded-lg px-2.5 py-1.5 text-white font-bold" />
-                </div>
-                <div class="col-span-2">
-                  <label class="text-[10px] text-slate-400 block mb-0.5">Tên Hồ Sơ / Tài Sản *</label>
-                  <input id="fName" required placeholder="VD: BĐS 276 Minh Phụng, Quận 11" class="w-full border border-slate-700 bg-slate-800 rounded-lg px-2.5 py-1.5 text-white" />
-                </div>
-              </div>
-              <div class="grid grid-cols-3 gap-2">
-                <div>
-                  <label class="text-[10px] text-slate-400 block mb-0.5">Ngân hàng / Đơn vị</label>
-                  <input id="fBank" placeholder="VD: Agribank TTSG" class="w-full border border-slate-700 bg-slate-800 rounded-lg px-2.5 py-1.5 text-white" />
-                </div>
-                <div>
-                  <label class="text-[10px] text-amber-300 font-bold block mb-0.5">Vị trí Tầng - Ngăn *</label>
-                  <select id="fCell" class="w-full border border-amber-500/60 bg-slate-800 rounded-lg px-2 py-1.5 font-bold text-amber-300"></select>
-                </div>
-                <div>
-                  <label class="text-[10px] text-amber-300 font-bold block mb-0.5">Thứ tự từ dưới lên (#)</label>
-                  <input id="fOrder" type="number" min="1" value="1" class="w-full border border-amber-500/60 bg-slate-800 rounded-lg px-2.5 py-1.5 font-bold text-white" />
-                </div>
-              </div>
-              <div class="flex justify-end gap-2 pt-1">
-                <button type="submit" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black shadow">
-                  💾 Lưu Vị Trí Hồ Sơ
-                </button>
-              </div>
-            </form>
-          </div>
-
-          <!-- THẺ ĐỎ 4: LƯU GITHUB & LÀM MỚI -->
-          <div id="redTabContent_SAVE" class="hidden h-full flex flex-col justify-between text-xs space-y-2">
-            <div class="p-2.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-200 leading-relaxed">
-              💡 <strong>Hướng dẫn lưu lên GitHub:</strong> Sau khi bạn Rút/Trả hoặc Xếp lại vị trí hồ sơ, bấm nút vàng bên dưới để tải file <code>index.html</code> mới nhất về và upload đè lên GitHub.
-            </div>
-            <div class="grid grid-cols-2 gap-2.5">
-              <button onclick="downloadUpdatedHTMLFile()" class="p-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-left shadow flex flex-col justify-between">
-                <span class="text-sm">⬇️ Tải index.html mới</span>
-                <span class="text-[10px] opacity-80 font-semibold">Đã nhúng sẵn vị trí mới để Up GitHub</span>
-              </button>
-              <button onclick="exportDataJSON()" class="p-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-bold text-left flex flex-col justify-between">
-                <span class="text-sm">💾 Tải File Backup (.JSON)</span>
-                <span class="text-[10px] text-slate-400 font-normal">Sao lưu dữ liệu dự phòng về máy</span>
-              </button>
-              <button onclick="document.getElementById('importJsonFile').click()" class="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-bold">
-                Nhập dữ liệu từ JSON
-              </button>
-              <input id="importJsonFile" type="file" accept=".json,application/json" class="hidden" onchange="importDataJSON(this.files && this.files[0]); this.value=''" />
-              <button onclick="resetSpotlight()" class="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-bold">
-                🔄 Làm mới chế độ xem tủ
-              </button>
-              <button onclick="resetToDefaultData()" class="p-2.5 rounded-xl bg-rose-950/60 hover:bg-rose-900 border border-rose-700/50 text-rose-300 font-bold">
-                ⚠️ Khôi phục dữ liệu gốc ban đầu
-              </button>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- =============================================================== -->
-      <!-- KHUNG XANH (DƯỚI): CHỒNG HỒ SƠ / ĐANG RÚT / NHẬT KÝ (CHUYỂN THẺ) -->
-      <!-- =============================================================== -->
-      <div class="mn-green-panel h-[46%] bg-slate-900 rounded-2xl border-2 border-emerald-500/80 shadow-lg flex flex-col overflow-hidden">
-
-        <!-- THANH CHUYỂN THẺ (TABS) CỦA KHUNG XANH -->
-        <div class="mn-tabs bg-emerald-950/60 border-b border-emerald-500/40 px-2 pt-1.5 flex items-center justify-between gap-1 shrink-0">
-          <div class="flex items-center gap-1">
-            <button id="greenTabBtn_STACK" onclick="switchGreenTab('STACK')" class="px-3 py-1.5 rounded-t-lg text-xs font-extrabold transition bg-slate-900 text-emerald-400 border-t-2 border-x border-emerald-500">
-              📚 Chồng Hồ Sơ Trong Ngăn (<span id="tabStackCellLabel">1D</span>)
-            </button>
-            <button id="greenTabBtn_BORROWED" onclick="switchGreenTab('BORROWED')" class="px-3 py-1.5 rounded-t-lg text-xs font-bold transition text-slate-300 hover:text-white flex items-center gap-1.5">
-              <span>📤 Hồ Sơ Đang Rút</span>
-              <span id="greenTabBorrowedBadge" class="px-1.5 py-0.2 rounded-full bg-rose-600 text-white text-[10px] font-black">0</span>
-            </button>
-            <button id="greenTabBtn_LOG" onclick="switchGreenTab('LOG')" class="px-3 py-1.5 rounded-t-lg text-xs font-bold transition text-slate-300 hover:text-white">
-              🕒 Nhật Ký Rút / Trả
-            </button>
-          </div>
-          <span id="greenRightInfo" class="text-[11px] text-emerald-300 font-bold pr-2">Đếm từ dưới lên (#1↑)</span>
-        </div>
-
-        <!-- NỘI DUNG KHUNG XANH -->
-        <div class="p-3 flex-1 overflow-hidden flex flex-col">
-
-          <!-- THẺ XANH 1: MÔ PHỎNG CHỒNG HỒ SƠ TRONG NGĂN -->
-          <div id="greenTabContent_STACK" class="flex-1 flex flex-col justify-between overflow-hidden">
-            <div id="cutawayStackList" class="space-y-1.5 flex-1 overflow-y-auto pr-1"></div>
-            <div class="mt-2 h-5 bg-gradient-to-r from-amber-800 via-amber-600 to-amber-800 rounded flex items-center justify-center text-[10px] font-black text-amber-950 uppercase shrink-0">
-              ⬇️ Mặt Gỗ Đáy Kệ — Tập #1 Nằm Dưới Cùng ⬇️
-            </div>
-          </div>
-
-          <!-- THẺ XANH 2: DANH SÁCH HỒ SƠ ĐANG RÚT & HƯỚNG DẪN TRẢ -->
-          <div id="greenTabContent_BORROWED" class="hidden flex-1 overflow-y-auto space-y-2 pr-1"></div>
-
-          <!-- THẺ XANH 3: NHẬT KÝ RÚT TRẢ -->
-          <div id="greenTabContent_LOG" class="hidden flex-1 flex flex-col justify-between overflow-hidden">
-            <div id="activityLogList" class="space-y-1.5 flex-1 overflow-y-auto text-xs pr-1"></div>
-            <div class="pt-1.5 border-t border-slate-800 flex justify-end shrink-0">
-              <button onclick="clearLogs()" class="text-[11px] text-slate-400 hover:text-white">Xóa lịch sử nhật ký</button>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-
-  </main>
-
-  <script>
-    // =========================================================================
-    // 1. HỆ THỐNG ĐẶT TÊN ĐƠN GIẢN: TẦNG 1..6 & NGĂN A, B, C, D
-    // =========================================================================
-    const TIER_DEFINITIONS = [
-      { floor: 1, label: 'TẦNG 1', sub: 'Hộc Gỗ Đỉnh', isGlass: false },
-      { floor: 2, label: 'TẦNG 2', sub: 'Kính Kệ Trên', isGlass: true },
-      { floor: 3, label: 'TẦNG 3', sub: 'Kính Kệ Giữa', isGlass: true },
-      { floor: 4, label: 'TẦNG 4', sub: 'Kính Kệ Dưới', isGlass: true },
-      { floor: 5, label: 'TẦNG 5', sub: 'Hộc Đáy Trên', isGlass: false },
-      { floor: 6, label: 'TẦNG 6', sub: 'Hộc Đáy Sàn', isGlass: false }
-    ];
-
-    const COLS = ['A', 'B', 'C', 'D'];
-    const CABINET_CELLS = [];
-
-    TIER_DEFINITIONS.forEach(t => {
-      COLS.forEach(c => {
-        CABINET_CELLS.push({
-          id: `${t.floor}${c}`,
-          floor: t.floor,
-          col: c,
-          shortName: `Tầng ${t.floor} - Ngăn ${c}`,
-          fullName: `Tầng ${t.floor} (${t.sub}) - Ngăn ${c}`
-        });
-      });
-    });
-
-    // Chuyển đổi mã cũ (T1..T4, M1-1..M4-3, B1-1..B4-2) sang mã mới (1A..6D) nếu có dữ liệu cũ
-    const LEGACY_MAP = {
-      'T1': '1A', 'T2': '1B', 'T3': '1C', 'T4': '1D',
-      'M1-1': '2A', 'M2-1': '2B', 'M3-1': '2C', 'M4-1': '2D',
-      'M1-2': '3A', 'M2-2': '3B', 'M3-2': '3C', 'M4-2': '3D',
-      'M1-3': '4A', 'M2-3': '4B', 'M3-3': '4C', 'M4-3': '4D',
-      'B1-1': '5A', 'B2-1': '5B', 'B3-1': '5C', 'B4-1': '5D',
-      'B1-2': '6A', 'B2-2': '6B', 'B3-2': '6C', 'B4-2': '6D'
-    };
-
-    // =========================================================================
-    // 2. DỮ LIỆU HỒ SƠ MẶC ĐỊNH (ĐÃ GÁN THEO TẦNG 1..6 - NGĂN A..D)
-    // =========================================================================
-    /*__INITIAL_DOSSIERS_START__*/
-    const INITIAL_DOSSIERS = [
+<body>
+<header>
+  <div class="brand"><div class="mark">MN</div><div><div class="headline">BẢN ĐỒ TỦ HỒ SƠ · V7.0</div><div class="subtitle">Công ty Đấu giá Hợp danh Miền Nam · Tầng 1 dưới cùng · Tầng 6 lưu trữ</div></div></div>
+  <div class="stats"><span class="chip" id="headerTotal">52 hồ sơ</span><span class="chip out" id="headerBorrowed">0 đang rút</span><span class="chip archive" id="headerArchived">0 lưu trữ</span></div>
+</header>
+<main class="app">
+  <section class="panel cabinet"><div class="paneltitle"><span>SƠ ĐỒ TỦ · 6 TẦNG × 4 NGĂN</span><button class="btn neutral small" onclick="clearCellView()">Xem toàn tủ</button></div>
+    <div class="cabinetbody"><div class="cabinetheads"><span>TẦNG</span><span>NGĂN A</span><span>NGĂN B</span><span>NGĂN C</span><span>NGĂN D</span></div><div id="cabinetRows" style="display:flex;flex-direction:column;gap:5px;flex:1;min-height:0"></div></div>
+    <div class="cabinetfooter"><span>Vàng: hồ sơ/ngăn đang chọn</span><span>│ Tầng 6: kho lưu trữ</span><span>│ Chọn ngăn để lọc danh sách</span></div>
+  </section>
+  <div class="side">
+    <section class="panel red"><nav class="tabs redtabs" id="redTabs">
+      <button data-tab="MOVE" class="on" onclick="changeTab('MOVE')">Rút · Điều chỉnh · Lưu trữ</button>
+      <button data-tab="RETURN" onclick="changeTab('RETURN')">Trả hồ sơ</button>
+      <button data-tab="ADD" onclick="changeTab('ADD')">Thêm hồ sơ</button>
+      <button data-tab="SETUP" onclick="changeTab('SETUP')">Thiết lập</button>
+      <button data-tab="SAVE" onclick="changeTab('SAVE')">Lưu · In</button>
+      <button data-tab="LOG" onclick="changeTab('LOG')">Nhật ký</button>
+    </nav><div id="redBody" class="redbody"></div></section>
+    <section class="panel green"><div class="paneltitle"><span>TÁC VỤ · XÁC NHẬN · KẾT QUẢ</span><span id="actionType" class="chip">Sẵn sàng</span></div><div class="greenbody" id="greenBody"></div></section>
+  </div>
+</main>
+<section id="printArea" class="printpage"></section>
+<script>
+'use strict';
+const VERSION=7;
+const STORAGE_KEY='MN_CABINET_V7_LOCAL';
+const V6_KEY='DGHD_MIEN_NAM_CABINET_V6_SIMPLE';
+const V5_KEY='DGHD_MIEN_NAM_CABINET_GITHUB_V5';
+const LEGACY_MAP={'T1':'1A','T2':'1B','T3':'1C','T4':'1D','M1-1':'2A','M2-1':'2B','M3-1':'2C','M4-1':'2D','M1-2':'3A','M2-2':'3B','M3-2':'3C','M4-2':'3D','M1-3':'4A','M2-3':'4B','M3-3':'4C','M4-3':'4D','B1-1':'5A','B2-1':'5B','B3-1':'5C','B4-1':'5D','B1-2':'6A','B2-2':'6B','B3-2':'6C','B4-2':'6D'};
+const ALL_CELLS=Array.from({length:6},(_,f)=>['A','B','C','D'].map(c=>`${f+1}${c}`)).flat();
+const ACTIVE_CELLS=ALL_CELLS.filter(c=>!c.startsWith('6'));
+const ARCHIVE_CELLS=ALL_CELLS.filter(c=>c.startsWith('6'));
+/*__CATALOG_START__*/
+const ORIGINAL_DOSSIERS = [
       // TẦNG 1 - NGĂN C (1C)
       { id: 'HS-2025-001', year: '2025', code: '2025-001', name: 'Máy móc thiết bị - QTV Phi', bank: 'QTV Phi', cell: '1C', orderFromBottom: 1, status: 'IN_CABINET', borrower: '', purpose: '' },
       { id: 'HS-2025-002', year: '2025', code: '2025-002', name: 'BĐS 61 Ba Vân, Phường 14, Tân Bình', bank: 'Agribank CN Phú Nhuận', cell: '1C', orderFromBottom: 2, status: 'IN_CABINET', borrower: '', purpose: '' },
@@ -461,820 +117,246 @@
       { id: 'HS-2026-830', year: '2026', code: 'TB-830/2026', name: 'Thửa đất 501, TBĐ 79, Bình Trưng - Lê Thị Thu Hương', bank: 'Agribank CN Nhà Bè', cell: '3D', orderFromBottom: 4, status: 'IN_CABINET', borrower: '', purpose: '' },
       { id: 'HS-2026-818', year: '2026', code: 'TB-818/2026', name: '05 Thửa đất 735-739, TBĐ 2, Chơn Thành', bank: 'VIB', cell: '3D', orderFromBottom: 5, status: 'IN_CABINET', borrower: '', purpose: '' }
     ];
-    /*__INITIAL_DOSSIERS_END__*/
-
-    const STORAGE_KEY = 'DGHD_MIEN_NAM_CABINET_V6_SIMPLE';
-    const OLD_STORAGE_KEY = 'DGHD_MIEN_NAM_CABINET_GITHUB_V5';
-    const LOG_KEY = 'DGHD_MIEN_NAM_LOGS_V6_SIMPLE';
-
-    let dossiers = [];
-    let activityLogs = [];
-    let activeCellId = '1D';
-    let selectedDossierId = 'HS-2025-009';
-    let spotlightMode = true;
-    let activeRedTab = 'LOCATE';
-    let activeGreenTab = 'STACK';
-
-    function escapeHtml(value) {
-      return String(value ?? '').replace(/[&<>"']/g, c => ({
-        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-      }[c]));
-    }
-
-    function searchText(value) {
-      return String(value ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-        .replace(/đ/g, 'd').replace(/Đ/g, 'D').toLowerCase().trim();
-    }
-
-    function normalizeCellCode(cell) {
-      const code = String(cell || '').trim().toUpperCase();
-      const mapped = LEGACY_MAP[code] || code;
-      return CABINET_CELLS.some(c => c.id === mapped) ? mapped : '1A';
-    }
-
-    function normalizeDossiers(value) {
-      if (!Array.isArray(value)) throw new Error('Dữ liệu phải là danh sách hồ sơ.');
-      const ids = new Set();
-      const codes = new Set();
-      return value.map((record, idx) => {
-        if (!record || typeof record !== 'object') throw new Error(`Dòng ${idx + 1} không hợp lệ.`);
-        const code = String(record.code || '').trim();
-        const name = String(record.name || '').trim();
-        const id = String(record.id || '').trim();
-        if (!id || !/^[A-Za-z0-9_.:-]+$/.test(id) || !code || !name || ids.has(id)) {
-          throw new Error(`ID/mã/tên hồ sơ tại dòng ${idx + 1} không hợp lệ hoặc trùng ID.`);
-        }
-        const codeKey = searchText(code);
-        if (codes.has(codeKey)) throw new Error(`Mã hồ sơ bị trùng: ${code}`);
-        ids.add(id); codes.add(codeKey);
-        const status = record.status === 'BORROWED' ? 'BORROWED' : 'IN_CABINET';
-        const order = Number(record.orderFromBottom);
-        return {
-          ...record, id, code, name,
-          bank: String(record.bank || ''),
-          year: String(record.year || inferYearFromCode(code)),
-          cell: normalizeCellCode(record.cell),
-          lastCell: normalizeCellCode(record.lastCell || record.cell),
-          lastOrder: Number.isInteger(Number(record.lastOrder)) && Number(record.lastOrder) > 0 ? Number(record.lastOrder) : 1,
-          orderFromBottom: Number.isInteger(order) && order > 0 ? order : 1,
-          status,
-          borrower: status === 'BORROWED' ? String(record.borrower || 'Chưa rõ người rút') : '',
-          purpose: String(record.purpose || '')
-        };
-      });
-    }
-
-    function inferYearFromCode(code) {
-      const match = String(code).match(/(?:^|\D)(20\d{2})(?=\D|$)/);
-      return match ? match[1] : String(new Date().getFullYear());
-    }
-
-    function persistState() {
-      try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(dossiers));
-        localStorage.setItem(LOG_KEY, JSON.stringify(activityLogs));
-        return true;
-      } catch (error) {
-        alert('Không thể lưu trên trình duyệt này. Hãy xuất JSON dự phòng.');
-        return false;
-      }
-    }
-
-    function loadState() {
-      // Ưu tiên bản V6 đã lưu; chỉ dùng V5 khi chưa từng có V6.
-      let saved = null;
-      let migrated = false;
-      try {
-        saved = localStorage.getItem(STORAGE_KEY);
-        if (!saved) { saved = localStorage.getItem(OLD_STORAGE_KEY); migrated = Boolean(saved); }
-        dossiers = saved ? normalizeDossiers(JSON.parse(saved)) : normalizeDossiers(INITIAL_DOSSIERS);
-      } catch (error) {
-        // Dữ liệu hỏng không được tự ghi đè; người dùng vẫn có thể sao lưu thủ công.
-        dossiers = normalizeDossiers(INITIAL_DOSSIERS);
-        console.warn('Không đọc được dữ liệu đã lưu:', error);
-      }
-      for (const cell of CABINET_CELLS) reindexStack(cell.id);
-      try {
-        const rawLogs = JSON.parse(localStorage.getItem(LOG_KEY) || '[]');
-        activityLogs = Array.isArray(rawLogs) ? rawLogs.filter(x => x && typeof x.text === 'string').slice(0, 200) : [];
-      } catch (error) { activityLogs = []; }
-      if (migrated) {
-        addLog('Chuyển mã vị trí từ V5 sang sơ đồ 6 tầng × 4 ngăn của V6.');
-      }
-    }
-
-    function saveState() {
-      persistState();
-    }
-
-    function addLog(message) {
-      const now = new Date();
-      const time = now.toLocaleString('vi-VN', { hour12: false });
-      activityLogs.unshift({ time, text: String(message) });
-      if (activityLogs.length > 200) activityLogs.length = 200;
-      persistState();
-    }
-
-    function getCellInfo(cellId) {
-      return CABINET_CELLS.find(c => c.id === cellId) || { id: cellId, shortName: `Ngăn ${cellId}`, fullName: `Ngăn ${cellId}` };
-    }
-
-    function getInCabinetStack(cellId) {
-      return dossiers
-        .filter(d => d.status === 'IN_CABINET' && d.cell === cellId)
-        .sort((a, b) => (a.orderFromBottom || 1) - (b.orderFromBottom || 1));
-    }
-
-    function reindexStack(cellId) {
-      const list = getInCabinetStack(cellId);
-      list.forEach((item, idx) => { item.orderFromBottom = idx + 1; });
-    }
-
-    // Chèn chính xác thứ tự mong muốn; không xếp lại dựa trên các thứ tự trùng nhau.
-    function placeDossier(doc, targetCell, requestedOrder) {
-      const oldCell = doc.status === 'IN_CABINET' ? doc.cell : null;
-      const stack = getInCabinetStack(targetCell).filter(item => item.id !== doc.id);
-      const pos = Math.min(Math.max(1, Math.trunc(Number(requestedOrder) || 1)), stack.length + 1);
-      stack.splice(pos - 1, 0, doc);
-      doc.cell = targetCell;
-      doc.status = 'IN_CABINET';
-      stack.forEach((item, i) => { item.orderFromBottom = i + 1; });
-      if (oldCell && oldCell !== targetCell) reindexStack(oldCell);
-      return pos;
-    }
-
-    // Tìm hồ sơ X (phía trên) và Y (phía dưới)
-    function getNeighborsXY(doc) {
-      const cellToCheck = doc.status === 'BORROWED' ? (doc.lastCell || doc.cell) : doc.cell;
-      const stack = getInCabinetStack(cellToCheck);
-      if (doc.status === 'BORROWED') {
-        const oldPos = doc.lastOrder || 1;
-        return {
-          aboveX: stack.find(i => i.orderFromBottom === oldPos) || null,
-          belowY: stack.find(i => i.orderFromBottom === oldPos - 1) || null,
-          topDoc: stack.length > 0 ? stack[stack.length - 1] : null,
-          total: stack.length
-        };
-      }
-      const idx = stack.findIndex(item => item.id === doc.id);
-      return {
-        aboveX: (idx > -1 && idx < stack.length - 1) ? stack[idx + 1] : null,
-        belowY: idx > 0 ? stack[idx - 1] : null,
-        topDoc: stack.length > 0 ? stack[stack.length - 1] : null,
-        total: stack.length
-      };
-    }
-
-    // =========================================================================
-    // 3. VẼ ĐỒ HỌA TỦ 6 TẦNG × 4 NGĂN (A, B, C, D) VỪA KHÍT MÀN HÌNH
-    // =========================================================================
-    function renderCabinetGraphic() {
-      const selectedDoc = dossiers.find(d => d.id === selectedDossierId);
-      const targetCellId = selectedDoc ? (selectedDoc.status === 'BORROWED' ? (selectedDoc.lastCell || selectedDoc.cell) : selectedDoc.cell) : null;
-
-      const rowsHtml = TIER_DEFINITIONS.map(tier => {
-        const colsHtml = COLS.map(col => {
-          const cellId = `${tier.floor}${col}`;
-          const cellDocs = getInCabinetStack(cellId);
-          const isTargetShelf = spotlightMode && targetCellId === cellId;
-          const shouldDim = spotlightMode && targetCellId && !isTargetShelf;
-
-          const reversed = [...cellDocs].reverse();
-          const barsHtml = reversed.map(doc => {
-            const isTargetFile = selectedDoc && doc.id === selectedDoc.id && doc.status === 'IN_CABINET';
-            if (isTargetFile) {
-              return `
-                <div class="target-file-bar w-full my-0.5 flex items-center justify-end">
-                  <span class="absolute -right-1 -top-4 px-1.5 py-0.2 rounded bg-amber-400 text-slate-950 font-black text-[9px] shadow-lg whitespace-nowrap z-30">
-                    👈 #${doc.orderFromBottom}↑ (${escapeHtml(doc.code)})
-                  </span>
-                </div>
-              `;
-            }
-            return `<div class="w-full h-1 rounded-sm ${doc.year === '2025' ? 'bg-sky-400/65' : 'bg-emerald-400/65'}"></div>`;
-          }).join('');
-
-          return `
-            <div
-              onclick="selectShelf('${cellId}')"
-              class="shelf-cavity ${tier.isGlass ? 'glass-tier' : ''} rounded-lg px-2 py-1 cursor-pointer flex flex-col justify-between h-full min-h-[54px] ${
-                isTargetShelf ? 'spotlight-shelf' : shouldDim ? 'dimmed-shelf' : ''
-              }"
-            >
-              <div class="flex items-center justify-between">
-                <span class="mn-cell-label text-[11px] font-black ${isTargetShelf ? 'text-amber-400' : 'text-white'}">
-                  <span class="mn-full-label">Tầng ${tier.floor} - Ngăn ${col}</span><span class="mn-compact-label hidden">${cellId}</span>
-                </span>
-                <span class="text-[9px] px-1.5 py-0.2 rounded ${
-                  isTargetShelf ? 'bg-amber-500 text-slate-950 font-black' : 'bg-slate-800 text-slate-300 font-bold'
-                }">${cellDocs.length} tập</span>
-              </div>
-              <div class="flex flex-col justify-end space-y-0.5 px-0.5 pt-1 overflow-visible">
-                ${barsHtml || '<div class="text-[9px] text-slate-500 text-center">Trống</div>'}
-              </div>
-            </div>
-          `;
-        }).join('');
-
-        return `
-          <div class="grid grid-cols-12 gap-2 flex-1 items-stretch">
-            <div class="col-span-2 rounded-lg bg-slate-900/90 border border-amber-900/50 flex flex-col items-center justify-center px-1 text-center">
-              <span class="font-black text-xs text-amber-400">${tier.label}</span>
-              <span class="text-[9px] text-slate-400">${tier.sub}</span>
-            </div>
-            <div class="col-span-10 grid grid-cols-4 gap-2">
-              ${colsHtml}
-            </div>
-          </div>
-        `;
-      }).join('');
-
-      document.getElementById('cabinetRowsContainer').innerHTML = rowsHtml;
-    }
-
-    // =========================================================================
-    // 4. VẼ KHUNG ĐỎ: ĐỊNH VỊ LẤY / TRẢ & NÚT RÚT / NÚT TRẢ TRUNG TÂM
-    // =========================================================================
-    function renderRedBoxLocateTab() {
-      const container = document.getElementById('redTabContent_LOCATE');
-      const doc = dossiers.find(d => d.id === selectedDossierId);
-
-      if (!doc) {
-        container.innerHTML = `<div class="text-xs text-slate-400 italic m-auto text-center">Gõ tìm kiếm trên đầu trang hoặc bấm vào 1 ngăn tủ bên trái để xem vị trí Lấy / Trả.</div>`;
-        return;
-      }
-
-      const nb = getNeighborsXY(doc);
-
-      // TRƯỜNG HỢP 1: HỒ SƠ ĐANG RÚT RA NGOÀI -> HIỆN HƯỚNG DẪN VỊ TRÍ TRẢ & NÚT TRẢ CHÍNH
-      if (doc.status === 'BORROWED') {
-        const returnCell = doc.lastCell || doc.cell || activeCellId;
-        const cInfo = getCellInfo(returnCell);
-        const topNewOrder = nb.total + 1;
-
-        container.innerHTML = `
-          <div class="space-y-2 text-xs">
-            <div class="flex items-center justify-between bg-rose-950/80 border border-rose-500/60 px-3 py-1.5 rounded-xl">
-              <div>
-                <span class="px-1.5 py-0.5 rounded bg-rose-600 text-white font-black text-[10px] uppercase">ĐANG RÚT RA NGOÀI</span>
-                <span class="font-extrabold text-white ml-1.5 text-sm">${escapeHtml(doc.code)} — ${escapeHtml(doc.name)}</span>
-              </div>
-              <span class="text-rose-300 font-bold text-[11px]">Nơi rút: ${escapeHtml(doc.borrower)}</span>
-            </div>
-
-            <!-- HƯỚNG DẪN VỊ TRÍ TRẢ HỒ SƠ -->
-            <div class="p-2.5 rounded-xl bg-emerald-950/50 border-2 border-emerald-500/80 space-y-1.5">
-              <div class="flex items-center justify-between">
-                <span class="font-black text-emerald-300 uppercase text-[11px]">📍 HƯỚNG DẪN VỊ TRÍ TRẢ HỒ SƠ VÀO TỦ:</span>
-                <span class="px-2 py-0.5 rounded bg-emerald-500 text-slate-950 font-black">Trả về: ${cInfo.shortName}</span>
-              </div>
-              <div class="grid grid-cols-2 gap-2 text-[11px]">
-                <div class="p-2 rounded-lg bg-slate-900 border border-emerald-500/40">
-                  <div class="font-bold text-emerald-400">Cách 1: Đặt lên ĐỈNH CHỒNG (Nhanh)</div>
-                  <div class="text-slate-300 mt-0.5">
-                    Đặt lên trên cùng của <strong>${cInfo.shortName}</strong> (Đè lên tập ${nb.topDoc ? `[#${nb.topDoc.orderFromBottom}]${escapeHtml(nb.topDoc.code)}` : 'Mặt kệ'}) → Thành <strong>Tập #${topNewOrder}↑</strong>.
-                  </div>
-                </div>
-                <div class="p-2 rounded-lg bg-slate-900 border border-slate-700">
-                  <div class="font-bold text-amber-300">Cách 2: Nhét về VỊ TRÍ CŨ (#${doc.lastOrder || 1}↑)</div>
-                  <div class="text-slate-300 mt-0.5">
-                    Kẹp giữa <strong>Trên (X):</strong> ${nb.aboveX ? nb.aboveX.code : 'Đỉnh'} & <strong>Dưới (Y):</strong> ${nb.belowY ? nb.belowY.code : 'Đáy kệ'}.
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- NÚT TRẢ HỒ SƠ CHÍNH -->
-            <div class="mn-return-actions grid grid-cols-2 gap-2 pt-1">
-              <button onclick="executeReturnDossier('${doc.id}', 'TOP')" class="py-2.5 px-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs shadow-lg flex items-center justify-center gap-1.5">
-                📥 TRẢ LÊN ĐỈNH CHỒNG (${cInfo.shortName} · #${topNewOrder}↑)
-              </button>
-              <button onclick="executeReturnDossier('${doc.id}', 'OLD')" class="py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-emerald-500/50 text-emerald-300 font-bold text-xs flex items-center justify-center gap-1.5">
-                📥 NHÉT VỀ VỊ TRÍ CŨ (${cInfo.shortName} · #${doc.lastOrder || 1}↑)
-              </button>
-            </div>
-          </div>
-        `;
-        return;
-      }
-
-      // TRƯỜNG HỢP 2: HỒ SƠ ĐANG TRONG TỦ -> HIỆN VỊ TRÍ LẤY (KẸP GIỮA X & Y) + NÚT RÚT CHÍNH
-      const cInfo = getCellInfo(doc.cell);
-      container.innerHTML = `
-        <div class="space-y-2 text-xs">
-          <!-- DÒNG ĐỊNH VỊ NGĂN & THỨ TỰ TỪ DƯỚI LÊN -->
-          <div class="flex items-center justify-between bg-slate-800 px-3 py-1.5 rounded-xl border border-amber-500/50">
-            <div class="flex items-center gap-2">
-              <span class="px-2 py-0.5 rounded bg-amber-500 text-slate-950 font-black text-xs">${cInfo.shortName}</span>
-              <span class="font-extrabold text-white text-sm truncate max-w-[260px]">${escapeHtml(doc.code)} — ${escapeHtml(doc.name)}</span>
-            </div>
-            <span class="px-2.5 py-0.5 rounded-lg bg-emerald-500 text-slate-950 font-black">
-              Vị trí lấy: Tập #${doc.orderFromBottom} / ${nb.total} từ dưới lên
-            </span>
-          </div>
-
-          <!-- SƠ ĐỒ KẸP GIỮA HỒ SƠ X (TRÊN) VÀ HỒ SƠ Y (DƯỚI) -->
-          <div class="mn-neighbors grid grid-cols-3 gap-1.5 text-[11px]">
-            <div class="p-2 rounded-xl bg-slate-800/90 border-l-4 border-sky-400">
-              <div class="text-[9px] font-bold text-sky-400 uppercase">⬆️ Hồ sơ X (Đè phía TRÊN):</div>
-              <div class="font-bold text-white truncate mt-0.5">
-                ${nb.aboveX ? `[#${nb.aboveX.orderFromBottom}↑] ${escapeHtml(nb.aboveX.code)} —${escapeHtml(nb.aboveX.name)}` : 'Không có (Nằm trên cùng)'}
-              </div>
-            </div>
-
-            <div class="p-2 rounded-xl bg-amber-500 text-slate-950 font-black shadow flex flex-col justify-center">
-              <div class="text-[9px] uppercase opacity-80">🎯 Hồ sơ cần lấy (Ở giữa):</div>
-              <div class="truncate text-xs">[#${doc.orderFromBottom}↑] ${escapeHtml(doc.code)} — ${escapeHtml(doc.name)}</div>
-            </div>
-
-            <div class="p-2 rounded-xl bg-slate-800/90 border-l-4 border-amber-500">
-              <div class="text-[9px] font-bold text-amber-400 uppercase">⬇️ Hồ sơ Y (Lót phía DƯỚI):</div>
-              <div class="font-bold text-white truncate mt-0.5">
-                ${nb.belowY ? `[#${nb.belowY.orderFromBottom}↑] ${escapeHtml(nb.belowY.code)} —${escapeHtml(nb.belowY.name)}` : 'Sát mặt đáy kệ (Tập #1)'}
-              </div>
-            </div>
-          </div>
-
-          <!-- KHUNG NÚT RÚT HỒ SƠ & NƠI RÚT TRỰC TIẾP -->
-          <div class="p-2.5 rounded-xl bg-rose-950/40 border border-rose-500/50 flex items-center gap-2">
-            <div class="flex-1">
-              <label class="text-[10px] font-bold text-rose-300 uppercase block mb-0.5">Nhập Nơi rút / Người lấy hồ sơ:</label>
-              <input
-                id="inlineWithdrawPlace"
-                type="text"
-                placeholder="VD: ĐGV Chúc Vy - Phiên ĐG / Bàn anh Trưởng / Khách xem..."
-                class="w-full px-2.5 py-1.5 rounded-lg bg-slate-900 border border-rose-500/40 text-white text-xs focus:outline-none focus:border-rose-400"
-              />
-            </div>
-            <button
-              onclick="executeInlineWithdraw('${doc.id}')"
-              class="px-4 py-3 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-black text-xs shadow-lg shrink-0 flex items-center gap-1.5 mt-3"
-            >
-              📤 RÚT HỒ SƠ NÀY
-            </button>
-          </div>
-        </div>
-      `;
-    }
-
-    // =========================================================================
-    // 5. VẼ KHUNG XANH: 3 THẺ (CHỒNG HỒ SƠ / ĐANG RÚT / NHẬT KÝ)
-    // =========================================================================
-    function renderGreenBoxTabs() {
-      const cInfo = getCellInfo(activeCellId);
-      document.getElementById('tabStackCellLabel').textContent = cInfo.shortName;
-
-      // 1. Thẻ Chồng hồ sơ trong ngăn
-      const stack = getInCabinetStack(activeCellId);
-      const doc = dossiers.find(d => d.id === selectedDossierId);
-      const nb = doc && doc.cell === activeCellId && doc.status === 'IN_CABINET' ? getNeighborsXY(doc) : { aboveX: null, belowY: null };
-
-      const stackEl = document.getElementById('cutawayStackList');
-      if (!stack.length) {
-        stackEl.innerHTML = `<div class="text-center text-slate-500 text-xs py-8">${cInfo.shortName} hiện đang trống.</div>`;
-      } else {
-        stackEl.innerHTML = [...stack].reverse().map(item => {
-          const isTarget = item.id === selectedDossierId;
-          const isX = nb.aboveX && nb.aboveX.id === item.id;
-          const isY = nb.belowY && nb.belowY.id === item.id;
-
-          let roleTag = '';
-          if (isTarget) roleTag = `<span class="px-1.5 py-0.5 rounded bg-slate-950 text-amber-300 text-[10px] font-black">ĐANG CHỌN</span>`;
-          else if (isX) roleTag = `<span class="px-1.5 py-0.5 rounded bg-sky-500/20 text-sky-300 text-[10px] font-bold">X (TRÊN)</span>`;
-          else if (isY) roleTag = `<span class="px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 text-[10px] font-bold">Y (DƯỚI)</span>`;
-
-          return `
-            <div
-              onclick="focusDossier('${item.id}')"
-              class="rounded-lg px-2.5 py-1.5 cursor-pointer transition flex items-center justify-between gap-2 text-xs ${
-                isTarget
-                  ? 'slice-pullout bg-amber-400 text-slate-950 font-black border-2 border-white'
-                  : isX
-                    ? 'bg-slate-800 border border-sky-400 text-white'
-                    : isY
-                      ? 'bg-slate-800 border border-amber-500 text-white'
-                      : 'bg-slate-950/80 hover:bg-slate-800 text-slate-300 border border-slate-800'
-              }"
-            >
-              <div class="flex items-center gap-2 min-w-0">
-                <span class="px-1.5 py-0.5 rounded font-black text-[11px] ${isTarget ? 'bg-slate-950 text-amber-400' : 'bg-slate-900 text-amber-400'}">
-                  #${item.orderFromBottom}↑
-                </span>
-                <span class="truncate"><strong>${escapeHtml(item.code)}</strong> — ${escapeHtml(item.name)}</span>
-              </div>
-              <div class="flex items-center gap-1 shrink-0" onclick="event.stopPropagation()">
-                ${roleTag}
-                <button onclick="moveOrder('${item.id}', 1)" class="w-5 h-5 rounded bg-slate-700 hover:bg-slate-600 text-white text-[9px]">▲</button>
-                <button onclick="moveOrder('${item.id}', -1)" class="w-5 h-5 rounded bg-slate-700 hover:bg-slate-600 text-white text-[9px]">▼</button>
-              </div>
-            </div>
-          `;
-        }).join('');
-      }
-
-      // 2. Thẻ Hồ sơ đang rút
-      const borrowedList = dossiers.filter(d => d.status === 'BORROWED');
-      document.getElementById('headerBorrowedCount').textContent = borrowedList.length;
-      document.getElementById('greenTabBorrowedBadge').textContent = borrowedList.length;
-
-      const borrowedEl = document.getElementById('greenTabContent_BORROWED');
-      if (!borrowedList.length) {
-        borrowedEl.innerHTML = `<div class="text-center text-slate-500 text-xs py-8">Hiện không có hồ sơ nào đang rút ra ngoài.</div>`;
-      } else {
-        borrowedEl.innerHTML = borrowedList.map(d => {
-          const retInfo = getCellInfo(d.lastCell || d.cell);
-          const topCount = getInCabinetStack(d.lastCell || d.cell).length + 1;
-          return `
-            <div onclick="focusDossier('${d.id}')" class="p-2.5 rounded-xl bg-slate-950 border border-rose-500/50 hover:border-rose-400 cursor-pointer flex items-center justify-between gap-2 text-xs">
-              <div class="min-w-0">
-                <div class="flex items-center gap-2">
-                  <span class="font-black text-amber-300">${escapeHtml(d.code)}</span>
-                  <span class="font-bold text-white truncate">${escapeHtml(d.name)}</span>
-                </div>
-                <div class="text-[11px] text-rose-300 mt-0.5">
-                  📍 Nơi rút: <strong>${escapeHtml(d.borrower)}</strong> · Vị trí trả về: <strong>${retInfo.shortName} (Đỉnh chồng #${topCount}↑ hoặc khe cũ #${d.lastOrder || 1}↑)</strong>
-                </div>
-              </div>
-              <button
-                onclick="event.stopPropagation(); executeReturnDossier('${d.id}', 'TOP')"
-                class="px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-[11px] shrink-0 shadow"
-              >
-                📥 Trả Lên Đỉnh
-              </button>
-            </div>
-          `;
-        }).join('');
-      }
-
-      // 3. Thẻ Nhật ký Rút / Trả
-      document.getElementById('activityLogList').innerHTML = activityLogs.map(l => `
-        <div class="flex gap-2 py-1 border-b border-slate-800/80 text-[11px]">
-          <span class="text-amber-400 font-mono shrink-0">[${escapeHtml(l.time)}]</span>
-          <span class="text-slate-200">${escapeHtml(l.text)}</span>
-        </div>
-      `).join('');
-    }
-
-    function renderAll() {
-      renderCabinetGraphic();
-      renderRedBoxLocateTab();
-      renderGreenBoxTabs();
-    }
-
-    // =========================================================================
-    // 6. THAO TÁC RÚT & TRẢ TRỰC TIẾP, TÌM KIẾM & CHUYỂN THẺ
-    // =========================================================================
-    function executeInlineWithdraw(docId) {
-      const doc = dossiers.find(d => d.id === docId);
-      if (!doc || doc.status !== 'IN_CABINET') return;
-      const placeInput = document.getElementById('inlineWithdrawPlace');
-      const place = placeInput ? placeInput.value.trim() : '';
-      if (!place) { alert('Vui lòng nhập người hoặc nơi đang giữ hồ sơ.'); placeInput?.focus(); return; }
-      const cInfo = getCellInfo(doc.cell);
-
-      doc.lastCell = doc.cell;
-      doc.lastOrder = doc.orderFromBottom;
-      doc.status = 'BORROWED';
-      doc.borrower = place;
-
-      reindexStack(doc.cell);
-      addLog(`RÚT: [${doc.code}] tại ${cInfo.shortName} (Tập #${doc.lastOrder}↑) → Nơi rút: ${place}`);
-      saveState();
-      renderAll();
-    }
-
-    function executeReturnDossier(docId, mode) {
-      const doc = dossiers.find(d => d.id === docId);
-      if (!doc || doc.status !== 'BORROWED') return;
-      const targetCell = normalizeCellCode(doc.lastCell || doc.cell || activeCellId);
-      const cInfo = getCellInfo(targetCell);
-      const desired = mode === 'OLD' ? doc.lastOrder : getInCabinetStack(targetCell).length + 1;
-      const position = placeDossier(doc, targetCell, desired);
-      doc.borrower = '';
-      doc.purpose = '';
-      activeCellId = targetCell;
-      selectedDossierId = doc.id;
-      spotlightMode = true;
-      switchRedTab('LOCATE');
-      addLog(`TRẢ: [${doc.code}] vào ${cInfo.shortName} → Tập #${position}↑ (${mode === 'OLD' ? 'vị trí cũ' : 'đỉnh chồng'}).`);
-      renderAll();
-    }
-
-    function switchRedTab(tab) {
-      activeRedTab = tab;
-      ['LOCATE', 'QUICK', 'ADD', 'SAVE'].forEach(t => {
-        const btn = document.getElementById('redTabBtn_' + t);
-        const content = document.getElementById('redTabContent_' + t);
-        if (t === tab) {
-          btn.className = 'px-3 py-1.5 rounded-t-lg text-xs font-extrabold transition bg-slate-900 text-amber-400 border-t-2 border-x border-rose-500';
-          content.classList.remove('hidden');
-        } else {
-          btn.className = 'px-2.5 py-1.5 rounded-t-lg text-xs font-bold transition text-slate-300 hover:text-white';
-          content.classList.add('hidden');
-        }
-      });
-      if (tab === 'QUICK') {
-        document.getElementById('qsCell').value = activeCellId;
-        renderQuickStackTab();
-      }
-      if (tab === 'ADD') {
-        populateEditFormFromSelected();
-      }
-    }
-
-    function switchGreenTab(tab) {
-      activeGreenTab = tab;
-      ['STACK', 'BORROWED', 'LOG'].forEach(t => {
-        const btn = document.getElementById('greenTabBtn_' + t);
-        const content = document.getElementById('greenTabContent_' + t);
-        if (t === tab) {
-          btn.className = 'px-3 py-1.5 rounded-t-lg text-xs font-extrabold transition bg-slate-900 text-emerald-400 border-t-2 border-x border-emerald-500 flex items-center gap-1.5';
-          content.classList.remove('hidden');
-        } else {
-          btn.className = 'px-3 py-1.5 rounded-t-lg text-xs font-bold transition text-slate-300 hover:text-white flex items-center gap-1.5';
-          content.classList.add('hidden');
-        }
-      });
-    }
-
-    function selectShelf(cellId) {
-      activeCellId = cellId;
-      const stack = getInCabinetStack(cellId);
-      if (stack.length > 0) {
-        selectedDossierId = stack[0].id;
-        spotlightMode = true;
-      } else {
-        selectedDossierId = null;
-      }
-      switchGreenTab('STACK');
-      renderAll();
-    }
-
-    function focusDossier(id) {
-      selectedDossierId = id;
-      spotlightMode = true;
-      const doc = dossiers.find(d => d.id === id);
-      if (doc) {
-        activeCellId = doc.status === 'BORROWED' ? (doc.lastCell || doc.cell) : doc.cell;
-      }
-      document.getElementById('searchDropdown').classList.add('hidden');
-      switchRedTab('LOCATE');
-      renderAll();
-    }
-
-    function resetSpotlight() {
-      spotlightMode = false;
-      document.getElementById('searchDropdown').classList.add('hidden');
-      renderAll();
-    }
-
-    function handleSearch(val) {
-      const q = searchText(val);
-      const dd = document.getElementById('searchDropdown');
-      if (!q) {
-        dd.classList.add('hidden');
-        return;
-      }
-      const matches = dossiers.filter(d =>
-        searchText(d.code).includes(q) ||
-        searchText(d.name).includes(q) ||
-        searchText(d.bank).includes(q) ||
-        searchText(d.cell).includes(q)
-      ).slice(0, 40);
-
-      if (matches.length > 0) {
-        selectedDossierId = matches[0].id;
-        activeCellId = matches[0].status === 'BORROWED' ? (matches[0].lastCell || matches[0].cell) : matches[0].cell;
-        spotlightMode = true;
-        renderAll();
-
-        dd.classList.remove('hidden');
-        dd.innerHTML = matches.map(d => {
-          const cInfo = getCellInfo(d.status === 'BORROWED' ? (d.lastCell || d.cell) : d.cell);
-          return `
-            <div onclick="focusDossier('${d.id}')" class="px-3 py-2 hover:bg-slate-800 cursor-pointer flex items-center justify-between gap-2 text-xs">
-              <div>
-                <span class="font-black text-amber-400">${escapeHtml(d.code)}</span> — <span class="text-white font-semibold">${escapeHtml(d.name)}</span>
-              </div>
-              ${
-                d.status === 'BORROWED'
-                  ? `<span class="px-2 py-0.5 rounded bg-rose-600 text-white font-bold text-[10px]">ĐANG RÚT (${escapeHtml(d.borrower)})</span>`
-                  : `<span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold text-[11px]">${cInfo.shortName} · Tập #${d.orderFromBottom}↑</span>`
-              }
-            </div>
-          `;
-        }).join('');
-      } else {
-        dd.classList.remove('hidden');
-        dd.innerHTML = `<div class="px-3 py-2 text-xs text-slate-400 italic">Không tìm thấy hồ sơ khớp từ khóa.</div>`;
-      }
-    }
-
-    function clearSearch() {
-      document.getElementById('globalSearch').value = '';
-      document.getElementById('searchDropdown').classList.add('hidden');
-      spotlightMode = false;
-      renderAll();
-    }
-
-    function moveOrder(docId, delta) {
-      const doc = dossiers.find(d => d.id === docId);
-      if (!doc || doc.status !== 'IN_CABINET') return;
-      const stack = getInCabinetStack(doc.cell);
-      const idx = stack.findIndex(d => d.id === docId);
-      const targetIdx = idx + delta;
-      if (targetIdx < 0 || targetIdx >= stack.length) return;
-
-      const tmp = stack[idx].orderFromBottom;
-      stack[idx].orderFromBottom = stack[targetIdx].orderFromBottom;
-      stack[targetIdx].orderFromBottom = tmp;
-      addLog(`ĐỔI THỨ TỰ: [${doc.code}] tại ngăn ${doc.cell}, tập #${doc.orderFromBottom}↑.`);
-      renderAll();
-    }
-
-    // =========================================================================
-    // 7. QUẢN LÝ THẺ XẾP NHANH, THÊM SỬA & LƯU FILE GITHUB
-    // =========================================================================
-    function populateDropdowns() {
-      const html = CABINET_CELLS.map(c => `<option value="${c.id}">${c.shortName} (${c.id})</option>`).join('');
-      document.getElementById('fCell').innerHTML = html;
-      document.getElementById('qsCell').innerHTML = html;
-    }
-
-    function renderQuickStackTab() {
-      const cellId = document.getElementById('qsCell').value;
-      const q = searchText(document.getElementById('qsSearch').value || '');
-      const inStack = getInCabinetStack(cellId);
-      const avail = dossiers.filter(d => {
-        if (d.status !== 'IN_CABINET' || d.cell === cellId) return false;
-        if (q && !(searchText(d.code).includes(q) || searchText(d.name).includes(q))) return false;
-        return true;
-      });
-
-      document.getElementById('qsAvailableList').innerHTML = avail.map(d => `
-        <div onclick="assignQuickStack('${d.id}')" class="p-1.5 rounded bg-slate-900 hover:bg-indigo-950 border border-slate-800 cursor-pointer flex justify-between items-center text-[11px]">
-          <span class="truncate pr-1"><strong>${escapeHtml(d.code)}</strong> — ${escapeHtml(d.name)}</span>
-          <span class="text-indigo-400 font-bold shrink-0">+ Xếp</span>
-        </div>
-      `).join('');
-
-      document.getElementById('qsCurrentStackList').innerHTML = [...inStack].reverse().map(d => `
-        <div class="p-1.5 rounded bg-slate-900 border border-amber-500/40 flex justify-between items-center text-[11px]">
-          <span class="truncate"><strong class="text-amber-400">#${d.orderFromBottom}↑</strong> ${escapeHtml(d.code)} — ${escapeHtml(d.name)}</span>
-        </div>
-      `).join('') || '<div class="text-center text-slate-500 py-6 text-[11px]">Ngăn đang trống.</div>';
-    }
-
-    function assignQuickStack(docId) {
-      const cellId = document.getElementById('qsCell').value;
-      const doc = dossiers.find(d => d.id === docId);
-      if (!doc || doc.status !== 'IN_CABINET') return;
-      const fromCell = doc.cell;
-      const pos = placeDossier(doc, cellId, getInCabinetStack(cellId).length + 1);
-      activeCellId = cellId;
-      selectedDossierId = doc.id;
-      addLog(`XẾP: [${doc.code}] từ ngăn ${fromCell} đến ngăn ${cellId}, tập #${pos}↑.`);
-      renderQuickStackTab();
-      renderAll();
-    }
-
-    function populateEditFormFromSelected() {
-      const doc = dossiers.find(d => d.id === selectedDossierId);
-      if (!doc) return resetFormToNew();
-      document.getElementById('editId').value = doc.id;
-      document.getElementById('formTitleLabel').textContent = `✎ Sửa Vị Trí Hồ Sơ: ${doc.code}`;
-      document.getElementById('fCode').value = doc.code;
-      document.getElementById('fName').value = doc.name;
-      document.getElementById('fBank').value = doc.bank || '';
-      document.getElementById('fCell').value = doc.cell || activeCellId;
-      document.getElementById('fOrder').value = doc.orderFromBottom || 1;
-    }
-
-    function resetFormToNew() {
-      document.getElementById('formDossier').reset();
-      document.getElementById('editId').value = '';
-      document.getElementById('formTitleLabel').textContent = '➕ Thêm Hồ Sơ Mới Vào Tủ';
-      document.getElementById('fCell').value = activeCellId;
-      document.getElementById('fOrder').value = getInCabinetStack(activeCellId).length + 1;
-    }
-
-    function saveDossierForm(e) {
-      e.preventDefault();
-      const editId = document.getElementById('editId').value;
-      const code = document.getElementById('fCode').value.trim();
-      const name = document.getElementById('fName').value.trim();
-      const bank = document.getElementById('fBank').value.trim();
-      const cell = document.getElementById('fCell').value;
-      const orderFromBottom = parseInt(document.getElementById('fOrder').value || '1', 10);
-      if (!code || !name || !CABINET_CELLS.some(c => c.id === cell) || !Number.isInteger(orderFromBottom) || orderFromBottom < 1) {
-        alert('Mã, tên, ngăn hoặc vị trí hồ sơ không hợp lệ.'); return;
-      }
-      const duplicate = dossiers.find(d => d.id !== editId && searchText(d.code) === searchText(code));
-      if (duplicate) { alert('Mã hồ sơ đã tồn tại. Vui lòng dùng mã khác.'); return; }
-      if (editId) {
-        const doc = dossiers.find(d => d.id === editId);
-        if (!doc || doc.status !== 'IN_CABINET') {
-          alert('Hồ sơ đang rút phải được trả vào tủ trước khi thay đổi vị trí.'); return;
-        }
-        Object.assign(doc, { code, name, bank, year: inferYearFromCode(code) });
-        const pos = placeDossier(doc, cell, orderFromBottom);
-        selectedDossierId = doc.id;
-        addLog(`SỬA: [${code}], ngăn ${cell}, tập #${pos}↑.`);
-      } else {
-        const newId = 'HS-' + Date.now() + '-' + Math.floor(Math.random() * 100000);
-        const doc = { id: newId, year: inferYearFromCode(code), code, name, bank, cell, orderFromBottom: 1, status: 'IN_CABINET', borrower: '', purpose: '' };
-        dossiers.push(doc);
-        const pos = placeDossier(doc, cell, orderFromBottom);
-        selectedDossierId = doc.id;
-        addLog(`THÊM: [${code}], ngăn ${cell}, tập #${pos}↑.`);
-      }
-      activeCellId = cell;
-      spotlightMode = true;
-      switchRedTab('LOCATE');
-      renderAll();
-    }
-
-    function downloadBlob(blob, filename) {
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = filename;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      setTimeout(() => URL.revokeObjectURL(url), 2000);
-    }
-
-    function downloadUpdatedHTMLFile() {
-      const currentHTML = document.documentElement.outerHTML;
-      // Escaping prevents names entered by operators from prematurely ending the <script> block.
-      const safeJson = JSON.stringify(dossiers, null, 2).replace(/</g, '\\u003c');
-      const newBlock = '/*__INITIAL_DOSSIERS_START__*/\n    const INITIAL_DOSSIERS = ' + safeJson + ';\n    /*__INITIAL_DOSSIERS_END__*/';
-      const updatedHTML = '<!DOCTYPE html>\n' + currentHTML.replace(
-        /\/\*__INITIAL_DOSSIERS_START__\*\/[\s\S]*?\/\*__INITIAL_DOSSIERS_END__\*\//,
-        () => newBlock
-      );
-      downloadBlob(new Blob([updatedHTML], { type: 'text/html;charset=utf-8' }), 'index.html');
-    }
-
-    function exportDataJSON() {
-      const backup = {
-        version: 6, exportedAt: new Date().toISOString(),
-        dossiers, activityLogs
-      };
-      downloadBlob(new Blob([JSON.stringify(backup, null, 2)], {type:'application/json;charset=utf-8'}),
-        `tu_ho_so_Mien_Nam_${new Date().toISOString().slice(0, 10)}.json`);
-    }
-
-    async function importDataJSON(file) {
-      if (!file) return;
-      try {
-        if (file.size > 2 * 1024 * 1024) throw new Error('Tệp quá lớn (tối đa 2 MB).');
-        const data = JSON.parse(await file.text());
-        const incoming = normalizeDossiers(Array.isArray(data) ? data : data.dossiers);
-        if (!confirm(`Nhập ${incoming.length} hồ sơ từ JSON? Danh sách hiện tại sẽ bị thay thế; nên sao lưu trước.`)) return;
-        dossiers = incoming;
-        for (const c of CABINET_CELLS) reindexStack(c.id);
-        if (!Array.isArray(data)) {
-          activityLogs = Array.isArray(data.activityLogs)
-            ? data.activityLogs.filter(x => x && typeof x.text === 'string').slice(0, 200) : [];
-        }
-        selectedDossierId = dossiers[0]?.id || null;
-        activeCellId = dossiers[0]?.cell || '1A';
-        addLog(`NHẬP: ${dossiers.length} hồ sơ từ bản sao JSON.`);
-        switchRedTab('LOCATE');
-        renderAll();
-      } catch (e) { alert('Không thể nhập JSON: ' + e.message); }
-    }
-
-    function resetToDefaultData() {
-      if (!confirm('Khôi phục toàn bộ hồ sơ mặc định? Hãy xuất JSON trước vì việc này sẽ thay thế vị trí đã sửa.')) return;
-      dossiers = normalizeDossiers(INITIAL_DOSSIERS);
-      for (const c of CABINET_CELLS) reindexStack(c.id);
-      selectedDossierId = 'HS-2025-009';
-      activeCellId = '1D';
-      addLog('KHÔI PHỤC: Dữ liệu gốc theo mã nguồn V6.');
-      renderAll();
-    }
-
-    function clearLogs() {
-      if (!confirm('Xóa nhật ký cục bộ trên trình duyệt này?')) return;
-      activityLogs = [];
-      saveState();
-      renderGreenBoxTabs();
-    }
-
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('#globalSearch') && !e.target.closest('#searchDropdown')) {
-        document.getElementById('searchDropdown').classList.add('hidden');
-      }
-    });
-
-    window.addEventListener('DOMContentLoaded', () => {
-      loadState();
-      populateDropdowns();
-      renderAll();
-    });
-  </script>
+/*__CATALOG_END__*/
+/*__EMBEDDED_SNAPSHOT_START__*/
+const EMBEDDED_SNAPSHOT = null;
+/*__EMBEDDED_SNAPSHOT_END__*/
+const $=id=>document.getElementById(id);
+const escapeHtml=v=>String(v??'').replace(/[&<>"']/g,s=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s]));
+const fold=v=>String(v??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').replace(/Đ/g,'D').toLowerCase().trim();
+const deep=o=>JSON.parse(JSON.stringify(o));
+const dateNow=()=>new Date().toLocaleString('vi-VN',{hour12:false});
+const validCell=c=>ALL_CELLS.includes(c);
+const num=v=>Number.isInteger(Number(v))?Number(v):0;
+const safeId=v=>/^[a-zA-Z0-9_-]{1,90}$/.test(String(v));
+const inferYear=code=>((String(code).match(/20\d{2}/)||[])[0]||new Date().getFullYear().toString());
+const prettyCell=cell=>validCell(cell)?`Tầng ${cell[0]} · Ngăn ${cell[1]}`:'Chưa xếp';
+const statusText=d=>({IN_CABINET:'Trong tủ',BORROWED:'Đang rút',ARCHIVED:'Đã lưu trữ',UNPLACED:'Chưa xếp'})[d.status]||'Không rõ';
+const statusChip=d=>({IN_CABINET:'ok',BORROWED:'out',ARCHIVED:'archive',UNPLACED:'unplaced'})[d.status]||'';
+let db,tab='MOVE',selectedId=null,activeCell=null,listCell='ALL',searchMove='',searchReturn='',staged=null,notice=null,borrowDraft='',archiveChoice='',addMode='AUTO',addValues={year:'2026',code:'',name:'',bank:'',cell:'1A'},printScope='ALL';
+const logsDefault=[];
+function baseDb(){return {version:VERSION,rev:0,capacity:20,locked:[],nextArchiveNo:1,logs:[],dossiers:[]}}
+function logEvent(message){db.logs.unshift({at:dateNow(),message:String(message)});if(db.logs.length>1000)db.logs.length=1000;}
+function cellItems(cell){return db.dossiers.filter(x=>x.status!=='UNPLACED'&&x.cell===cell&&x.status!=='BORROWED');}
+function getStack(cell){return cellItems(cell).slice().sort((a,b)=>a.orderFromBottom-b.orderFromBottom)}
+function occupancy(cell){return cellItems(cell).length}
+function available(cell,adding=1){return validCell(cell)&&!db.locked.includes(cell)&&occupancy(cell)+adding<=db.capacity}
+function current(id){return db.dossiers.find(d=>d.id===id)||null}
+function freshId(){return 'HS-'+Date.now()+'-'+Math.floor(Math.random()*1000000)}
+function normalizeDossier(d){if(!d||typeof d!=='object'||!safeId(d.id))throw Error('ID hồ sơ không hợp lệ');
+ const status=['IN_CABINET','BORROWED','ARCHIVED','UNPLACED'].includes(d.status)?d.status:'UNPLACED';
+ const out={id:String(d.id),year:String(d.year||inferYear(d.code)),code:String(d.code||'').trim().slice(0,130),name:String(d.name||'').trim().slice(0,300),bank:String(d.bank||'').slice(0,170),status,cell:validCell(d.cell)?d.cell:null,orderFromBottom:Math.max(0,num(d.orderFromBottom)),borrower:String(d.borrower||'').slice(0,200),lastCell:validCell(d.lastCell)?d.lastCell:null,lastOrder:Math.max(0,num(d.lastOrder)),archiveNo:d.archiveNo?String(d.archiveNo).slice(0,30):null,borrowedAt:String(d.borrowedAt||'').slice(0,50),archivedAt:String(d.archivedAt||'').slice(0,50)};
+ if(!out.code||!out.name)throw Error('Thiếu mã hoặc tên hồ sơ');
+ if((status==='IN_CABINET'||status==='ARCHIVED')&&!out.cell)throw Error('Hồ sơ có trạng thái trong tủ nhưng thiếu vị trí');
+ if(status==='ARCHIVED'&&!out.cell.startsWith('6'))throw Error('Lưu trữ phải ở tầng 6');
+ if(status==='IN_CABINET'&&out.cell.startsWith('6'))throw Error('Tầng 6 chỉ dùng lưu trữ');
+ if(status==='BORROWED'&&(!out.lastCell||out.lastCell.startsWith('6')))throw Error('Vị trí trả hồ sơ không hợp lệ');
+ return out;
+}
+function verifyDossiers(items,capacity){if(!Array.isArray(items)||items.length>10000)throw Error('Danh sách không hợp lệ');
+ const ids=new Set(),codes=new Set(),slots=new Map();const clean=items.map(normalizeDossier);
+ for(const d of clean){if(ids.has(d.id))throw Error('Trùng ID: '+d.id);ids.add(d.id);const key=fold(d.code);if(codes.has(key))throw Error('Trùng mã: '+d.code);codes.add(key);
+  if(d.status==='IN_CABINET'||d.status==='ARCHIVED'){const k=d.cell+'#'+d.orderFromBottom;if(d.orderFromBottom<1||slots.has(k))throw Error('Trùng/thiếu thứ tự tại '+d.cell);slots.set(k,d.id)}}
+ for(const cell of ALL_CELLS){const used=clean.filter(d=>(d.status==='IN_CABINET'||d.status==='ARCHIVED')&&d.cell===cell);if(used.length>capacity)throw Error(`Ngăn ${cell} vượt giới hạn ${capacity}`);const orders=used.map(d=>d.orderFromBottom).sort((a,b)=>a-b);if(orders.some((v,i)=>v!==i+1))throw Error('Thứ tự hồ sơ tại '+cell+' không liên tục')}
+ return clean;
+}
+function makeInitial(){const x=baseDb();x.dossiers=ORIGINAL_DOSSIERS.map(d=>({id:d.id,year:String(d.year||inferYear(d.code)),code:d.code,name:d.name,bank:d.bank||'',status:'UNPLACED',cell:null,orderFromBottom:0,borrower:'',lastCell:null,lastOrder:0,archiveNo:null,borrowedAt:'',archivedAt:''}));const plan=planByYear(x.dossiers,x.locked,x.capacity);applyPlanTo(x.dossiers,plan);return x;}
+function planByYear(items,locked,capacity){const assignments={};const fixed=items.filter(d=>d.status==='IN_CABINET'&&locked.includes(d.cell));const moving=items.filter(d=>d.status==='IN_CABINET'&&!locked.includes(d.cell)||d.status==='UNPLACED');
+ const candidates=ACTIVE_CELLS.filter(c=>!locked.includes(c));let slot=0;let cellsUsed=0;
+ const groups=Object.groupBy(moving,d=>String(d.year||inferYear(d.code)));
+ for(const year of Object.keys(groups).sort()){
+  if(cellsUsed>0&&slot>0){cellsUsed++;slot=0;}
+  const group=groups[year].slice().sort((a,b)=>fold(a.code).localeCompare(fold(b.code),'vi',{numeric:true}));
+  for(const d of group){while(cellsUsed<candidates.length&&slot>=capacity){cellsUsed++;slot=0}if(cellsUsed>=candidates.length)throw Error('Không đủ ngăn để xếp hồ sơ');assignments[d.id]={cell:candidates[cellsUsed],orderFromBottom:slot+1};slot++;}
+ }
+ // Giữ nguyên thứ tự các ngăn khóa, không ghi đè chúng.
+ for(const d of fixed)assignments[d.id]={cell:d.cell,orderFromBottom:d.orderFromBottom};
+ return assignments;
+}
+function applyPlanTo(items,assignments){for(const d of items){const p=assignments[d.id];if(!p)continue;d.status='IN_CABINET';d.cell=p.cell;d.orderFromBottom=p.orderFromBottom;d.borrower='';}}
+function loadLegacy(raw,source){const x=baseDb(),items=Array.isArray(raw)?raw:raw?.dossiers;if(!Array.isArray(items))throw Error('Dữ liệu cũ sai định dạng');
+ const toNew=c=>{const old=LEGACY_MAP[c]||c;return validCell(old)?(7-Number(old[0]))+old.slice(1):null};
+ x.dossiers=items.map(d=>{const nd={...d,cell:toNew(d.cell),lastCell:toNew(d.lastCell||d.cell),archiveNo:null};if(d.status==='BORROWED'){nd.status='BORROWED';nd.cell=nd.lastCell;nd.orderFromBottom=0;}else nd.status=d.status==='IN_CABINET'?'IN_CABINET':'UNPLACED';return nd;});
+ // Hồ sơ V5/V6 ở hộc đỉnh cũ rơi vào tầng 6 mới: chuyển về nhóm cần xếp, KHÔNG tự cấp LT.
+ for(const d of x.dossiers){if(d.status==='IN_CABINET'&&d.cell?.startsWith('6')){d.status='UNPLACED';d.cell=null;d.orderFromBottom=0;}if(d.status==='BORROWED'&&d.lastCell?.startsWith('6')){d.lastCell='5'+d.lastCell[1];d.cell=d.lastCell;}}
+ // Giữ vị trí hợp lệ khác; chuyển các hồ sơ trùng thứ tự hoặc quá 20 ra danh sách chưa xếp.
+ for(const cell of ACTIVE_CELLS){const stack=x.dossiers.filter(d=>d.status==='IN_CABINET'&&d.cell===cell).sort((a,b)=>(a.orderFromBottom||0)-(b.orderFromBottom||0));stack.forEach((d,i)=>{if(i>=x.capacity){d.status='UNPLACED';d.cell=null;d.orderFromBottom=0;}else d.orderFromBottom=i+1;});}
+ for(const d of x.dossiers){if(d.status==='UNPLACED'){d.lastCell=null;d.borrower='';d.orderFromBottom=0;}}
+ const unplaced=x.dossiers.filter(d=>d.status==='UNPLACED');const groups=Object.groupBy(unplaced,d=>String(d.year));
+ for(const year of Object.keys(groups).sort())for(const d of groups[year]){const same=x.dossiers.filter(q=>q.status==='IN_CABINET'&&q.year===year).map(q=>q.cell);const cells=[...new Set(same),...ACTIVE_CELLS];const dest=cells.find(c=>occupancyIn(x.dossiers,c)<x.capacity);if(!dest)continue;d.status='IN_CABINET';d.cell=dest;d.orderFromBottom=occupancyIn(x.dossiers,dest);}
+ x.dossiers=x.dossiers.map(normalizeDossier);
+ x.logs=[{at:dateNow(),message:`Đã chuyển dữ liệu ${source} sang V7; tầng 6 chỉ dùng lưu trữ. Bản dữ liệu cũ được sao lưu trong trình duyệt.`}];return x;
+}
+function occupancyIn(items,cell){return items.filter(d=>d.status==='IN_CABINET'&&d.cell===cell).length}
+function sanitizeDb(raw){if(!raw||typeof raw!=='object')throw Error('Tệp dữ liệu sai định dạng');const x=baseDb();x.capacity=Number(raw.capacity||20);if(!Number.isInteger(x.capacity)||x.capacity<1||x.capacity>500)throw Error('Giới hạn ngăn phải từ 1 tới 500');x.locked=Array.isArray(raw.locked)?raw.locked.filter(validCell):[];x.nextArchiveNo=Math.max(1,num(raw.nextArchiveNo)||1);x.rev=Math.max(0,num(raw.rev));x.logs=Array.isArray(raw.logs)?raw.logs.slice(0,1000).map(a=>({at:String(a.at||''),message:String(a.message||'')})):[];x.dossiers=verifyDossiers(raw.dossiers,x.capacity);const maxLT=Math.max(0,...x.dossiers.map(d=>Number((d.archiveNo||'').replace('LT-',''))||0));x.nextArchiveNo=Math.max(x.nextArchiveNo,maxLT+1);return x;}
+function bootstrap(){try{const v7=localStorage.getItem(STORAGE_KEY);if(v7){db=sanitizeDb(JSON.parse(v7));return;}const legacyKey=localStorage.getItem(V6_KEY)?V6_KEY:localStorage.getItem(V5_KEY)?V5_KEY:null;if(legacyKey){const raw=localStorage.getItem(legacyKey);localStorage.setItem('MN_CABINET_LEGACY_BACKUP_'+legacyKey,raw);db=sanitizeDb(loadLegacy(JSON.parse(raw),legacyKey===V6_KEY?'V6.1':'V5'));writeState();return;}db=sanitizeDb(EMBEDDED_SNAPSHOT||makeInitial());writeState();}catch(e){db=makeInitial();notice={kind:'error',text:'Không thể đọc dữ liệu trước đó: '+e.message+'. Đã mở dữ liệu mặc định để kiểm thử; chưa xóa bản dữ liệu cũ.'};}}
+function writeState(){db.rev++;try{localStorage.setItem(STORAGE_KEY,JSON.stringify(db));return true;}catch(e){notice={kind:'error',text:'Không lưu được dữ liệu trình duyệt: '+e.message};return false;}}
+function validateBeforeCommit(kind,p){if(['REORDER','WITHDRAW','RETURN','ARCHIVE','ADD','ARRANGE','CAPACITY','LOCK','CLEAR','IMPORT'].includes(kind)){
+ if(!p||p.rev!==db.rev)throw Error('Dữ liệu đã thay đổi. Vui lòng lập lại tác vụ.');}
+ if(kind==='REORDER'){const now=getStack(p.cell).map(d=>d.id);if(p.ids.length!==now.length||now.some(id=>!p.ids.includes(id)))throw Error('Danh sách chồng đã thay đổi');}
+ if(kind==='WITHDRAW'){const d=current(p.id);if(!d||d.status!=='IN_CABINET')throw Error('Hồ sơ không còn trong tủ');if(!p.borrower.trim())throw Error('Cần nhập người/nơi giữ hồ sơ');}
+ if(kind==='RETURN'){const d=current(p.id);if(!d||d.status!=='BORROWED')throw Error('Hồ sơ không trong trạng thái đang rút');if(!d.lastCell||!validCell(d.lastCell)||occupancy(d.lastCell)>=db.capacity)throw Error('Ngăn trả đã đủ hồ sơ, cần giải phóng sức chứa trước');}
+ if(kind==='ARCHIVE'){const d=current(p.id);if(!d||!['IN_CABINET','BORROWED'].includes(d.status))throw Error('Hồ sơ không đủ điều kiện lưu trữ');if(!ARCHIVE_CELLS.includes(p.cell)||!available(p.cell))throw Error('Ngăn lưu trữ đã khóa hoặc đầy');}
+ if(kind==='ADD'){if(!p.code||!p.name)throw Error('Thiếu mã hoặc tên hồ sơ');if(db.dossiers.some(d=>fold(d.code)===fold(p.code)))throw Error('Trùng mã hồ sơ');if(!ACTIVE_CELLS.includes(p.cell)||!available(p.cell))throw Error('Ngăn nhận đã khóa hoặc đầy');}
+ if(kind==='CAPACITY'){if(!Number.isInteger(p.limit)||p.limit<1||p.limit>500)throw Error('Sức chứa cần từ 1–500');const over=ALL_CELLS.filter(c=>occupancy(c)>p.limit);if(over.length)throw Error('Không thể giảm: ngăn vượt hạn mức '+over.join(', '));}
+ if(kind==='ARRANGE'){const plan=planByYear(db.dossiers,db.locked,db.capacity);const test=deep(db.dossiers);applyPlanTo(test,plan);verifyDossiers(test,db.capacity);}
+ if(kind==='LOCK'&&!validCell(p.cell))throw Error('Ngăn không hợp lệ');
+ if(kind==='IMPORT')sanitizeDb(p.data);
+}
+function setStage(kind,p,description){staged={kind,p:{...p,rev:db.rev},description};notice=null;renderGreen();}
+function discardStage(){staged=null;renderGreen()}
+function confirmLeaveStage(){if(!staged)return true;if(!confirm('Có thay đổi chưa xác nhận ở ô xanh. Hủy thay đổi để chuyển sang tác vụ khác?'))return false;staged=null;return true;}
+function insertAt(d,cell){const list=getStack(cell);list.forEach(e=>e.orderFromBottom++);d.cell=cell;d.orderFromBottom=list.length+1;d.status=cell.startsWith('6')?'ARCHIVED':'IN_CABINET';}
+function removeFromStack(d){const prevCell=d.cell;const pos=d.orderFromBottom;for(const item of getStack(prevCell)){if(item.id!==d.id&&item.orderFromBottom>pos)item.orderFromBottom--;}return {cell:prevCell,position:pos};}
+function commitStaged(){if(!staged)return;const {kind,p}=staged;
+ try{validateBeforeCommit(kind,p);const snapshot=deep(db);let result='';
+  if(kind==='REORDER'){p.ids.forEach((id,i)=>current(id).orderFromBottom=i+1);logEvent(`ĐIỀU CHỈNH ${p.cell}: ${p.before.join(' → ')} thành ${p.ids.map(id=>current(id).code).join(' → ')} (đếm từ dưới lên).`);result=`Đã lưu thứ tự chồng hồ sơ ngăn ${p.cell}.`;}
+  else if(kind==='WITHDRAW'){const d=current(p.id),from=removeFromStack(d);d.status='BORROWED';d.lastCell=from.cell;d.lastOrder=from.position;d.cell=null;d.orderFromBottom=0;d.borrower=p.borrower.trim();d.borrowedAt=dateNow();logEvent(`RÚT ${d.code}: ${prettyCell(from.cell)}, vị trí #${from.position} → ${d.borrower}`);result=`Đã rút ${d.code}; ghi nhận người giữ: ${d.borrower}.`;}
+  else if(kind==='RETURN'){const d=current(p.id),cell=d.lastCell,order=getStack(cell).length+1;d.cell=cell;d.orderFromBottom=order;d.status='IN_CABINET';d.borrower='';d.borrowedAt='';selectedId=d.id;activeCell=cell;logEvent(`TRẢ ${d.code} → ${prettyCell(cell)}, đặt lên đỉnh chồng #${order}.`);result=`Đã trả ${d.code} vào ${prettyCell(cell)}, tập #${order} (trên cùng).`;}
+  else if(kind==='ARCHIVE'){const d=current(p.id);const old=d.status==='IN_CABINET'?removeFromStack(d):{cell:d.lastCell,position:d.lastOrder};const seq='LT-'+String(db.nextArchiveNo++).padStart(4,'0');const pos=getStack(p.cell).length+1;d.cell=p.cell;d.status='ARCHIVED';d.orderFromBottom=pos;d.archiveNo=seq;d.archivedAt=dateNow();d.borrower='';d.borrowedAt='';d.lastCell=old.cell;d.lastOrder=old.position;activeCell=p.cell;selectedId=d.id;logEvent(`LƯU TRỮ ${d.code}: ${prettyCell(old.cell)} #${old.position} → ${prettyCell(p.cell)} #${pos}, số ${seq}.`);result=`Đã lưu trữ ${d.code} tại ${p.cell}, cấp số ${seq}.`;}
+  else if(kind==='ADD'){const d={id:freshId(),year:p.year,code:p.code,name:p.name,bank:p.bank,status:'IN_CABINET',cell:p.cell,orderFromBottom:getStack(p.cell).length+1,borrower:'',lastCell:null,lastOrder:0,archiveNo:null,borrowedAt:'',archivedAt:''};db.dossiers.push(d);selectedId=d.id;activeCell=d.cell;logEvent(`THÊM ${d.code} (${d.name}) tại ${d.cell} #${d.orderFromBottom}; chế độ ${p.mode}.`);result=`Đã thêm ${d.code} tại ${prettyCell(d.cell)}, tập #${d.orderFromBottom}.`;addValues={year:'2026',code:'',name:'',bank:'',cell:p.cell};}
+  else if(kind==='ARRANGE'){const plan=planByYear(db.dossiers,db.locked,db.capacity);applyPlanTo(db.dossiers,plan);logEvent(`XẾP NĂM: bố trí ${Object.keys(plan).length} hồ sơ trong các ngăn chưa khóa (ưu tiên theo năm).`);result=`Đã xếp ${Object.keys(plan).length} hồ sơ theo năm; không thay đổi hồ sơ đang rút và đã lưu trữ.`;}
+  else if(kind==='CAPACITY'){const prev=db.capacity;db.capacity=p.limit;logEvent(`ĐIỀU CHỈNH SỨC CHỨA: ${prev} → ${db.capacity} hồ sơ/ngăn.`);result=`Đã đổi mức tối đa thành ${db.capacity} hồ sơ/ngăn.`;}
+  else if(kind==='LOCK'){const had=db.locked.includes(p.cell);db.locked=had?db.locked.filter(c=>c!==p.cell):[...db.locked,p.cell];logEvent(`${had?'MỞ KHÓA':'KHÓA'} ngăn ${p.cell} (không thêm hồ sơ mới vào ngăn khóa).`);result=`Đã ${had?'mở khóa':'khóa'} ngăn ${p.cell}.`;}
+  else if(kind==='CLEAR'){if(($('clearPhrase')?.value||'').trim().toUpperCase()!=='LAM TRONG TU')throw Error('Cần nhập đúng LAM TRONG TU để xác nhận');for(const d of db.dossiers){d.status='UNPLACED';d.cell=null;d.orderFromBottom=0;d.borrower='';d.lastCell=null;d.lastOrder=0;d.borrowedAt='';}logEvent(`LÀM TRỐNG TỦ: giải phóng 24 ngăn; vẫn giữ ${db.dossiers.length} hồ sơ trong danh mục, giữ số lưu trữ đã cấp.`);result=`Đã làm trống 24 ngăn; vẫn giữ ${db.dossiers.length} hồ sơ để xếp lại.`;}
+  else if(kind==='IMPORT'){const imported=sanitizeDb(p.data);const prevTotal=db.dossiers.length;db=imported;logEvent(`NHẬP DỮ LIỆU JSON: thay thế ${prevTotal} hồ sơ bằng ${db.dossiers.length} hồ sơ.`);result=`Đã nhập ${db.dossiers.length} hồ sơ và thiết lập từ JSON.`;}
+  else if(kind==='EXPORT_JSON'){exportJson();result='Đã yêu cầu tải tệp sao lưu JSON về thiết bị.';}
+  else if(kind==='EXPORT_HTML'){exportHtml();result='Đã yêu cầu tải tệp index.html chứa ảnh chụp dữ liệu mới nhất.';}
+  else if(kind==='PRINT'){preparePrint(p.scope);window.print();result='Đã mở hộp thoại in. Việc in hay hủy do trình duyệt quyết định.';}
+  if(['REORDER','WITHDRAW','RETURN','ARCHIVE','ADD','ARRANGE','CAPACITY','LOCK','CLEAR','IMPORT'].includes(kind)){
+   try{verifyDossiers(db.dossiers,db.capacity);db.rev++;localStorage.setItem(STORAGE_KEY,JSON.stringify(db));}
+   catch(e){db=snapshot;throw Error('Hủy thao tác, không lưu dữ liệu: '+e.message);}
+  }
+  staged=null;notice={kind:'success',text:result};renderAll();
+ }catch(e){notice={kind:'error',text:e.message};renderGreen();}
+}
+function proposeAutoCell(year){const avail=ACTIVE_CELLS.filter(c=>available(c));if(!avail.length)return null;const byYear=ACTIVE_CELLS.filter(c=>getStack(c).some(d=>d.year===year));let exact=byYear.find(c=>avail.includes(c)&&getStack(c).every(d=>d.year===year));if(exact)return exact;
+ const yrCells=byYear.map(c=>ACTIVE_CELLS.indexOf(c));const target=yrCells.length?Math.max(...yrCells)+1:0;const unoccupied=avail.filter(c=>getStack(c).length===0);return unoccupied.find(c=>ACTIVE_CELLS.indexOf(c)>=target)||unoccupied[0]||avail[0];}
+function exportJson(){const txt=JSON.stringify({schema:'MN-CABINET-V7',exportedAt:new Date().toISOString(),...db},null,2);saveBlob(txt,'application/json;charset=utf-8',`MN_tu_ho_so_${new Date().toISOString().slice(0,10)}.json`)}
+function exportHtml(){const safe=JSON.stringify(db).replace(/</g,'\\u003c').replace(/>/g,'\\u003e').replace(/&/g,'\\u0026');const block=`/*__EMBEDDED_SNAPSHOT_START__*/\nconst EMBEDDED_SNAPSHOT = ${safe};\n/*__EMBEDDED_SNAPSHOT_END__*/`;const current='<!DOCTYPE html>\n'+document.documentElement.outerHTML;const html=current.replace(/\/\*__EMBEDDED_SNAPSHOT_START__\*\/[\s\S]*?\/\*__EMBEDDED_SNAPSHOT_END__\*\//,block);saveBlob(html,'text/html;charset=utf-8','index.html')}
+function saveBlob(textData,type,name){const url=URL.createObjectURL(new Blob([textData],{type}));const a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),5000)}
+
+function changeTab(next){if(!confirmLeaveStage())return;tab=next;notice=null;renderAll();}
+function chooseCell(cell){if(!confirmLeaveStage())return;activeCell=cell;listCell=cell;selectedId=getStack(cell).at(-1)?.id||null;tab='MOVE';notice=null;renderAll();if(window.innerWidth<800)$('redTabs').scrollIntoView({behavior:'smooth',block:'start'});}
+function clearCellView(){if(!confirmLeaveStage())return;activeCell=null;listCell='ALL';selectedId=null;notice=null;renderAll();}
+function chooseDossier(id,forReturn=false){if(!confirmLeaveStage())return;const d=current(id);if(!d)return;selectedId=id;activeCell=d.status==='BORROWED'?d.lastCell:d.cell;notice=null;if(forReturn){if(d.status!=='BORROWED')return;setStage('RETURN',{id:d.id},`Trả ${d.code} vào ${prettyCell(d.lastCell)}, lên trên cùng chồng.`);}else renderAll();if(window.innerWidth<800)$('greenBody').scrollIntoView({behavior:'smooth',block:'nearest'});}
+function stateHeader(){const borrowed=db.dossiers.filter(d=>d.status==='BORROWED').length,archived=db.dossiers.filter(d=>d.status==='ARCHIVED').length;
+ $('headerTotal').textContent=`${db.dossiers.length} hồ sơ · ${db.capacity}/ngăn`;$('headerBorrowed').textContent=`${borrowed} đang rút`;$('headerArchived').textContent=`${archived} lưu trữ`;}
+function renderCabinet(){let rows='';for(let floor=6;floor>=1;floor--){let cols=`<div class="floor"><strong>TẦNG ${floor}</strong><small>${floor===6?'LƯU TRỮ':floor===1?'ĐÁY TỦ':'SỬ DỤNG'}</small></div>`;
+ for(const col of ['A','B','C','D']){const cell=`${floor}${col}`,items=getStack(cell),isSelected=activeCell===cell,dim=activeCell&&activeCell!==cell,locked=db.locked.includes(cell);
+ const bars=items.slice().reverse().map(d=>`<span class="bar ${d.year==='2026'?'y2026':''} ${selectedId===d.id?'selected':''}"></span>`).join('');
+ const count=`${items.length}/${db.capacity}`;
+ cols+=`<button type="button" title="${escapeHtml(prettyCell(cell))}: ${count} hồ sơ${locked?' · Khóa ngăn':''}" class="shelf ${floor===6?'archive':''} ${locked?'locked':''} ${isSelected?'active':''} ${dim?'dim':''}" onclick="chooseCell('${cell}')"><span class="shelfline"><span>${cell} ${locked?'🔒':''}</span><span class="count ${items.length>=db.capacity?'over':''}">${count}</span></span><span class="shelfbars">${bars}</span></button>`;
+ }
+ rows+=`<div class="cabrow">${cols}</div>`;
+ }$('cabinetRows').innerHTML=rows;}
+function renderTabHeader(){$('redTabs').querySelectorAll('button').forEach(b=>{b.classList.toggle('on',b.dataset.tab===tab);b.setAttribute('aria-selected',b.dataset.tab===tab?'true':'false')});}
+function getVisibleMoveDocs(){const q=fold(searchMove);let all=db.dossiers.filter(d=>!listCell||listCell==='ALL'||(d.status==='BORROWED'?d.lastCell:d.cell)===listCell);
+ if(q)all=all.filter(d=>fold([d.code,d.name,d.bank,d.year,d.cell,d.archiveNo,d.lastCell,d.borrower].join(' ')).includes(q));
+ all.sort((a,b)=>{
+  if(listCell!=='ALL'){const ia=getDraftPosition(a),ib=getDraftPosition(b);return ib-ia||a.code.localeCompare(b.code,'vi',{numeric:true})}
+  if(a.status==='BORROWED'&&b.status!=='BORROWED')return -1;if(b.status==='BORROWED'&&a.status!=='BORROWED')return 1;
+  return a.year.localeCompare(b.year)||a.code.localeCompare(b.code,'vi',{numeric:true});
+ });return all;
+}
+function getDraftPosition(d){if(staged?.kind==='REORDER'&&staged.p.cell===d.cell){const at=staged.p.ids.indexOf(d.id);if(at!==-1)return at+1;}return d.orderFromBottom||0;}
+function renderMoveTab(){return `<div class="stack">
+ <div class="searchbar"><input id="moveSearch" type="search" placeholder="Tìm mã, tên hồ sơ, ngân hàng, vị trí..." value="${escapeHtml(searchMove)}" oninput="searchMove=this.value;renderMoveList()" aria-label="Tìm hồ sơ"/><select id="cellFilter" onchange="setCellFilter(this.value)" aria-label="Lọc ngăn"><option value="ALL">Tất cả ngăn</option>${ALL_CELLS.map(c=>`<option value="${c}" ${listCell===c?'selected':''}>${c} ${db.locked.includes(c)?'· Khóa':''}</option>`).join('')}</select></div>
+ <div class="row"><span class="screenhint">Chọn hồ sơ → tủ phát sáng → tác vụ ở ô xanh. Mũi tên chỉ xem trước cho đến khi xác nhận.</span><button class="btn small neutral" onclick="setCellFilter('ALL')">Bỏ lọc</button></div>
+ <div class="stats" id="moveStats"></div><div id="moveList" class="list"></div></div>`}
+function renderMoveList(){const root=$('moveList');if(!root)return;const found=getVisibleMoveDocs();$('moveStats').innerHTML=`<span class="chip">${found.length}/${db.dossiers.length} hồ sơ</span>${listCell!=='ALL'?`<span class="chip">${prettyCell(listCell)} · ${getStack(listCell).length}/${db.capacity}</span>`:''}`;
+ root.innerHTML=found.slice(0,400).map(d=>{
+ const isIn=d.status==='IN_CABINET',canArrows=isIn;
+ const pos=getDraftPosition(d);
+ return `<div class="redrow ${selectedId===d.id?'sel':''}"><button class="docclick" onclick="chooseDossier('${d.id}')" title="Chọn hồ sơ"><div class="row"><span class="strong">${escapeHtml(d.code)}</span><span class="chip ${statusChip(d)}">${statusText(d)}</span></div><div class="docname">${escapeHtml(d.name)}</div><div class="docmeta">${escapeHtml(d.status==='BORROWED'?prettyCell(d.lastCell):prettyCell(d.cell))} ${pos?'· #'+pos+' từ dưới lên':''}${d.archiveNo?' · '+escapeHtml(d.archiveNo):''}</div></button><div class="reorder">${isIn?`<button title="Đưa lên một tập" onclick="arrowMove('${d.id}',1)" ${canArrows?'':'disabled'}>↑</button><button title="Hạ xuống một tập" onclick="arrowMove('${d.id}',-1)" ${canArrows?'':'disabled'}>↓</button>`:''}</div></div>`;
+ }).join('')||`<div class="notice">Không có hồ sơ phù hợp.</div>`;
+}
+function setCellFilter(value){if(staged&&!confirmLeaveStage()){$('cellFilter').value=listCell;return;}listCell=value;activeCell=value==='ALL'?null:value;renderAll();}
+function arrowMove(id,direction){const d=current(id);if(!d||d.status!=='IN_CABINET')return;
+ if(staged&&staged.kind!=='REORDER'&&!confirmLeaveStage())return;
+ if(staged?.kind==='REORDER'&&staged.p.cell!==d.cell){if(!confirmLeaveStage())return;}
+ if(listCell!==d.cell){listCell=d.cell;activeCell=d.cell;}
+ let ids=staged?.kind==='REORDER'?staged.p.ids.slice():getStack(d.cell).map(x=>x.id);
+ const before=staged?.kind==='REORDER'?staged.p.before.slice():ids.map(k=>current(k).code);
+ const from=ids.indexOf(id),to=from+direction;if(to<0||to>=ids.length){renderAll();return;}
+ [ids[from],ids[to]]=[ids[to],ids[from]];selectedId=id;
+ if(ids.every((x,i)=>x===getStack(d.cell)[i]?.id)){staged=null;notice=null;renderAll();return;}
+ staged={kind:'REORDER',p:{rev:db.rev,cell:d.cell,ids,before},description:`Điều chỉnh thứ tự trong ${prettyCell(d.cell)}.`};notice=null;renderAll();}
+function renderReturnTab(){return `<div class="stack"><div class="searchbar"><input id="returnSearch" type="search" placeholder="Tìm trong hồ sơ đang rút..." value="${escapeHtml(searchReturn)}" oninput="searchReturn=this.value;renderReturnList()"/></div><div class="notice">Nhấn vào hồ sơ đang rút. Ô xanh hiển thị <b>sơ đồ vị trí trả</b> và nút xác nhận. Hồ sơ luôn trở về ngăn gốc, trên cùng chồng.</div><div class="list" id="returnList"></div></div>`}
+function renderReturnList(){if(!$('returnList'))return;const borrowed=db.dossiers.filter(d=>d.status==='BORROWED'&&fold([d.code,d.name,d.borrower,d.lastCell].join(' ')).includes(fold(searchReturn)));
+ $('returnList').innerHTML=borrowed.map(d=>`<button class="redrow ${selectedId===d.id?'sel':''}" onclick="chooseDossier('${d.id}',true)"><span style="flex:1;text-align:left;min-width:0"><span class="strong">${escapeHtml(d.code)}</span><div class="docname">${escapeHtml(d.name)}</div><div class="docmeta">Người giữ: ${escapeHtml(d.borrower)} · Ngăn gốc ${escapeHtml(d.lastCell)}</div></span><span class="chip out">Đang rút</span></button>`).join('')||'<div class="notice">Không có hồ sơ đang rút phù hợp.</div>';
+}
+function addFormHtml(){const auto=addMode==='AUTO',suggest=proposeAutoCell(addValues.year);
+ return `<div class="stack"><div class="notice">Chế độ <b>Mặc định</b> tự chọn ngăn còn chỗ, ưu tiên hồ sơ cùng năm nằm cạnh nhau. Chế độ <b>Chỉ định</b> chọn ngăn thủ công. Chỉ thêm sau xác nhận tại ô xanh.</div><div class="btnrow"><label><input type="radio" name="addMode" ${auto?'checked':''} onclick="setAddMode('AUTO')"/> Mặc định</label><label><input type="radio" name="addMode" ${!auto?'checked':''} onclick="setAddMode('SPECIFIC')"/> Chỉ định ngăn</label></div>
+ <div class="grid2"><div class="field"><label>Năm hồ sơ *</label><select id="addYear" onchange="addValues.year=this.value;updateAddHint()"><option value="2025" ${addValues.year==='2025'?'selected':''}>2025</option><option value="2026" ${addValues.year==='2026'?'selected':''}>2026</option><option value="2027" ${addValues.year==='2027'?'selected':''}>2027</option></select></div><div class="field"><label>Mã hồ sơ / Số hợp đồng *</label><input id="addCode" maxlength="130" value="${escapeHtml(addValues.code)}" oninput="addValues.code=this.value"/></div></div>
+ <div class="field"><label>Tên hồ sơ / Tài sản *</label><input id="addName" maxlength="300" value="${escapeHtml(addValues.name)}" oninput="addValues.name=this.value"/></div><div class="field"><label>Ngân hàng / Đơn vị</label><input id="addBank" maxlength="170" value="${escapeHtml(addValues.bank)}" oninput="addValues.bank=this.value"/></div>
+ <div class="field"><label>${auto?'Ngăn được hệ thống gợi ý':'Chọn ngăn cụ thể'}</label>${auto?`<div id="addHint" class="viewonly">${suggest?prettyCell(suggest)+' · '+occupancy(suggest)+'/'+db.capacity:'Không còn ngăn trống phù hợp'}</div>`:`<select id="addCell" onchange="addValues.cell=this.value">${ACTIVE_CELLS.map(c=>`<option value="${c}" ${addValues.cell===c?'selected':''} ${available(c)?'':'disabled'}>${c} · ${occupancy(c)}/${db.capacity}${db.locked.includes(c)?' · Khóa':''}</option>`).join('')}</select>`}</div>
+ <div class="btnrow"><button class="btn primary" onclick="prepareAdd()">Xem trước thêm hồ sơ tại ô xanh</button></div></div>`;}
+function setAddMode(mode){addMode=mode;renderRed();}
+function updateAddHint(){const hint=$('addHint');if(hint){const c=proposeAutoCell(addValues.year);hint.textContent=c?`${prettyCell(c)} · ${occupancy(c)}/${db.capacity}`:'Không còn ngăn trống phù hợp';}}
+function prepareAdd(){const code=addValues.code.trim(),name=addValues.name.trim(),bank=addValues.bank.trim(),year=addValues.year;
+ let cell=addMode==='AUTO'?proposeAutoCell(year):( $('addCell')?.value||addValues.cell);
+ if(!code||!name){notice={kind:'error',text:'Vui lòng nhập mã và tên hồ sơ.'};renderGreen();return;}
+ if(!cell||!available(cell)){notice={kind:'error',text:'Ngăn đã đầy hoặc bị khóa. Vui lòng đổi ngăn, chỉnh sức chứa hoặc mở khóa.'};renderGreen();return;}
+ setStage('ADD',{code,name,bank,year,cell,mode:addMode},`Thêm ${code} — ${name} tại ${prettyCell(cell)}, trên cùng chồng (#${getStack(cell).length+1}).`);}
+function setupHtml(){return `<div class="stack">
+ <div class="notice">Mặc định <b>20 hồ sơ/ngăn</b>. Ngăn khóa không nhận hồ sơ mới. Tầng 6 chỉ dành cho lưu trữ và cấp số LT riêng.</div>
+ <div class="viewonly stack"><div class="strong">1. Xếp hồ sơ lần đầu theo năm</div><div class="muted tiny">Xếp hồ sơ đang trong tủ và chưa xếp vào tầng 1–5, gom từng năm vào các ngăn kế nhau. Giữ nguyên ngăn đang khóa, hồ sơ đang rút, hồ sơ đã lưu trữ.</div><div><button class="btn primary" onclick="prepareArrange()">Xem trước xếp theo năm</button></div></div>
+ <div class="viewonly stack"><div class="strong">2. Khóa hoặc mở khóa ngăn</div><div class="searchbar"><select id="lockCell">${ALL_CELLS.map(c=>`<option value="${c}" ${c===activeCell?'selected':''}>${c} · ${occupancy(c)}/${db.capacity}${db.locked.includes(c)?' · ĐANG KHÓA':''}</option>`).join('')}</select><button class="btn neutral" onclick="prepareLock()">Xem trước thay đổi khóa</button></div><span class="muted tiny">Khóa ngăn chặn thêm mới, xếp mới và lưu trữ mới; vẫn cho phép trả hồ sơ về ngăn gốc khi còn chỗ.</span></div>
+ <div class="viewonly stack"><div class="strong">3. Sức chứa tối đa mỗi ngăn</div><div class="searchbar"><button class="btn neutral small" onclick="stepCapacity(-1)">−</button><input id="capacityInput" type="number" min="1" max="500" value="${db.capacity}"/><button class="btn neutral small" onclick="stepCapacity(1)">+</button><span class="muted tiny">hồ sơ/ngăn</span><button class="btn neutral" onclick="prepareCapacity()">Xem trước cập nhật</button></div></div>
+ <div class="viewonly stack"><div class="strong" style="color:#f5a5aa">4. Làm trống tủ</div><div class="muted tiny">Chuyển toàn bộ hồ sơ (kể cả đang rút, đã lưu trữ) sang trạng thái Chưa xếp, giải phóng tất cả 24 ngăn nhưng không xóa danh mục hay số LT đã cấp. Thao tác không hoàn tác tự động; hãy sao lưu JSON trước.</div><div><button class="btn danger" onclick="prepareClear()">Xem trước làm trống tủ</button></div></div>
+ </div>`;}
+function stepCapacity(delta){const e=$('capacityInput');e.value=Math.max(1,Math.min(500,(Number(e.value)||db.capacity)+delta));}
+function prepareArrange(){try{const p=planByYear(db.dossiers,db.locked,db.capacity);const planned=deep(db.dossiers);applyPlanTo(planned,p);verifyDossiers(planned,db.capacity);const changes=Object.keys(p).filter(id=>{const d=current(id),t=p[id];return d.cell!==t.cell||d.orderFromBottom!==t.orderFromBottom}).length;setStage('ARRANGE',{changes,assigned:Object.keys(p).length},`Xếp theo năm ${Object.keys(p).length} hồ sơ, dự kiến thay đổi vị trí của ${changes} hồ sơ. Các ngăn khóa, hồ sơ đang rút/lưu trữ được giữ nguyên.`)}catch(e){notice={kind:'error',text:e.message};renderGreen()}}
+function prepareLock(){const cell=$('lockCell').value;setStage('LOCK',{cell},`${db.locked.includes(cell)?'Mở khóa':'Khóa'} ${prettyCell(cell)}. Số hồ sơ hiện có: ${occupancy(cell)}/${db.capacity}.`)}
+function prepareCapacity(){const limit=Number($('capacityInput').value);if(!Number.isInteger(limit)||limit<1||limit>500){notice={kind:'error',text:'Nhập từ 1 đến 500.'};renderGreen();return;}const over=ALL_CELLS.filter(c=>occupancy(c)>limit);setStage('CAPACITY',{limit,over},`Điều chỉnh giới hạn từ ${db.capacity} lên/xuống ${limit} hồ sơ/ngăn.${over.length?' Cảnh báo: vượt giới hạn ở '+over.join(', '):''}`)}
+function prepareClear(){setStage('CLEAR',{},`Làm trống toàn bộ 24 ngăn, giữ lại danh mục ${db.dossiers.length} hồ sơ nhưng hủy vị trí và trạng thái rút/lưu trữ hiện hành. Không xóa nhật ký, giữ số LT đã cấp.`)}
+function saveTabHtml(){return `<div class="stack"><div class="notice">Lưu dữ liệu từ trình duyệt hiện tại; GitHub Pages <b>không tự đồng bộ</b> giữa điện thoại và máy tính. Bản in và tệp xuất là dữ liệu mới nhất của thiết bị đang dùng.</div>
+ <div class="viewonly stack"><div class="strong">In danh sách hồ sơ mới nhất</div><div class="searchbar"><select id="printScope" onchange="printScope=this.value"><option value="ALL" ${printScope==='ALL'?'selected':''}>Tất cả trạng thái, tất cả vị trí</option>${ALL_CELLS.map(c=>`<option value="${c}" ${printScope===c?'selected':''}>Ngăn ${c}</option>`).join('')}<option value="BORROWED" ${printScope==='BORROWED'?'selected':''}>Đang rút</option><option value="ARCHIVED" ${printScope==='ARCHIVED'?'selected':''}>Đã lưu trữ</option><option value="UNPLACED" ${printScope==='UNPLACED'?'selected':''}>Chưa xếp</option></select><button class="btn primary" onclick="setStage('PRINT',{scope:printScope},'In danh sách hồ sơ hiện tại, đủ mã/tên, vị trí, trạng thái, người giữ và số lưu trữ.')">Xem trước in</button></div></div>
+ <div class="viewonly stack"><div class="strong">Sao lưu hoặc chuyển dữ liệu</div><div class="btnrow"><button class="btn neutral" onclick="setStage('EXPORT_JSON',{},'Tải bản sao JSON gồm toàn bộ hồ sơ, số LT, thiết lập khóa, giới hạn và nhật ký.')">Xuất JSON</button><button class="btn neutral" onclick="setStage('EXPORT_HTML',{},'Tải index.html nhúng dữ liệu trên trình duyệt hiện tại để tải thủ công lên GitHub.')">Xuất index.html</button><button class="btn neutral" onclick="$('jsonImport').click()">Nhập JSON</button><input class="hidden" id="jsonImport" type="file" accept=".json,application/json" onchange="readImport(this.files?.[0]);this.value=''"/></div></div></div>`;}
+async function readImport(file){if(!file)return;try{if(file.size>4_000_000)throw Error('Tệp JSON quá lớn');const raw=JSON.parse(await file.text());const clean=sanitizeDb(raw);setStage('IMPORT',{data:clean},`Thay toàn bộ danh mục đang dùng (${db.dossiers.length}) bằng ${clean.dossiers.length} hồ sơ từ tệp ${file.name}. Giữ bản sao JSON riêng trước khi nhập.`);}catch(e){notice={kind:'error',text:'Không thể nhập JSON: '+e.message};renderGreen()}}
+function renderLogsTab(){return `<div class="stack"><div class="row"><span class="strong">Nhật ký thao tác (${db.logs.length})</span><span class="muted tiny">Chỉ xem · Không cần xác nhận</span></div><div class="list">${db.logs.map(l=>`<div class="logrow"><time>${escapeHtml(l.at)}</time>${escapeHtml(l.message)}</div>`).join('')||'<div class="notice">Chưa phát sinh thao tác.</div>'}</div></div>`;}
+function renderRed(){renderTabHeader();if(tab==='MOVE'){$('redBody').innerHTML=renderMoveTab();renderMoveList();}else if(tab==='RETURN'){$('redBody').innerHTML=renderReturnTab();renderReturnList();}else if(tab==='ADD')$('redBody').innerHTML=addFormHtml();else if(tab==='SETUP')$('redBody').innerHTML=setupHtml();else if(tab==='SAVE')$('redBody').innerHTML=saveTabHtml();else $('redBody').innerHTML=renderLogsTab();}
+
+function formatSummary(d){return `<div class="viewonly stack"><div class="row"><div><span class="strong">${escapeHtml(d.code)}</span><div class="docname">${escapeHtml(d.name)}</div></div><span class="chip ${statusChip(d)}">${statusText(d)}</span></div><div class="stats"><span class="pill">${escapeHtml(d.status==='BORROWED'?prettyCell(d.lastCell):prettyCell(d.cell))}</span>${d.orderFromBottom?`<span class="pill">Tập #${d.orderFromBottom} từ dưới lên</span>`:''}${d.archiveNo?`<span class="chip archive">${escapeHtml(d.archiveNo)}</span>`:''}</div></div>`}
+function returnDiagram(d){const stack=getStack(d.lastCell),top=stack.at(-1),next=stack.length+1;return `<div class="notice amber"><b>SƠ ĐỒ HƯỚNG DẪN TRẢ</b><div class="summary">Vị trí gốc: <strong>${escapeHtml(prettyCell(d.lastCell))}</strong> · trước khi rút: tập #${d.lastOrder||'?'}</div><div style="text-align:center;margin:7px 0;padding:8px;background:#27344a;border-radius:6px">HỒ SƠ TRẢ: <strong>${escapeHtml(d.code)}</strong> → TẬP #${next} (TRÊN CÙNG)<div class="muted tiny">${top?`Đặt đè lên hồ sơ #${top.orderFromBottom} — ${escapeHtml(top.code)}`:'Đặt lên mặt đáy ngăn trống'}</div></div><div class="summary">Người đang giữ: <b>${escapeHtml(d.borrower)}</b>${d.borrowedAt?' · Rút lúc '+escapeHtml(d.borrowedAt):''}. Sau khi xác nhận, hệ thống không cho trả về vị trí cũ.</div></div>`}
+function archiveInput(d){const options=ARCHIVE_CELLS.map(c=>`<option ${archiveChoice===c?'selected':''} value="${c}" ${available(c)?'':'disabled'}>${c} · ${occupancy(c)}/${db.capacity}${db.locked.includes(c)?' · Khóa':''}</option>`).join('');return `<div class="field"><label>Chọn ngăn lưu trữ thuộc tầng 6</label><select id="archiveCell" onchange="archiveChoice=this.value">${options}</select></div>`}
+function stageArchive(){const d=current(selectedId);if(!d||!['IN_CABINET','BORROWED'].includes(d.status))return;const c=($('archiveCell')?.value||archiveChoice||ARCHIVE_CELLS.find(c=>available(c)));if(!c){notice={kind:'error',text:'Tầng 6 đã đầy hoặc tất cả ngăn bị khóa.'};renderGreen();return;}archiveChoice=c;setStage('ARCHIVE',{id:d.id,cell:c},`Chuyển ${d.code} từ ${prettyCell(d.status==='BORROWED'?d.lastCell:d.cell)} sang ${prettyCell(c)}, trên cùng chồng. Cấp số LT-${String(db.nextArchiveNo).padStart(4,'0')}; không cần trả lại ngăn cũ.`)}
+function stageWithdraw(){const d=current(selectedId);if(!d||d.status!=='IN_CABINET')return;const borrower=($('borrowerInput')?.value||borrowDraft).trim();if(!borrower){notice={kind:'error',text:'Cần nhập người hoặc nơi giữ hồ sơ khi rút.'};renderGreen();return;}borrowDraft=borrower;setStage('WITHDRAW',{id:d.id,borrower},`Rút ${d.code} tại ${prettyCell(d.cell)}, tập #${d.orderFromBottom}. Người/nơi giữ: ${borrower}. Các tập phía trên tự động giảm 1.`)}
+function defaultActionHtml(){if(tab==='LOG')return `<div class="notice">Nhật ký là chế độ chỉ xem, không có nút xác nhận.</div>`;
+ if(tab==='SETUP')return `<div class="stack"><div class="notice">Chọn chức năng <b>Xếp theo năm</b>, <b>Khóa ngăn</b>, <b>Sức chứa</b> hoặc <b>Làm trống tủ</b> tại ô đỏ. Bản xem trước và nút xác nhận sẽ hiện tại đây.</div><div class="stats"><span class="chip">Hạn mức ${db.capacity}/ngăn</span><span class="chip">${db.locked.length} ngăn khóa</span><span class="chip">${db.dossiers.filter(d=>d.status==='UNPLACED').length} chưa xếp</span></div></div>`;
+ if(tab==='SAVE')return `<div class="notice">Chọn chức năng In hoặc Xuất dữ liệu tại ô đỏ. Xác nhận thực hiện ở đây.</div>`;
+ if(tab==='ADD')return `<div class="notice">Nhập hồ sơ ở ô đỏ, chọn chế độ Mặc định hoặc Chỉ định ngăn và bấm <b>Xem trước thêm</b>. Mã hồ sơ chỉ được ghi khi xác nhận tại ô xanh.</div>`;
+ if(tab==='RETURN')return `<div class="notice">Chọn hồ sơ trong danh sách Trả tại ô đỏ. Sơ đồ hướng dẫn và nút xác nhận trả sẽ xuất hiện ở đây.</div>`;
+ const d=current(selectedId);if(!d)return `<div class="notice">Nhập tìm hoặc bấm vào dòng hồ sơ tại ô đỏ. Vị trí trên sơ đồ tủ sẽ phát sáng; các tác vụ rút, điều chỉnh hoặc lưu trữ xuất hiện ở đây.</div>`;
+ if(d.status==='BORROWED')return `${formatSummary(d)}<div class="notice">Hồ sơ đang rút: <b>${escapeHtml(d.borrower)}</b>. Chuyển sang thẻ <b>Trả hồ sơ</b> để trả, hoặc lưu trữ trực tiếp không phải trả về ngăn cũ.</div>${archiveInput(d)}<div class="btnrow"><button class="btn warning" onclick="stageArchive()">Chuẩn bị lưu trữ</button><button class="btn neutral" onclick="changeTab('RETURN')">Đến danh sách Trả</button></div>`;
+ if(d.status==='ARCHIVED')return `${formatSummary(d)}<div class="notice amber">Hồ sơ đã lưu trữ trên tầng 6, được cấp số ${escapeHtml(d.archiveNo||'Chưa có số')}. Không cho rút/trả theo luồng tác nghiệp thường.</div>`;
+ if(d.status==='UNPLACED')return `${formatSummary(d)}<div class="notice">Hồ sơ chưa có vị trí tủ. Dùng chức năng Thiết lập → Xếp theo năm để xếp lại.</div>`;
+ return `${formatSummary(d)}<div class="grid2"><div class="field"><label>Người / nơi rút hồ sơ</label><input id="borrowerInput" value="${escapeHtml(borrowDraft)}" placeholder="Người lấy hoặc nơi giữ" oninput="borrowDraft=this.value"/></div><div class="field"><label>Ngăn lưu trữ tầng 6</label>${archiveInput(d)}</div></div><div class="btnrow"><button class="btn danger" onclick="stageWithdraw()">Chuẩn bị rút</button><button class="btn warning" onclick="stageArchive()">Chuẩn bị lưu trữ</button></div><div class="screenhint">Điều chỉnh thứ tự: chọn ngăn tại ô đỏ, nhấn ↑ hoặc ↓ trên dòng; xác nhận kết quả tại ô xanh.</div>`;
+}
+function stagePreview(){const {kind,p,description}=staged,mutating=['REORDER','WITHDRAW','RETURN','ARCHIVE','ADD','ARRANGE','CAPACITY','LOCK','CLEAR','IMPORT'].includes(kind);
+ let body='';if(kind==='REORDER'){const list=p.ids.slice().reverse().map(id=>current(id)?.code).join(' · ');body=`<div class="viewonly"><b>Thứ tự mới (trên → dưới):</b><div class="summary">${escapeHtml(list)}</div></div>`;}
+ if(kind==='RETURN'){const d=current(p.id);body=d?returnDiagram(d):'';}
+ if(kind==='ARCHIVE'){const d=current(p.id);body=d?formatSummary(d):'';}
+ if(kind==='CAPACITY'){const blockers=ALL_CELLS.filter(c=>occupancy(c)>p.limit);body=blockers.length?`<div class="notice error">Không thể xác nhận: ngăn ${escapeHtml(blockers.join(', '))} đang vượt giới hạn mới. Hãy xếp lại hoặc tăng hạn mức.</div>`:'';}
+ if(kind==='CLEAR')body='<div class="notice error"><b>CẢNH BÁO:</b> Mất toàn bộ vị trí hiện tại và trạng thái đang rút/lưu trữ. Không xóa các hồ sơ và nhật ký. Hãy xuất JSON trước.</div><div class="field"><label>Gõ LAM TRONG TU để xác nhận</label><input id="clearPhrase" autocomplete="off" placeholder="LAM TRONG TU" oninput="toggleClearButton()"/></div>';
+ if(kind==='PRINT')body=`<div class="viewonly"><b>Phạm vi:</b> ${escapeHtml(p.scope==='ALL'?'Tất cả hồ sơ':p.scope)}<br>Danh sách hiện có: ${db.dossiers.length} hồ sơ. Bản in có đầy đủ vị trí, trạng thái, số LT, người giữ và thời gian cập nhật.</div>`;
+ if(kind==='ARRANGE')body=`<div class="notice">Ưu tiên theo năm, mỗi ngăn tối đa <b>${db.capacity}</b> hồ sơ. ${p.changes} hồ sơ dự kiến thay đổi vị trí. Ngăn khóa và hồ sơ lưu trữ không bị dịch chuyển.</div>`;
+ if(kind==='IMPORT')body=`<div class="notice amber">Thao tác này sẽ thay thế toàn bộ dữ liệu trên trình duyệt hiện tại. Tải bản sao JSON trước nếu có dữ liệu cần giữ.</div>`;
+ const labels={REORDER:'Xác nhận thứ tự',WITHDRAW:'Xác nhận rút',RETURN:'Xác nhận trả',ARCHIVE:'Xác nhận lưu trữ',ADD:'Xác nhận thêm',ARRANGE:'Xác nhận xếp',CAPACITY:'Xác nhận sức chứa',LOCK:'Xác nhận khóa',CLEAR:'Làm trống tủ',IMPORT:'Xác nhận nhập JSON',EXPORT_JSON:'Xác nhận tải JSON',EXPORT_HTML:'Xác nhận tải HTML',PRINT:'Mở hộp thoại in'};
+ return `<div class="rightpreview"><h3>Xem trước: ${escapeHtml(labels[kind]||kind)}</h3><p>${escapeHtml(description)}</p>${body}<div class="confirmline"><button class="btn outline" onclick="discardStage()">Hủy thay đổi</button><button id="stageConfirm" class="btn ${kind==='CLEAR'?'danger':'primary'}" ${kind==='CLEAR'||kind==='CAPACITY'&&p.over?.length?'disabled':''} onclick="commitStaged()">${escapeHtml(labels[kind]||'Xác nhận')}</button></div></div>`;
+}
+function toggleClearButton(){const x=$('stageConfirm');if(x)x.disabled=($('clearPhrase')?.value||'').trim().toUpperCase()!=='LAM TRONG TU';}
+function renderGreen(){if(!$('greenBody'))return;let html='';if(notice)html+=`<div class="notice ${notice.kind==='error'?'error':'success'}" role="status" style="margin-bottom:10px">${escapeHtml(notice.text)}</div>`;
+ if(staged){$('actionType').textContent='Chờ xác nhận';html+=stagePreview();}else{$('actionType').textContent=notice?.kind==='success'?'Đã hoàn tất':'Sẵn sàng';html+=defaultActionHtml();}
+ $('greenBody').innerHTML=html;}
+function preparePrint(scope){const docs=db.dossiers.filter(d=>scope==='ALL'||scope===d.cell||(scope==='BORROWED'&&d.status==='BORROWED')||(scope==='ARCHIVED'&&d.status==='ARCHIVED')||(scope==='UNPLACED'&&d.status==='UNPLACED'));
+ const sorted=docs.slice().sort((a,b)=>a.year.localeCompare(b.year)||a.code.localeCompare(b.code,'vi',{numeric:true}));
+ $('printArea').innerHTML=`<h1>CÔNG TY ĐẤU GIÁ HỢP DANH MIỀN NAM — DANH SÁCH TỦ HỒ SƠ</h1><p>Thời điểm lập: ${escapeHtml(dateNow())} · Phạm vi: ${escapeHtml(scope==='ALL'?'Toàn bộ':scope)} · Mức tối đa: ${db.capacity} hồ sơ/ngăn · Tổng: ${sorted.length} hồ sơ</p><table><thead><tr><th>STT</th><th>Năm</th><th>Mã hồ sơ</th><th>Hồ sơ / Tài sản</th><th>Đơn vị</th><th>Tầng / Ngăn</th><th>Tập #</th><th>Trạng thái</th><th>Người giữ / Ngày rút</th><th>Số LT</th></tr></thead><tbody>${sorted.map((d,i)=>`<tr><td>${i+1}</td><td>${escapeHtml(d.year)}</td><td>${escapeHtml(d.code)}</td><td>${escapeHtml(d.name)}</td><td>${escapeHtml(d.bank)}</td><td>${escapeHtml(d.status==='BORROWED'?prettyCell(d.lastCell):prettyCell(d.cell))}</td><td>${d.orderFromBottom|| (d.status==='BORROWED'?`Cũ #${d.lastOrder}`:'—')}</td><td>${statusText(d)}</td><td>${escapeHtml([d.borrower,d.borrowedAt].filter(Boolean).join(' · '))}</td><td>${escapeHtml(d.archiveNo||'')}</td></tr>`).join('')}</tbody></table><p class="totals">Trong tủ: ${docs.filter(d=>d.status==='IN_CABINET').length} · Đang rút: ${docs.filter(d=>d.status==='BORROWED').length} · Đã lưu trữ: ${docs.filter(d=>d.status==='ARCHIVED').length} · Chưa xếp: ${docs.filter(d=>d.status==='UNPLACED').length}</p>`;
+}
+function renderAll(){stateHeader();renderCabinet();renderRed();renderGreen();}
+function initialize(){bootstrap();selectedId=db.dossiers.find(d=>d.status==='IN_CABINET')?.id||db.dossiers[0]?.id||null;activeCell=current(selectedId)?.cell||null;archiveChoice=ARCHIVE_CELLS.find(c=>available(c))||'6A';preparePrint('ALL');renderAll();}
+if(typeof document!=='undefined')document.addEventListener('DOMContentLoaded',initialize);
+</script>
 </body>
 </html>

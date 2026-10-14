@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tủ hồ sơ Miền Nam · V7.2</title>
+<title>Tủ hồ sơ Miền Nam · V7.3</title>
 <style>
 :root{font-family:Inter,system-ui,-apple-system,'Segoe UI',sans-serif;color:#e5e7eb;background:#0b1220;font-size:13px;--bg:#0b1220;--panel:#111b2e;--panel2:#18253a;--line:#2d3c53;--dim:#98a8bc;--green:#33b780;--amber:#f8b743;--red:#e16c72;--blue:#60a5fa}
 *{box-sizing:border-box}body{margin:0;min-width:320px}button,input,select{font:inherit}button{cursor:pointer;border:1px solid transparent;transition:background .15s,border-color .15s}button:disabled{opacity:.38;cursor:not-allowed}button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #f8b743;outline-offset:2px}button:hover:not(:disabled){filter:brightness(1.08)}input,select{background:#111b2e;color:#f4f6fa;border:1px solid #3b4960;border-radius:7px;padding:8px;min-width:0}input[type=number]{width:88px}input[type=radio],input[type=checkbox]{accent-color:#33b780;min-width:auto}.muted{color:var(--dim)}.tiny{font-size:11px}.mono{font-variant-numeric:tabular-nums}.strong{font-weight:750}.headline{font-size:15px;font-weight:800}.hidden{display:none!important}
@@ -14,11 +14,40 @@ header{display:flex;gap:10px;align-items:center;justify-content:space-between;ba
 @media(max-width:1050px){.app{height:auto;display:flex;flex-direction:column;padding:9px}.cabinet{min-height:570px}.cabinetbody{min-height:480px}.side{min-height:0}.red,.green{flex:none;min-height:350px}.red{max-height:565px}.redbody{max-height:510px;overflow-y:auto}.greenbody{max-height:none;overflow:visible}.cabrow{min-height:57px}}
 @media(max-width:570px){.headline{font-size:12px}.subtitle{font-size:10px}header{padding:7px 9px}.app{gap:8px}.cabinet{min-height:440px}.cabinetbody{min-height:380px;gap:3px;margin:6px;padding:5px;border-width:3px}.cabinetheads,.cabrow{grid-template-columns:34px repeat(4,minmax(0,1fr));gap:3px}.cabinetheads span{font-size:9px;padding:6px 1px}.floor{font-size:9px}.floor small{display:none}.cabrow{min-height:53px}.shelf{padding:4px;min-height:50px;border-radius:9px}.cellbadge{font-size:11px;padding:2px 6px}.cellsub{font-size:8px}.shelf .count{font-size:9px}.bar{height:3px}.greenbody,.redbody{padding:8px}.redrow{padding:7px 5px}.reorder button{padding:6px}.grid2{grid-template-columns:1fr}.cabinetfooter{gap:3px}}
 @media print{@page{size:A4 landscape;margin:12mm}body{background:white!important;color:black!important;font:10pt Arial,sans-serif!important}header,.app{display:none!important}.printpage{display:block!important}.printpage h1{font-size:14pt;margin:0 0 5mm}.printpage p{font-size:9pt}.printpage table{width:100%;border-collapse:collapse;font-size:8pt}.printpage th,.printpage td{border:1px solid black;padding:4px;vertical-align:top;overflow-wrap:anywhere}.printpage th{background:#e4e4e4!important;color:#000}.printpage thead{display:table-header-group}.printpage tr{break-inside:avoid}.printpage .totals{font-weight:bold}}
+
+/* V7.3: compact, one task at a time */
+.redbody,.greenbody{padding:9px 11px}
+.redbody>.stack{gap:7px}
+.redrow{min-height:51px;padding:6px 9px;gap:9px;border-radius:9px}
+.list{gap:4px}
+.redrow .docclick{display:block;overflow:hidden}
+.dochead{display:flex;align-items:center;justify-content:space-between;gap:10px;min-width:0}
+.dochead .strong{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:760}
+.dochead .chip{flex-shrink:0;font-size:10px;padding:2px 5px}
+.redrow .docname{margin-top:2px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;font-size:12px;line-height:1.28}
+.redrow .docmeta{margin-top:3px;font-size:10.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.reorder{flex:0 0 65px;display:flex;gap:4px;align-items:center;justify-content:center}
+.reorder button{width:30px;height:32px;display:flex;align-items:center;justify-content:center;padding:0!important;border:1px solid #516786;border-radius:7px;font-size:17px;line-height:1;background:#24374f}
+.reorder button:hover:not(:disabled){border-color:#c5d3e5}
+.reorder button:disabled{opacity:.2}
+.action-switch{display:flex;gap:7px;flex-wrap:wrap;align-items:center}
+.action-switch button.btn{padding:7px 12px}
+.rightpreview{gap:8px}
+.dossier-summary{display:flex;flex-direction:column;gap:6px;padding:9px 10px}
+.dossier-summary .docname{margin:0;font-size:12px;line-height:1.4;overflow-wrap:anywhere}
+.dossier-summary .stats{gap:5px}
+.dossier-summary .pill{padding:4px 8px}
+.location-code{font-size:14px;color:#f6d58c;margin-right:5px}
+.screenhint{line-height:1.45}
+.greenbody .field{max-width:100%}
+.greenbody select,.greenbody input{width:100%;min-height:37px}
+.greenbody .notice{padding:8px 10px;line-height:1.45}
+@media(max-width:570px){.redrow{min-height:50px;padding:7px}.reorder{flex-basis:62px}.reorder button{width:29px;height:30px}.action-switch button.btn{padding:7px 9px}.location-code{font-size:13px}}
 </style>
 </head>
 <body>
 <header>
-  <div class="brand"><div class="mark">MN</div><div><div class="headline">BẢN ĐỒ TỦ HỒ SƠ · V7.2</div><div class="subtitle">Công ty Đấu giá Hợp danh Miền Nam · Tầng 1 dưới cùng · Tầng 6 lưu trữ · ưu tiên thêm mới vào tầng 3–5</div></div></div>
+  <div class="brand"><div class="mark">MN</div><div><div class="headline">BẢN ĐỒ TỦ HỒ SƠ · V7.3</div><div class="subtitle">Công ty Đấu giá Hợp danh Miền Nam · Tầng 1 dưới cùng · Tầng 6 lưu trữ · ưu tiên thêm mới vào tầng 3–5</div></div></div>
   <div class="stats"><span class="chip" id="headerTotal">52 hồ sơ</span><span class="chip out" id="headerBorrowed">0 đang rút</span><span class="chip archive" id="headerArchived">0 lưu trữ</span><span class="chip" id="headerCatalog" style="display:none">Nguồn đang tải</span></div>
 </header>
 <main class="app">
@@ -28,7 +57,7 @@ header{display:flex;gap:10px;align-items:center;justify-content:space-between;ba
   </section>
   <div class="side">
     <section class="panel red"><nav class="tabs redtabs" id="redTabs">
-      <button data-tab="MOVE" class="on" onclick="changeTab('MOVE')">Rút · Điều chỉnh · Lưu trữ</button>
+      <button data-tab="MOVE" class="on" onclick="changeTab('MOVE')">Rút · Xếp · Lưu trữ</button>
       <button data-tab="RETURN" onclick="changeTab('RETURN')">Trả hồ sơ</button>
       <button data-tab="ADD" onclick="changeTab('ADD')">Thêm hồ sơ</button>
       <button data-tab="SETUP" onclick="changeTab('SETUP')">Thiết lập</button>
@@ -130,9 +159,10 @@ const validCell=c=>ALL_CELLS.includes(c);
 const num=v=>Number.isInteger(Number(v))?Number(v):0;
 const safeId=v=>/^[a-zA-Z0-9_-]{1,90}$/.test(String(v));
 const inferYear=code=>((String(code).match(/20\d{2}/)||[])[0]||new Date().getFullYear().toString());
-const prettyCell=cell=>validCell(cell)?`Tầng ${cell[0]} · Ngăn ${cell[1]}`:'Chưa xếp';
+const prettyCell=cell=>validCell(cell)?`${cell} · Tầng ${cell[0]} · Ngăn ${cell[1]}`:'Chưa xếp';
 const statusText=d=>({IN_CABINET:'Trong tủ',BORROWED:'Đang rút',ARCHIVED:'Đã lưu trữ',UNPLACED:'Chưa xếp'})[d.status]||'Không rõ';
 const statusChip=d=>({IN_CABINET:'ok',BORROWED:'out',ARCHIVED:'archive',UNPLACED:'unplaced'})[d.status]||'';
+let actionMode=null,resultOnly=false;
 let db,tab='MOVE',selectedId=null,activeCell=null,listCell='ALL',searchMove='',searchReturn='',staged=null,notice=null,borrowDraft='',archiveChoice='',addMode='AUTO',addValues={year:'2026',code:'',name:'',bank:'',cell:'3A'},setupCellCapCell='3A',printScope='ALL';
 let catalogEntries=[],catalogSourceName='',catalogError='',catalogCheckedAt='',catalogQuery='',pendingSuggestedCell='';
 const logsDefault=[];
@@ -207,7 +237,7 @@ function validateBeforeCommit(kind,p){if(['REORDER','WITHDRAW','RETURN','ARCHIVE
  if(kind==='LOCK'&&!validCell(p.cell))throw Error('Ngăn không hợp lệ');
  if(kind==='IMPORT')sanitizeDb(p.data);
 }
-function setStage(kind,p,description){staged={kind,p:{...p,rev:db.rev},description};notice=null;renderGreen();}
+function setStage(kind,p,description){staged={kind,p:{...p,rev:db.rev},description};notice=null;resultOnly=false;renderGreen();}
 function discardStage(){staged=null;renderGreen()}
 function confirmLeaveStage(){if(!staged)return true;if(!confirm('Có thay đổi chưa xác nhận ở ô xanh. Hủy thay đổi để chuyển sang tác vụ khác?'))return false;staged=null;return true;}
 function insertAt(d,cell){const list=getStack(cell);list.forEach(e=>e.orderFromBottom++);d.cell=cell;d.orderFromBottom=list.length+1;d.status=cell.startsWith('6')?'ARCHIVED':'IN_CABINET';}
@@ -237,7 +267,7 @@ function commitStaged(){if(!staged)return;const {kind,p}=staged;
    try{verifyDossiers(db.dossiers,db.capacity,db.cellCapacity);db.rev++;localStorage.setItem(STORAGE_KEY,JSON.stringify(db));}
    catch(e){db=snapshot;throw Error('Hủy thao tác, không lưu dữ liệu: '+e.message);}
   }
-  staged=null;notice={kind:'success',text:result};renderAll();
+  staged=null;notice={kind:'success',text:result};resultOnly=['WITHDRAW','RETURN','ARCHIVE'].includes(kind);actionMode=null;renderAll();
  }catch(e){notice={kind:'error',text:e.message};renderGreen();}
 }
 function proposeAutoCell(year){const priority=ACTIVE_CELLS.filter(c=>['3','4','5'].includes(c[0]));const fallback=ACTIVE_CELLS.filter(c=>!priority.includes(c));const avail=cells=>cells.filter(c=>available(c));const sortNearFull=(a,b)=>{const ay=getStack(a).some(d=>d.year===year),by=getStack(b).some(d=>d.year===year);if(ay!==by)return ay?-1:1;const af=Number(a[0]),bf=Number(b[0]);const fullnessA=occupancy(a)/capacityOf(a),fullnessB=occupancy(b)/capacityOf(b);if(fullnessA!==fullnessB)return fullnessB-fullnessA;if(af!==bf)return af-bf;return a.localeCompare(b)};const candidates=[...avail(priority).sort(sortNearFull),...avail(fallback).sort(sortNearFull)];return candidates[0]||null;}
@@ -245,10 +275,10 @@ function exportJson(){const txt=JSON.stringify({schema:'MN-CABINET-V7',exportedA
 function exportHtml(){const safe=JSON.stringify(db).replace(/</g,'\\u003c').replace(/>/g,'\\u003e').replace(/&/g,'\\u0026');const block=`/*__EMBEDDED_SNAPSHOT_START__*/\nconst EMBEDDED_SNAPSHOT = ${safe};\n/*__EMBEDDED_SNAPSHOT_END__*/`;const current='<!DOCTYPE html>\n'+document.documentElement.outerHTML;const html=current.replace(/\/\*__EMBEDDED_SNAPSHOT_START__\*\/[\s\S]*?\/\*__EMBEDDED_SNAPSHOT_END__\*\//,block);saveBlob(html,'text/html;charset=utf-8','index.html')}
 function saveBlob(textData,type,name){const url=URL.createObjectURL(new Blob([textData],{type}));const a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),5000)}
 
-function changeTab(next){if(!confirmLeaveStage())return;tab=next;notice=null;renderAll();}
-function chooseCell(cell){if(!confirmLeaveStage())return;activeCell=cell;listCell=cell;selectedId=getStack(cell).at(-1)?.id||null;tab='MOVE';notice=null;renderAll();if(window.innerWidth<800)$('redTabs').scrollIntoView({behavior:'smooth',block:'start'});}
-function clearCellView(){if(!confirmLeaveStage())return;activeCell=null;listCell='ALL';selectedId=null;notice=null;renderAll();}
-function chooseDossier(id,forReturn=false){if(!confirmLeaveStage())return;const d=current(id);if(!d)return;selectedId=id;activeCell=d.status==='BORROWED'?d.lastCell:d.cell;notice=null;if(forReturn){if(d.status!=='BORROWED')return;setStage('RETURN',{id:d.id},`Trả ${d.code} vào ${prettyCell(d.lastCell)}, lên trên cùng chồng.`);}else renderAll();if(window.innerWidth<800)$('greenBody').scrollIntoView({behavior:'smooth',block:'nearest'});}
+function changeTab(next){if(!confirmLeaveStage())return;tab=next;notice=null;actionMode=null;resultOnly=false;renderAll();}
+function chooseCell(cell){if(!confirmLeaveStage())return;activeCell=cell;listCell=cell;selectedId=getStack(cell).at(-1)?.id||null;tab='MOVE';notice=null;actionMode=null;resultOnly=false;renderAll();if(window.innerWidth<800)$('redTabs').scrollIntoView({behavior:'smooth',block:'start'});}
+function clearCellView(){if(!confirmLeaveStage())return;activeCell=null;listCell='ALL';selectedId=null;notice=null;actionMode=null;resultOnly=false;renderAll();}
+function chooseDossier(id,forReturn=false){if(!confirmLeaveStage())return;const d=current(id);if(!d)return;selectedId=id;activeCell=d.status==='BORROWED'?d.lastCell:d.cell;notice=null;actionMode=null;resultOnly=false;if(forReturn){if(d.status!=='BORROWED')return;setStage('RETURN',{id:d.id},`Trả ${d.code} vào ${prettyCell(d.lastCell)}, lên trên cùng chồng.`);}else renderAll();if(window.innerWidth<800)$('greenBody').scrollIntoView({behavior:'smooth',block:'nearest'});}
 function stateHeader(){const borrowed=db.dossiers.filter(d=>d.status==='BORROWED').length,archived=db.dossiers.filter(d=>d.status==='ARCHIVED').length;
  $('headerTotal').textContent=`${db.dossiers.length} hồ sơ · ${db.capacity}/ngăn`;$('headerBorrowed').textContent=`${borrowed} đang rút`;$('headerArchived').textContent=`${archived} lưu trữ`;const badge=$('headerCatalog');if(badge){const report=compareCatalog();badge.style.display=catalogEntries.length?'inline-flex':'none';badge.textContent=report.added.length+report.updated.length?`${report.added.length} mới · ${report.updated.length} đổi tên/số`:`Đã đối chiếu ${catalogEntries.length} hồ sơ`;}}
 function renderCabinet(){let rows='';for(let floor=6;floor>=1;floor--){let cols=`<div class="floor"><strong>TẦNG ${floor}</strong><small>${floor===6?'LƯU TRỮ':floor===1?'ĐÁY TỦ':'SỬ DỤNG'}</small></div>`;
@@ -272,13 +302,12 @@ function getVisibleMoveDocs(){const q=fold(searchMove);let all=db.dossiers.filte
 function getDraftPosition(d){if(staged?.kind==='REORDER'&&staged.p.cell===d.cell){const at=staged.p.ids.indexOf(d.id);if(at!==-1)return at+1;}return d.orderFromBottom||0;}
 function renderMoveTab(){return `<div class="stack">
  <div class="searchbar"><input id="moveSearch" type="search" placeholder="Tìm mã, tên hồ sơ, ngân hàng, vị trí..." value="${escapeHtml(searchMove)}" oninput="searchMove=this.value;renderMoveList()" aria-label="Tìm hồ sơ"/><select id="cellFilter" onchange="setCellFilter(this.value)" aria-label="Lọc ngăn"><option value="ALL">Tất cả ngăn</option>${ALL_CELLS.map(c=>`<option value="${c}" ${listCell===c?'selected':''}>${c} ${db.locked.includes(c)?'· Khóa':''}</option>`).join('')}</select></div>
- <div class="row"><span class="screenhint">Chọn hồ sơ → tủ phát sáng → tác vụ ở ô xanh. Mũi tên chỉ xem trước cho đến khi xác nhận.</span><button class="btn small neutral" onclick="setCellFilter('ALL')">Bỏ lọc</button></div>
+ <div class="row"><span class="screenhint">Chọn dòng để định vị. ↑↓ đổi vị trí, xác nhận ở ô xanh.</span><button class="btn small neutral" onclick="setCellFilter('ALL')">Bỏ lọc</button></div>
  <div class="stats" id="moveStats"></div><div id="moveList" class="list"></div></div>`}
-function renderMoveList(){const root=$('moveList');if(!root)return;const found=getVisibleMoveDocs();$('moveStats').innerHTML=`<span class="chip">${found.length}/${db.dossiers.length} hồ sơ</span>${listCell!=='ALL'?`<span class="chip">${prettyCell(listCell)} · ${getStack(listCell).length}/${capacityOf(listCell)}</span>`:''}`;
+function renderMoveList(){const root=$('moveList');if(!root)return;const found=getVisibleMoveDocs();$('moveStats').innerHTML=`<span class="chip">${found.length}/${db.dossiers.length} hồ sơ</span>${listCell!=='ALL'?`<span class="chip">${listCell} · ${getStack(listCell).length}/${capacityOf(listCell)}</span>`:''}`;
  root.innerHTML=found.slice(0,400).map(d=>{
- const isIn=d.status==='IN_CABINET',canArrows=isIn;
- const pos=getDraftPosition(d);
- return `<div class="redrow ${selectedId===d.id?'sel':''}"><button class="docclick" onclick="chooseDossier('${d.id}')" title="Chọn hồ sơ"><div class="row"><span class="strong">${escapeHtml(d.code)}</span><span class="chip ${statusChip(d)}">${statusText(d)}</span></div><div class="docname">${escapeHtml(d.name)}</div><div class="docmeta">${escapeHtml(d.status==='BORROWED'?prettyCell(d.lastCell):prettyCell(d.cell))} ${pos?'· #'+pos+' từ dưới lên':''}${d.archiveNo?' · '+escapeHtml(d.archiveNo):''}</div></button><div class="reorder">${isIn?`<button title="Đưa lên một tập" onclick="arrowMove('${d.id}',1)" ${canArrows?'':'disabled'}>↑</button><button title="Hạ xuống một tập" onclick="arrowMove('${d.id}',-1)" ${canArrows?'':'disabled'}>↓</button>`:''}</div></div>`;
+ const isIn=d.status==='IN_CABINET',pos=getDraftPosition(d),length=isIn?getStack(d.cell).length:0;
+ return `<div class="redrow ${selectedId===d.id?'sel':''}"><button class="docclick" onclick="chooseDossier('${d.id}')" title="${escapeHtml(d.code+' — '+d.name)}"><div class="dochead"><span class="strong">${escapeHtml(d.code)}</span><span class="chip ${statusChip(d)}">${statusText(d)}</span></div><div class="docname">${escapeHtml(d.name)}</div><div class="docmeta">${escapeHtml(d.status==='BORROWED'?prettyCell(d.lastCell):prettyCell(d.cell))}${pos?' · Tập #'+pos:''}${d.archiveNo?' · '+escapeHtml(d.archiveNo):''}</div></button>${isIn?`<div class="reorder" aria-label="Điều chỉnh thứ tự"><button type="button" aria-label="Đưa ${escapeHtml(d.code)} lên trên" title="Lên 1 tập" onclick="arrowMove('${d.id}',1)" ${pos>=length?'disabled':''}>↑</button><button type="button" aria-label="Đưa ${escapeHtml(d.code)} xuống dưới" title="Xuống 1 tập" onclick="arrowMove('${d.id}',-1)" ${pos<=1?'disabled':''}>↓</button></div>`:''}</div>`;
  }).join('')||`<div class="notice">Không có hồ sơ phù hợp.</div>`;
 }
 function setCellFilter(value){if(staged&&!confirmLeaveStage()){$('cellFilter').value=listCell;return;}listCell=value;activeCell=value==='ALL'?null:value;renderAll();}
@@ -292,7 +321,7 @@ function arrowMove(id,direction){const d=current(id);if(!d||d.status!=='IN_CABIN
  [ids[from],ids[to]]=[ids[to],ids[from]];selectedId=id;
  if(ids.every((x,i)=>x===getStack(d.cell)[i]?.id)){staged=null;notice=null;renderAll();return;}
  staged={kind:'REORDER',p:{rev:db.rev,cell:d.cell,ids,before},description:`Điều chỉnh thứ tự trong ${prettyCell(d.cell)}.`};notice=null;renderAll();}
-function renderReturnTab(){return `<div class="stack"><div class="searchbar"><input id="returnSearch" type="search" placeholder="Tìm trong hồ sơ đang rút..." value="${escapeHtml(searchReturn)}" oninput="searchReturn=this.value;renderReturnList()"/></div><div class="notice">Nhấn vào hồ sơ đang rút. Ô xanh hiển thị <b>sơ đồ vị trí trả</b> và nút xác nhận. Hồ sơ luôn trở về ngăn gốc, trên cùng chồng.</div><div class="list" id="returnList"></div></div>`}
+function renderReturnTab(){return `<div class="stack"><div class="searchbar"><input id="returnSearch" type="search" placeholder="Tìm trong hồ sơ đang rút..." value="${escapeHtml(searchReturn)}" oninput="searchReturn=this.value;renderReturnList()"/></div><div class="notice">Chọn hồ sơ để xem vị trí trả ở ô xanh. Trả lên đỉnh chồng ngăn gốc.</div><div class="list" id="returnList"></div></div>`}
 function renderReturnList(){if(!$('returnList'))return;const borrowed=db.dossiers.filter(d=>d.status==='BORROWED'&&fold([d.code,d.name,d.borrower,d.lastCell].join(' ')).includes(fold(searchReturn)));
  $('returnList').innerHTML=borrowed.map(d=>`<button class="redrow ${selectedId===d.id?'sel':''}" onclick="chooseDossier('${d.id}',true)"><span style="flex:1;text-align:left;min-width:0"><span class="strong">${escapeHtml(d.code)}</span><div class="docname">${escapeHtml(d.name)}</div><div class="docmeta">Người giữ: ${escapeHtml(d.borrower)} · Ngăn gốc ${escapeHtml(d.lastCell)}</div></span><span class="chip out">Đang rút</span></button>`).join('')||'<div class="notice">Không có hồ sơ đang rút phù hợp.</div>';
 }
@@ -352,21 +381,27 @@ async function readImport(file){if(!file)return;try{if(file.size>4_000_000)throw
 function renderLogsTab(){return `<div class="stack"><div class="row"><span class="strong">Nhật ký thao tác (${db.logs.length})</span><span class="muted tiny">Chỉ xem · Không cần xác nhận</span></div><div class="list">${db.logs.map(l=>`<div class="logrow"><time>${escapeHtml(l.at)}</time>${escapeHtml(l.message)}</div>`).join('')||'<div class="notice">Chưa phát sinh thao tác.</div>'}</div></div>`;}
 function renderRed(){renderTabHeader();if(tab==='MOVE'){$('redBody').innerHTML=renderMoveTab();renderMoveList();}else if(tab==='RETURN'){$('redBody').innerHTML=renderReturnTab();renderReturnList();}else if(tab==='ADD')$('redBody').innerHTML=addFormHtml();else if(tab==='SETUP')$('redBody').innerHTML=setupHtml();else if(tab==='LOG')$('redBody').innerHTML=renderLogsTab();else $('redBody').innerHTML=saveTabHtml();}
 
-function formatSummary(d){return `<div class="viewonly stack"><div class="row"><div><span class="strong">${escapeHtml(d.code)}</span><div class="docname">${escapeHtml(d.name)}</div></div><span class="chip ${statusChip(d)}">${statusText(d)}</span></div><div class="stats"><span class="pill">${escapeHtml(d.status==='BORROWED'?prettyCell(d.lastCell):prettyCell(d.cell))}</span>${d.orderFromBottom?`<span class="pill">Tập #${d.orderFromBottom} từ dưới lên</span>`:''}${d.archiveNo?`<span class="chip archive">${escapeHtml(d.archiveNo)}</span>`:''}</div></div>`}
+function formatSummary(d){const cell=d.status==='BORROWED'?d.lastCell:d.cell;return `<div class="viewonly dossier-summary"><div class="dochead"><span class="strong">${escapeHtml(d.code)}</span><span class="chip ${statusChip(d)}">${statusText(d)}</span></div><div class="docname" title="${escapeHtml(d.name)}">${escapeHtml(d.name)}</div><div class="stats"><span class="pill"><b class="location-code">${escapeHtml(cell||'—')}</b> ${validCell(cell)?'· '+escapeHtml('Tầng '+cell[0]+' · Ngăn '+cell[1]):'· Chưa xếp'}</span>${d.orderFromBottom?`<span class="pill">Tập #${d.orderFromBottom}</span>`:''}${d.archiveNo?`<span class="chip archive">${escapeHtml(d.archiveNo)}</span>`:''}</div></div>`}
 function returnDiagram(d){const stack=getStack(d.lastCell),top=stack.at(-1),next=stack.length+1;return `<div class="notice amber"><b>SƠ ĐỒ HƯỚNG DẪN TRẢ</b><div class="summary">Vị trí gốc: <strong>${escapeHtml(prettyCell(d.lastCell))}</strong> · trước khi rút: tập #${d.lastOrder||'?'}</div><div style="text-align:center;margin:7px 0;padding:8px;background:#27344a;border-radius:6px">HỒ SƠ TRẢ: <strong>${escapeHtml(d.code)}</strong> → TẬP #${next} (TRÊN CÙNG)<div class="muted tiny">${top?`Đặt đè lên hồ sơ #${top.orderFromBottom} — ${escapeHtml(top.code)}`:'Đặt lên mặt đáy ngăn trống'}</div></div><div class="summary">Người đang giữ: <b>${escapeHtml(d.borrower)}</b>${d.borrowedAt?' · Rút lúc '+escapeHtml(d.borrowedAt):''}. Sau khi xác nhận, hệ thống không cho trả về vị trí cũ.</div></div>`}
-function archiveInput(d){const options=ARCHIVE_CELLS.map(c=>`<option ${archiveChoice===c?'selected':''} value="${c}" ${available(c)?'':'disabled'}>${c} · ${occupancy(c)}/${capacityOf(c)}${db.locked.includes(c)?' · Khóa':''}</option>`).join('');return `<div class="field"><label>Chọn ngăn lưu trữ thuộc tầng 6</label><select id="archiveCell" onchange="archiveChoice=this.value">${options}</select></div>`}
+function archiveInput(d){const options=ARCHIVE_CELLS.map(c=>`<option ${archiveChoice===c?'selected':''} value="${c}" ${available(c)?'':'disabled'}>${c} · ${occupancy(c)}/${capacityOf(c)}${db.locked.includes(c)?' · Khóa':''}</option>`).join('');return `<div class="field"><label>Ngăn lưu trữ tầng 6</label><select id="archiveCell" onchange="archiveChoice=this.value">${options}</select></div>`}
+function chooseAction(mode){if(!confirmLeaveStage())return;actionMode=mode;notice=null;resultOnly=false;renderGreen();}
 function stageArchive(){const d=current(selectedId);if(!d||!['IN_CABINET','BORROWED'].includes(d.status))return;const c=($('archiveCell')?.value||archiveChoice||ARCHIVE_CELLS.find(c=>available(c)));if(!c){notice={kind:'error',text:'Tầng 6 đã đầy hoặc tất cả ngăn bị khóa.'};renderGreen();return;}archiveChoice=c;setStage('ARCHIVE',{id:d.id,cell:c},`Chuyển ${d.code} từ ${prettyCell(d.status==='BORROWED'?d.lastCell:d.cell)} sang ${prettyCell(c)}, trên cùng chồng. Cấp số LT-${String(db.nextArchiveNo).padStart(4,'0')}; không cần trả lại ngăn cũ.`)}
 function stageWithdraw(){const d=current(selectedId);if(!d||d.status!=='IN_CABINET')return;const borrower=($('borrowerInput')?.value||borrowDraft).trim();if(!borrower){notice={kind:'error',text:'Cần nhập người hoặc nơi giữ hồ sơ khi rút.'};renderGreen();return;}borrowDraft=borrower;setStage('WITHDRAW',{id:d.id,borrower},`Rút ${d.code} tại ${prettyCell(d.cell)}, tập #${d.orderFromBottom}. Người/nơi giữ: ${borrower}. Các tập phía trên tự động giảm 1.`)}
-function defaultActionHtml(){if(tab==='LOG')return `<div class="notice">Nhật ký là chế độ chỉ xem, không có nút xác nhận.</div>`;
- if(tab==='SETUP')return `<div class="stack"><div class="notice">Chọn chức năng <b>Xếp theo năm</b>, <b>Khóa ngăn</b>, <b>Sức chứa</b> hoặc <b>Làm trống tủ</b> tại ô đỏ. Bản xem trước và nút xác nhận sẽ hiện tại đây.</div><div class="stats"><span class="chip">Hạn mức ${db.capacity}/ngăn</span><span class="chip">${db.locked.length} ngăn khóa</span><span class="chip">${db.dossiers.filter(d=>d.status==='UNPLACED').length} chưa xếp</span></div></div>`;
- if(tab==='SAVE')return `<div class="notice">Chọn chức năng In hoặc Xuất dữ liệu tại ô đỏ. Xác nhận thực hiện ở đây.</div>`;
- if(tab==='ADD'){const d=current(selectedId);if(d?.status==='UNPLACED'&&d.sourceCaseId){const suggested=pendingSuggestedCell||proposeAutoCell(d.year)||'',list=ACTIVE_CELLS.filter(c=>available(c));return `${formatSummary(d)}<div class="notice">Hồ sơ đã nạp vào danh mục nhưng chưa đặt vào tủ. Gợi ý tầng 3–5 theo ngăn còn chỗ gần đầy nhất; có thể đổi ngăn.</div><div class="field"><label>Chọn ngăn lưu hồ sơ</label><select id="pendingPlaceCell" onchange="pendingSuggestedCell=this.value">${list.map(c=>`<option value="${c}" ${c===suggested?'selected':''}>${c} · ${occupancy(c)}/${capacityOf(c)}</option>`).join('')}</select></div><div class="btnrow"><button class="btn primary" onclick="stagePendingPlacement()" ${!list.length?'disabled':''}>Xem trước vị trí, chờ xác nhận</button></div>`;}return `<div class="notice">Chọn kiểm tra danh mục nguồn để phát hiện hồ sơ mới, hoặc nhập thủ công ở ô đỏ. Mọi thay đổi phải xem trước và xác nhận tại ô xanh.</div>`;}
- if(tab==='RETURN')return `<div class="notice">Chọn hồ sơ trong danh sách Trả tại ô đỏ. Sơ đồ hướng dẫn và nút xác nhận trả sẽ xuất hiện ở đây.</div>`;
- const d=current(selectedId);if(!d)return `<div class="notice">Nhập tìm hoặc bấm vào dòng hồ sơ tại ô đỏ. Vị trí trên sơ đồ tủ sẽ phát sáng; các tác vụ rút, điều chỉnh hoặc lưu trữ xuất hiện ở đây.</div>`;
- if(d.status==='BORROWED')return `${formatSummary(d)}<div class="notice">Hồ sơ đang rút: <b>${escapeHtml(d.borrower)}</b>. Chuyển sang thẻ <b>Trả hồ sơ</b> để trả, hoặc lưu trữ trực tiếp không phải trả về ngăn cũ.</div>${archiveInput(d)}<div class="btnrow"><button class="btn warning" onclick="stageArchive()">Chuẩn bị lưu trữ</button><button class="btn neutral" onclick="changeTab('RETURN')">Đến danh sách Trả</button></div>`;
- if(d.status==='ARCHIVED')return `${formatSummary(d)}<div class="notice amber">Hồ sơ đã lưu trữ trên tầng 6, được cấp số ${escapeHtml(d.archiveNo||'Chưa có số')}. Không cho rút/trả theo luồng tác nghiệp thường.</div>`;
- if(d.status==='UNPLACED')return `${formatSummary(d)}<div class="notice">Hồ sơ chưa có vị trí tủ. Dùng chức năng Thiết lập → Xếp theo năm để xếp lại.</div>`;
- return `${formatSummary(d)}<div class="grid2"><div class="field"><label>Người / nơi rút hồ sơ</label><input id="borrowerInput" value="${escapeHtml(borrowDraft)}" placeholder="Người lấy hoặc nơi giữ" oninput="borrowDraft=this.value"/></div><div class="field"><label>Ngăn lưu trữ tầng 6</label>${archiveInput(d)}</div></div><div class="btnrow"><button class="btn danger" onclick="stageWithdraw()">Chuẩn bị rút</button><button class="btn warning" onclick="stageArchive()">Chuẩn bị lưu trữ</button></div><div class="screenhint">Điều chỉnh thứ tự: chọn ngăn tại ô đỏ, nhấn ↑ hoặc ↓ trên dòng; xác nhận kết quả tại ô xanh.</div>`;
+function defaultActionHtml(){
+ if(tab==='LOG')return `<div class="screenhint">Nhật ký chỉ xem, không cần xác nhận.</div>`;
+ if(tab==='SETUP')return `<div class="screenhint">Chọn một thiết lập ở ô đỏ để xem trước và xác nhận.</div>`;
+ if(tab==='SAVE')return `<div class="screenhint">Chọn In hoặc Lưu ở ô đỏ.</div>`;
+ if(tab==='ADD'){const d=current(selectedId);if(d?.status==='UNPLACED'&&d.sourceCaseId){const suggested=pendingSuggestedCell||proposeAutoCell(d.year)||'',list=ACTIVE_CELLS.filter(c=>available(c));return `${formatSummary(d)}<div class="field"><label>Ngăn đề xuất</label><select id="pendingPlaceCell" onchange="pendingSuggestedCell=this.value">${list.map(c=>`<option value="${c}" ${c===suggested?'selected':''}>${c} · ${occupancy(c)}/${capacityOf(c)}</option>`).join('')}</select></div><div class="btnrow"><button class="btn primary" onclick="stagePendingPlacement()" ${!list.length?'disabled':''}>Xem trước xếp ngăn</button></div>`;}return `<div class="screenhint">Kiểm tra danh mục hoặc nhập hồ sơ ở ô đỏ.</div>`;}
+ if(tab==='RETURN')return `<div class="screenhint">Chọn hồ sơ đang rút tại ô đỏ để xem nơi trả.</div>`;
+ const d=current(selectedId);if(!d)return `<div class="screenhint">Chọn hồ sơ ở ô đỏ để thực hiện tác vụ.</div>`;
+ const summary=formatSummary(d);
+ if(d.status==='ARCHIVED')return `${summary}<div class="screenhint">Đã lưu trữ · ${escapeHtml(d.archiveNo||'Chưa có số lưu trữ')}.</div>`;
+ if(d.status==='UNPLACED')return `${summary}<div class="screenhint">Chưa xếp vào tủ. Chọn Thêm hồ sơ hoặc Thiết lập để bố trí.</div>`;
+ const actions=`<div class="action-switch"><button type="button" class="btn ${actionMode==='WITHDRAW'?'danger':'neutral'}" onclick="chooseAction('WITHDRAW')" ${d.status==='BORROWED'?'disabled':''}>Rút hồ sơ</button><button type="button" class="btn ${actionMode==='ARCHIVE'?'warning':'neutral'}" onclick="chooseAction('ARCHIVE')">Lưu trữ</button>${d.status==='BORROWED'?`<button type="button" class="btn outline" onclick="changeTab('RETURN')">Trả hồ sơ</button>`:''}</div>`;
+ if(actionMode==='ARCHIVE')return `${summary}${actions}${archiveInput(d)}<div class="btnrow"><button class="btn warning" onclick="stageArchive()">Xem trước lưu trữ</button></div>`;
+ if(actionMode==='WITHDRAW'&&d.status==='IN_CABINET')return `${summary}${actions}<div class="field"><label>Người / nơi giữ hồ sơ</label><input id="borrowerInput" value="${escapeHtml(borrowDraft)}" placeholder="Nhập người hoặc nơi giữ" autocomplete="off" oninput="borrowDraft=this.value"/></div><div class="btnrow"><button class="btn primary" onclick="stageWithdraw()">Xem trước rút</button></div>`;
+ if(d.status==='BORROWED')return `${summary}<div class="screenhint">Người giữ: <b>${escapeHtml(d.borrower)}</b></div>${actions}`;
+ return `${summary}${actions}`;
 }
 function stagePreview(){const {kind,p,description}=staged,mutating=['REORDER','WITHDRAW','RETURN','ARCHIVE','ADD','ARRANGE','CAPACITY','LOCK','CLEAR','IMPORT'].includes(kind);
  let body='';if(kind==='REORDER'){const list=p.ids.slice().reverse().map(id=>current(id)?.code).join(' · ');body=`<div class="viewonly"><b>Thứ tự mới (trên → dưới):</b><div class="summary">${escapeHtml(list)}</div></div>`;}
@@ -381,11 +416,11 @@ function stagePreview(){const {kind,p,description}=staged,mutating=['REORDER','W
   if(kind==='PLACE_SOURCE')body=`<div class="viewonly">${escapeHtml(prettyCell(p.cell))} · ${occupancy(p.cell)}/${capacityOf(p.cell)} hồ sơ hiện có → ${occupancy(p.cell)+1}/${capacityOf(p.cell)} sau xếp.</div>`;
  if(kind==='IMPORT')body=`<div class="notice amber">Thao tác này sẽ thay thế toàn bộ dữ liệu trên trình duyệt hiện tại. Tải bản sao JSON trước nếu có dữ liệu cần giữ.</div>`;
  const labels={SOURCE_SYNC:'Xác nhận nhập danh mục',PLACE_SOURCE:'Xác nhận ngăn hồ sơ',REORDER:'Xác nhận thứ tự',WITHDRAW:'Xác nhận rút',RETURN:'Xác nhận trả',ARCHIVE:'Xác nhận lưu trữ',ADD:'Xác nhận thêm',ARRANGE:'Xác nhận xếp',CAPACITY:'Xác nhận sức chứa mặc định',CELL_CAPACITY:'Xác nhận sức chứa riêng ngăn',LOCK:'Xác nhận khóa',CLEAR:'Làm trống tủ',IMPORT:'Xác nhận nhập JSON',EXPORT_JSON:'Xác nhận tải JSON',EXPORT_HTML:'Xác nhận tải HTML',PRINT:'Mở hộp thoại in'};
- return `<div class="rightpreview"><h3>Xem trước: ${escapeHtml(labels[kind]||kind)}</h3><p>${escapeHtml(description)}</p>${body}<div class="confirmline"><button class="btn outline" onclick="discardStage()">Hủy thay đổi</button><button id="stageConfirm" class="btn ${kind==='CLEAR'?'danger':'primary'}" ${kind==='CLEAR'||kind==='CAPACITY'&&p.over?.length?'disabled':''} onclick="commitStaged()">${escapeHtml(labels[kind]||'Xác nhận')}</button></div></div>`;
+ return `<div class="rightpreview"><h3>${escapeHtml(labels[kind]||kind)}</h3><p>${escapeHtml(description)}</p>${body}<div class="confirmline"><button class="btn outline" onclick="discardStage()">Hủy thay đổi</button><button id="stageConfirm" class="btn ${kind==='CLEAR'?'danger':'primary'}" ${kind==='CLEAR'||kind==='CAPACITY'&&p.over?.length?'disabled':''} onclick="commitStaged()">${escapeHtml(labels[kind]||'Xác nhận')}</button></div></div>`;
 }
 function toggleClearButton(){const x=$('stageConfirm');if(x)x.disabled=($('clearPhrase')?.value||'').trim().toUpperCase()!=='LAM TRONG TU';}
 function renderGreen(){if(!$('greenBody'))return;let html='';if(notice)html+=`<div class="notice ${notice.kind==='error'?'error':'success'}" role="status" style="margin-bottom:10px">${escapeHtml(notice.text)}</div>`;
- if(staged){$('actionType').textContent='Chờ xác nhận';html+=stagePreview();}else{$('actionType').textContent=notice?.kind==='success'?'Đã hoàn tất':'Sẵn sàng';html+=defaultActionHtml();}
+ if(staged){$('actionType').textContent='Chờ xác nhận';html+=stagePreview();}else{$('actionType').textContent=notice?.kind==='success'?'Đã hoàn tất':'Sẵn sàng';if(!resultOnly)html+=defaultActionHtml();}
  $('greenBody').innerHTML=html;}
 function preparePrint(scope){const docs=db.dossiers.filter(d=>scope==='ALL'||scope===d.cell||(scope==='BORROWED'&&d.status==='BORROWED')||(scope==='ARCHIVED'&&d.status==='ARCHIVED')||(scope==='UNPLACED'&&d.status==='UNPLACED'));
  const sorted=docs.slice().sort((a,b)=>a.year.localeCompare(b.year)||a.code.localeCompare(b.code,'vi',{numeric:true}));

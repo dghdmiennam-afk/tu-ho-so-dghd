@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bản Đồ Đồ Họa Tủ Hồ Sơ 2025 - 2026 | ĐGHD Miền Nam</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #0b1120; color: #f8fafc; }
+    /* Khung gỗ mô phỏng tủ thực tế */
+    .cabinet-outer {
+      background: linear-gradient(145deg, #5d4037, #3e2723);
+      border: 6px solid #271815;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.75);
+    }
+    .wood-compartment {
+      background: linear-gradient(180deg, #6d4c41 0%, #4e342e 100%);
+      border: 2px solid #3e2723;
+    }
+    .glass-column {
+      background: linear-gradient(135deg, rgba(141,110,99,0.88), rgba(93,64,55,0.92));
+      padding: 6px;
+      border-radius: 10px;
+      border: 2px solid #3e2723;
+    }
+    .shelf-cavity {
+      background: #1e293b;
+      border-bottom: 5px solid #8d6e63;
+      position: relative;
+      transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .shelf-cavity:hover {
+      border-color: #38bdf8;
+    }
+    /* Làm mờ các ngăn không chứa hồ sơ đang định vị */
+    .dimmed-shelf {
+      opacity: 0.25;
+      filter: grayscale(45%);
+    }
+    /* Phát sáng ngăn tủ chứa hồ sơ cần lấy */
+    .spotlight-shelf {
+      opacity: 1 !important;
+      background: #090d16 !important;
+      border: 2px solid #f59e0b !important;
+      border-bottom: 6px solid #f59e0b !important;
+      box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.4), 0 0 32px rgba(245, 158, 11, 0.65);
+      transform: scale(1.03);
+      z-index: 25;
+    }
+    /* Vạch hồ sơ phát sáng trong ngăn tủ */
+    .target-file-bar {
+      background: linear-gradient(90deg, #f59e0b, #fef08a, #f59e0b) !important;
+      height: 8px !important;
+      border-radius: 3px;
+      box-shadow: 0 0 12px #fbbf24;
+      animation: pulseBar 0.85s infinite alternate;
+      position: relative;
+    }
+    @keyframes pulseBar {
+      from { transform: scaleX(1); filter: brightness(1); }
+      to { transform: scaleX(1.05); filter: brightness(1.35); }
+    }
+    /* Hiệu ứng nhô tập hồ sơ ở mặt cắt phóng to */
+    .slice-pullout {
+      transform: translateX(14px) scale(1.02);
+      box-shadow: -10px 6px 22px rgba(245, 158, 11, 0.45);
+    }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #0f172a; }
+    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #475569; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- HEADER & THANH TÌM KIẾM TRUNG TÂM -->
+  <header class="bg-slate-900/95 border-b border-slate-800 sticky top-0 z-40 backdrop-blur">
+    <div class="max-w-[1640px] mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-amber-500 text-slate-950 flex items-center justify-center font-black text-lg shadow-lg">MN</div>
+        <div>
+          <h1 class="font-extrabold text-sm md:text-base text-white tracking-tight">BẢN ĐỒ ĐỒ HỌA TỦ HỒ SƠ (2025 – 2026)</h1>
+          <p class="text-[11px] text-slate-400">Công ty Đấu giá Hợp danh Miền Nam · Định vị trực quan & Kẹp giữa X (Trên) / Y (Dưới)</p>
+        </div>
+      </div>
+
+      <!-- Ô NHẬP TÌM HỒ SƠ -->
+      <div class="flex-1 max-w-xl mx-2">
+        <div class="relative">
+          <input
+            id="globalSearch"
+            type="text"
+            placeholder="🔍 Nhập tìm hồ sơ: Mã HS (2025-002, 82/2026), Tên TS (61 Ba Vân, Minh Phụng, Hiệp Lợi)..."
+            class="w-full pl-10 pr-24 py-2 rounded-xl bg-slate-800 border-2 border-amber-500/70 text-xs md:text-sm text-white placeholder-slate-400 focus:outline-none focus:border-amber-400"
+            oninput="handleSearch(this.value)"
+          />
+          <svg class="w-4 h-4 text-amber-400 absolute left-3.5 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+          <button onclick="clearSearch()" class="absolute right-2 top-1.5 px-2.5 py-1 text-[11px] bg-slate-700 hover:bg-slate-600 rounded-lg text-slate-200 font-semibold">Bỏ lọc</button>
+        </div>
+      </div>
+
+      <!-- CÁC NÚT TÁC VỤ & CẬP NHẬT GITHUB -->
+      <div class="flex items-center gap-1.5 flex-wrap">
+        <button onclick="openModal('modalQuickStack')" class="px-3 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-xs font-bold shadow">
+          ⚡ Xếp Nhanh Chồng HS
+        </button>
+        <button onclick="openModal('modalAddEdit')" class="px-3 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-xs font-bold shadow">
+          + Thêm Hồ Sơ
+        </button>
+        <button onclick="downloadUpdatedHTMLFile()" title="Tải về file index.html đã nhúng sẵn vị trí mới nhất để up lên GitHub" class="px-3 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-black shadow">
+          ⬇️ Tải index.html mới (Up GitHub)
+        </button>
+        <button onclick="exportDataJSON()" class="px-2.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-semibold text-slate-300">
+          💾 JSON
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- THANH TRẠNG THÁI HỒ SƠ ĐANG RÚT LƯU NGOÀI TỦ -->
+  <section class="bg-slate-900/90 border-b border-slate-800">
+    <div class="max-w-[1640px] mx-auto px-4 py-2 flex flex-wrap items-center justify-between gap-2 text-xs">
+      <div class="flex items-center gap-2">
+        <span class="px-2 py-0.5 rounded bg-rose-600 text-white font-extrabold text-[11px]">HỒ SƠ ĐANG RÚT LƯU (LẤY NGUYÊN TÚI):</span>
+        <span id="borrowedCountText" class="text-slate-300 font-bold">0 túi</span>
+      </div>
+      <div id="borrowedPillsContainer" class="flex flex-wrap items-center gap-2"></div>
+    </div>
+  </section>
+
+  <!-- BỐ CỤC 3 CỘT CHÍNH -->
+  <main class="max-w-[1640px] w-full mx-auto px-4 py-4 flex-1 grid grid-cols-1 lg:grid-cols-12 gap-4">
+
+    <!-- =============================================================== -->
+    <!-- CỘT 1 (6 COLS): ĐỒ HỌA MINH HỌA VỊ TRÍ TRÊN TỦ                  -->
+    <!-- =============================================================== -->
+    <div class="lg:col-span-6 flex flex-col">
+      <div class="bg-slate-900 rounded-2xl border border-slate-800 p-4 flex-1 flex flex-col">
+        <div class="flex items-center justify-between mb-3">
+          <div>
+            <h2 class="font-extrabold text-amber-400 text-xs md:text-sm uppercase tracking-wider">1. Đồ Họa Minh Họa Vị Trí Hồ Sơ Trên Tủ</h2>
+            <p class="text-[11px] text-slate-400">Ngăn tủ chứa hồ sơ sẽ bật sáng và chỉ mũi tên vào đúng vị trí tập hồ sơ trong chồng</p>
+          </div>
+          <button onclick="resetSpotlight()" class="text-xs px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 font-medium">
+            Bật sáng toàn tủ
+          </button>
+        </div>
+
+        <!-- MÔ PHỎNG TỦ HỒ SƠ 3 TẦNG (24 NGĂN/HỘC) -->
+        <div class="cabinet-outer rounded-2xl p-3.5 space-y-3 flex-1 flex flex-col justify-between">
+
+          <!-- TẦNG TRÊN: 4 HỘC TỦ GỖ SÁT TRẦN (T1 -> T4) -->
+          <div>
+            <div class="text-[10px] font-bold text-amber-200/90 uppercase mb-1 flex justify-between px-1">
+              <span>⬆️ Tầng Trên (4 Hộc Gỗ Có Khóa: T1 → T4)</span>
+              <span>Đếm từ đáy hộc lên (#1↑)</span>
+            </div>
+            <div id="graphicTopTier" class="grid grid-cols-4 gap-2.5"></div>
+          </div>
+
+          <!-- TẦNG GIỮA: 4 BUỒNG CÁNH KÍNH × 3 NGĂN KỆ (M1 -> M4) -->
+          <div>
+            <div class="text-[10px] font-bold text-amber-200/90 uppercase mb-1 flex justify-between px-1">
+              <span>🪟 Tầng Giữa (4 Buồng Cánh Kính × 3 Ngăn Kệ: M1 → M4)</span>
+              <span>Ngăn 1: Trên · 2: Giữa · 3: Dưới</span>
+            </div>
+            <div id="graphicMidTier" class="grid grid-cols-4 gap-2.5"></div>
+          </div>
+
+          <!-- TẦNG DƯỚI: 4 BUỒNG HỘC GỖ ĐÁY × 2 NGĂN KỆ (B1 -> B4) -->
+          <div>
+            <div class="text-[10px] font-bold text-amber-200/90 uppercase mb-1 flex justify-between px-1">
+              <span>⬇️ Tầng Dưới (4 Buồng Hộc Gỗ Đáy × 2 Ngăn: B1 → B4)</span>
+              <span>Ngăn 1: Trên · 2: Sát sàn</span>
+            </div>
+            <div id="graphicBotTier" class="grid grid-cols-4 gap-2.5"></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- CỘT 2 (3 COLS): CHỈ DẪN Ở GIỮA HỒ SƠ X (TRÊN) VÀ Y (DƯỚI)       -->
+    <!--                 + ĐỒ HỌA MẶT CẮT CHỒNG HỒ SƠ                    -->
+    <!-- =============================================================== -->
+    <div class="lg:col-span-3 flex flex-col gap-4">
+
+      <!-- MỤC CHỈ DẪN KẸP GIỮA HỒ SƠ X (TRÊN) VÀ HỒ SƠ Y (DƯỚI) -->
+      <div class="bg-slate-900 rounded-2xl border border-slate-800 p-4">
+        <h2 class="font-extrabold text-amber-400 text-xs uppercase tracking-wider mb-2.5">2. Chỉ Dẫn Kẹp Giữa X (Trên) & Y (Dưới)</h2>
+        <div id="conciseGuideBox"></div>
+      </div>
+
+      <!-- ĐỒ HỌA PHÓNG TO CHỒNG HỒ SƠ TRONG NGĂN -->
+      <div class="bg-slate-900 rounded-2xl border border-slate-800 p-4 flex-1 flex flex-col">
+        <div class="flex items-center justify-between mb-2">
+          <div class="flex items-center gap-1.5">
+            <span id="cutawayShelfBadge" class="px-2 py-0.5 rounded bg-amber-500 text-slate-950 font-black text-xs">T3</span>
+            <span class="font-bold text-xs text-white">Mô Phỏng Chồng Trong Ngăn</span>
+          </div>
+          <span id="cutawayCountText" class="text-[11px] text-amber-400 font-bold">0 tập</span>
+        </div>
+
+        <div class="flex-1 flex flex-col justify-end bg-slate-950 rounded-xl p-3 border-2 border-amber-900/70 relative overflow-hidden min-h-[280px]">
+          <div class="text-[10px] text-slate-500 text-center border-b border-slate-800 pb-1 mb-2">⬆️ Đỉnh chồng hồ sơ (Trên cùng)</div>
+          <div id="cutawayStackList" class="space-y-1.5 max-h-[320px] overflow-y-auto pr-1 flex flex-col"></div>
+          <div class="mt-2 h-5 bg-gradient-to-r from-amber-800 via-amber-600 to-amber-800 rounded flex items-center justify-center text-[10px] font-black text-amber-950 uppercase">
+            ⬇️ Mặt Gỗ Đáy Kệ (Mốc #1 từ dưới lên) ⬇️
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- CỘT 3 (3 COLS): DANH MỤC HỒ SƠ KHO NĂM 2025 & NĂM 2026          -->
+    <!-- =============================================================== -->
+    <div class="lg:col-span-3 flex flex-col">
+      <div class="bg-slate-900 rounded-2xl border border-slate-800 p-4 flex-1 flex flex-col">
+        <div class="flex items-center justify-between mb-2">
+          <h2 class="font-extrabold text-white text-xs uppercase tracking-wider">3. Kho Lưu Trữ 2025 & 2026</h2>
+          <span id="listCountBadge" class="text-xs px-2 py-0.5 rounded-full bg-slate-800 text-amber-400 font-bold">0</span>
+        </div>
+
+        <div class="grid grid-cols-3 gap-1.5 mb-3 text-[11px]">
+          <select id="filterYear" onchange="renderAll()" class="border border-slate-700 rounded-lg px-2 py-1.5 bg-slate-800 text-white font-semibold">
+            <option value="ALL">Mọi năm</option>
+            <option value="2025">Năm 2025</option>
+            <option value="2026">Năm 2026</option>
+          </select>
+          <select id="filterStatus" onchange="renderAll()" class="border border-slate-700 rounded-lg px-2 py-1.5 bg-slate-800 text-white font-semibold">
+            <option value="ALL">Mọi TT</option>
+            <option value="IN_CABINET">Trong tủ</option>
+            <option value="BORROWED">Đang rút</option>
+          </select>
+          <select id="filterCell" onchange="renderAll()" class="border border-slate-700 rounded-lg px-2 py-1.5 bg-slate-800 text-white font-semibold">
+            <option value="ALL">Mọi ngăn</option>
+          </select>
+        </div>
+
+        <div id="dossierListContainer" class="flex-1 space-y-2 overflow-y-auto max-h-[550px] pr-1"></div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- MODAL 1: RÚT HỒ SƠ LƯU (LẤY LÀ LẤY HẾT NGUYÊN TÚI) -->
+  <div id="modalWithdraw" class="fixed inset-0 bg-black/75 hidden items-center justify-center z-50 p-4">
+    <div class="bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl max-w-md w-full p-5 space-y-4 text-xs text-white">
+      <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+        <h3 class="font-extrabold text-base text-rose-400">📤 Rút Hồ Sơ Lưu (Lấy Nguyên Túi)</h3>
+        <button onclick="closeModal('modalWithdraw')" class="text-slate-400 hover:text-white text-lg">&times;</button>
+      </div>
+      <div id="withdrawDossierInfo" class="p-3 rounded-xl bg-slate-800 border border-slate-700"></div>
+      <div class="p-2.5 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-300 text-[11px]">
+        ⚡ Khi rút hồ sơ này ra, các tập nằm phía trên sẽ tự động lùi thứ tự xuống 1 bậc khớp với thực tế trong ngăn tủ.
+      </div>
+      <form onsubmit="confirmWithdrawDossier(event)" class="space-y-3">
+        <input type="hidden" id="withdrawDocId" />
+        <div>
+          <label class="font-bold text-slate-300 block mb-1">Người rút hồ sơ *</label>
+          <input id="wBorrower" required placeholder="VD: ĐGV Nguyễn Chúc Vy / Nguyễn Sỹ Trưởng / PGĐ Phạm Minh Đức" class="w-full border border-slate-700 bg-slate-800 rounded-lg px-3 py-2 text-white" />
+        </div>
+        <div>
+          <label class="font-bold text-slate-300 block mb-1">Lý do rút hồ sơ *</label>
+          <select id="wPurpose" class="w-full border border-slate-700 bg-slate-800 rounded-lg px-3 py-2 text-white">
+            <option value="Đem ra điều hành Phiên đấu giá">Đem ra điều hành Phiên đấu giá</option>
+            <option value="Cho khách hàng xem hồ sơ">Cho khách hàng xem hồ sơ</option>
+            <option value="Soạn Hợp đồng SĐBS / Quy chế / Thông báo">Soạn Hợp đồng SĐBS / Quy chế / Thông báo</option>
+            <option value="Làm thủ tục Thanh lý / Bàn giao">Làm thủ tục Thanh lý / Bàn giao</option>
+          </select>
+        </div>
+        <div class="flex justify-end gap-2 pt-3 border-t border-slate-800">
+          <button type="button" onclick="closeModal('modalWithdraw')" class="px-4 py-2 rounded-lg bg-slate-800">Hủy</button>
+          <button type="submit" class="px-4 py-2 rounded-lg bg-rose-600 hover:bg-rose-500 text-white font-bold">Xác Nhận Rút</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL 2: TRẢ HỒ SƠ LƯU (TRẢ LÀ TRẢ HẾT NGUYÊN TÚI) -->
+  <div id="modalReturn" class="fixed inset-0 bg-black/75 hidden items-center justify-center z-50 p-4">
+    <div class="bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl max-w-md w-full p-5 space-y-4 text-xs text-white">
+      <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+        <h3 class="font-extrabold text-base text-emerald-400">📥 Trả Hồ Sơ Vào Tủ (Trả Nguyên Túi)</h3>
+        <button onclick="closeModal('modalReturn')" class="text-slate-400 hover:text-white text-lg">&times;</button>
+      </div>
+      <div id="returnDossierInfo" class="p-3 rounded-xl bg-slate-800 border border-slate-700"></div>
+      <input type="hidden" id="returnDocId" />
+      <div class="space-y-2.5">
+        <button onclick="confirmReturnDossier('TOP_OLD_CELL')" class="w-full text-left p-3 rounded-xl border-2 border-emerald-500 bg-emerald-950/60 hover:bg-emerald-900/60 transition">
+          <div class="font-extrabold text-emerald-300">1. Đặt lên TRÊN CÙNG của chồng tại Ngăn cũ (Nhanh nhất)</div>
+          <div id="returnTopDesc" class="text-[11px] text-emerald-200 mt-0.5"></div>
+        </button>
+        <button onclick="confirmReturnDossier('EXACT_OLD_POS')" class="w-full text-left p-3 rounded-xl border border-slate-700 bg-slate-800 hover:bg-slate-700 transition">
+          <div class="font-bold text-white">2. Nhét trả vào đúng vị trí cũ trước khi rút</div>
+          <div id="returnExactDesc" class="text-[11px] text-slate-400 mt-0.5"></div>
+        </button>
+        <div class="p-3 rounded-xl border border-slate-700 bg-slate-800/60 space-y-2">
+          <div class="font-bold text-slate-200">3. Cất sang một Ngăn khác (Đặt lên đỉnh chồng):</div>
+          <div class="flex gap-2">
+            <select id="returnNewCellSelect" class="flex-1 border border-slate-700 bg-slate-900 rounded-lg px-2 py-1.5 text-white font-semibold"></select>
+            <button onclick="confirmReturnDossier('NEW_CELL')" class="px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-bold">Chuyển Ngăn</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 3: THÊM / SỬA HỒ SƠ -->
+  <div id="modalAddEdit" class="fixed inset-0 bg-black/75 hidden items-center justify-center z-50 p-4">
+    <div class="bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl max-w-md w-full p-5 space-y-3 text-xs text-white">
+      <div class="flex justify-between items-center border-b border-slate-800 pb-2">
+        <h3 class="font-bold text-sm text-amber-400">Thêm / Cập Nhật Vị Trí Hồ Sơ</h3>
+        <button onclick="closeModal('modalAddEdit')" class="text-slate-400 text-lg">&times;</button>
+      </div>
+      <form id="formDossier" onsubmit="saveDossierForm(event)" class="space-y-3">
+        <input type="hidden" id="editId" />
+        <div class="grid grid-cols-3 gap-2">
+          <div>
+            <label class="text-[11px] text-slate-400 block mb-1">Năm lưu trữ</label>
+            <select id="fYear" class="w-full border border-slate-700 bg-slate-800 rounded-lg px-2 py-2">
+              <option value="2025">2025</option>
+              <option value="2026">2026</option>
+            </select>
+          </div>
+          <div class="col-span-2">
+            <label class="text-[11px] text-slate-400 block mb-1">Mã Hồ Sơ / Số HĐ *</label>
+            <input id="fCode" required placeholder="VD: 2025-002 hoặc 82/2026/HĐDVĐG" class="w-full border border-slate-700 bg-slate-800 rounded-lg px-2.5 py-2" />
+          </div>
+        </div>
+        <div>
+          <label class="text-[11px] text-slate-400 block mb-1">Tên Hồ Sơ / Tài Sản Đấu Giá *</label>
+          <input id="fName" required placeholder="VD: BĐS 61 Ba Vân, Tân Bình" class="w-full border border-slate-700 bg-slate-800 rounded-lg px-2.5 py-2" />
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="text-[11px] text-slate-400 block mb-1">Ngân hàng / Đơn vị</label>
+            <input id="fBank" placeholder="VD: Agribank CN Trung tâm Sài Gòn" class="w-full border border-slate-700 bg-slate-800 rounded-lg px-2.5 py-2" />
+          </div>
+          <div>
+            <label class="text-[11px] text-slate-400 block mb-1">Số Phụ lục</label>
+            <input id="fSubCount" type="number" min="0" value="1" class="w-full border border-slate-700 bg-slate-800 rounded-lg px-2.5 py-2" />
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-2 p-2.5 rounded-xl bg-amber-500/10 border border-amber-500/30">
+          <div>
+            <label class="text-[11px] text-amber-300 font-bold block mb-1">Ngăn / Hộc Tủ:</label>
+            <select id="fCell" class="w-full border border-amber-500/50 bg-slate-800 rounded-lg px-2 py-2 font-bold text-white"></select>
+          </div>
+          <div>
+            <label class="text-[11px] text-amber-300 font-bold block mb-1">Thứ tự từ dưới lên (#):</label>
+            <input id="fOrder" type="number" min="1" value="1" class="w-full border border-amber-500/50 bg-slate-800 rounded-lg px-2 py-2 font-bold text-white" />
+          </div>
+        </div>
+        <div class="flex justify-end gap-2 pt-2 border-t border-slate-800">
+          <button type="button" onclick="closeModal('modalAddEdit')" class="px-3 py-1.5 rounded-lg bg-slate-800">Hủy</button>
+          <button type="submit" class="px-4 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 font-bold">Lưu Hồ Sơ</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL 4: XẾP NHANH CHỒNG HỒ SƠ TỪ DƯỚI ĐÁY KỆ LÊN -->
+  <div id="modalQuickStack" class="fixed inset-0 bg-black/75 hidden items-center justify-center z-50 p-4">
+    <div class="bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl max-w-2xl w-full p-5 space-y-3 text-xs text-white">
+      <div class="flex justify-between items-center border-b border-slate-800 pb-2">
+        <div>
+          <h3 class="font-bold text-sm text-amber-400">⚡ Xếp Nhanh Chồng Hồ Sơ Từ Dưới Đáy Kệ Lên</h3>
+          <p class="text-[11px] text-slate-400">Chọn Ngăn tủ, sau đó bấm chọn lần lượt từng hồ sơ theo đúng thứ tự từ mặt kệ dưới cùng (#1) đi lên</p>
+        </div>
+        <button onclick="closeModal('modalQuickStack')" class="text-slate-400 text-lg">&times;</button>
+      </div>
+      <select id="qsCell" onchange="renderQuickStackModal()" class="w-full border border-amber-500 bg-slate-800 rounded-lg px-3 py-2 font-bold text-amber-300"></select>
+      <div class="grid grid-cols-2 gap-3">
+        <div class="border border-slate-700 rounded-xl p-2.5 bg-slate-950">
+          <input id="qsSearch" type="text" placeholder="Lọc nhanh mã hoặc tên..." oninput="renderQuickStackModal()" class="w-full border border-slate-700 rounded px-2 py-1.5 mb-2 bg-slate-900 text-white" />
+          <div id="qsAvailableList" class="space-y-1 max-h-60 overflow-y-auto"></div>
+        </div>
+        <div class="border-2 border-amber-500/60 rounded-xl p-2.5 bg-slate-950 flex flex-col justify-between">
+          <div id="qsCurrentStackList" class="space-y-1 max-h-60 overflow-y-auto"></div>
+          <div class="mt-2 pt-1.5 border-t border-slate-800 text-center text-amber-400 font-bold text-[10px]">⬇️ Mặt gỗ đáy kệ (#1 nằm dưới cùng) ⬇️</div>
+        </div>
+      </div>
+      <div class="flex justify-end pt-2 border-t border-slate-800">
+        <button onclick="closeModal('modalQuickStack')" class="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 font-bold">Hoàn Tất</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // =========================================================================
+    // 1. CẤU HÌNH 24 NGĂN / HỘC TỦ KHỚP ẢNH THỰC TẾ TẠI VĂN PHÒNG
+    // =========================================================================
+    const CABINET_CELLS = [
+      { id: 'T1', tier: 'TOP', name: 'Hộc Gỗ Đỉnh T1 (Ngoài cùng Trái)' },
+      { id: 'T2', tier: 'TOP', name: 'Hộc Gỗ Đỉnh T2 (Giữa Trái)' },
+      { id: 'T3', tier: 'TOP', name: 'Hộc Gỗ Đỉnh T3 (Giữa Phải)' },
+      { id: 'T4', tier: 'TOP', name: 'Hộc Gỗ Đỉnh T4 (Ngoài cùng Phải)' },
+
+      { id: 'M1-1', tier: 'MID', col: 1, row: 1, name: 'Buồng Kính 1 (Trái) - Ngăn 1 (Trên)' },
+      { id: 'M1-2', tier: 'MID', col: 1, row: 2, name: 'Buồng Kính 1 (Trái) - Ngăn 2 (Giữa)' },
+      { id: 'M1-3', tier: 'MID', col: 1, row: 3, name: 'Buồng Kính 1 (Trái) - Ngăn 3 (Dưới)' },
+
+      { id: 'M2-1', tier: 'MID', col: 2, row: 1, name: 'Buồng Kính 2 (Giữa Trái) - Ngăn 1 (Trên)' },
+      { id: 'M2-2', tier: 'MID', col: 2, row: 2, name: 'Buồng Kính 2 (Giữa Trái) - Ngăn 2 (Giữa)' },
+      { id: 'M2-3', tier: 'MID', col: 2, row: 3, name: 'Buồng Kính 2 (Giữa Trái) - Ngăn 3 (Dưới)' },
+
+      { id: 'M3-1', tier: 'MID', col: 3, row: 1, name: 'Buồng Kính 3 (Giữa Phải) - Ngăn 1 (Trên)' },
+      { id: 'M3-2', tier: 'MID', col: 3, row: 2, name: 'Buồng Kính 3 (Giữa Phải) - Ngăn 2 (Giữa)' },
+      { id: 'M3-3', tier: 'MID', col: 3, row: 3, name: 'Buồng Kính 3 (Giữa Phải) - Ngăn 3 (Dưới)' },
+
+      { id: 'M4-1', tier: 'MID', col: 4, row: 1, name: 'Buồng Kính 4 (Phải) - Ngăn 1 (Trên)' },
+      { id: 'M4-2', tier: 'MID', col: 4, row: 2, name: 'Buồng Kính 4 (Phải) - Ngăn 2 (Giữa)' },
+      { id: 'M4-3', tier: 'MID', col: 4, row: 3, name: 'Buồng Kính 4 (Phải) - Ngăn 3 (Dưới)' },
+
+      { id: 'B1-1', tier: 'BOT', col: 1, row: 1, name: 'Hộc Đáy 1 (Trái) - Ngăn Trên' },
+      { id: 'B1-2', tier: 'BOT', col: 1, row: 2, name: 'Hộc Đáy 1 (Trái) - Ngăn Sát Sàn' },
+
+      { id: 'B2-1', tier: 'BOT', col: 2, row: 1, name: 'Hộc Đáy 2 (Giữa Trái) - Ngăn Trên' },
+      { id: 'B2-2', tier: 'BOT', col: 2, row: 2, name: 'Hộc Đáy 2 (Giữa Trái) - Ngăn Sát Sàn' },
+
+      { id: 'B3-1', tier: 'BOT', col: 3, row: 1, name: 'Hộc Đáy 3 (Giữa Phải) - Ngăn Trên' },
+      { id: 'B3-2', tier: 'BOT', col: 3, row: 2, name: 'Hộc Đáy 3 (Giữa Phải) - Ngăn Sát Sàn' },
+
+      { id: 'B4-1', tier: 'BOT', col: 4, row: 1, name: 'Hộc Đáy 4 (Phải) - Ngăn Trên' },
+      { id: 'B4-2', tier: 'BOT', col: 4, row: 2, name: 'Hộc Đáy 4 (Phải) - Ngăn Sát Sàn' }
+    ];
+
+    // =========================================================================
+    // 2. DỮ LIỆU GỐC TOÀN BỘ 37 HỒ SƠ NĂM 2025 & DANH MỤC HỒ SƠ NĂM 2026
+    // =========================================================================
+    /*__INITIAL_DOSSIERS_START__*/
+    const INITIAL_DOSSIERS = [
+      // --- HỘC T3 (Tầng trên: 2025-001 -> 2025-008) ---
+      { id: 'HS-2025-001', year: '2025', code: '2025-001', name: 'Máy móc thiết bị - QTV Phi', bank: 'QTV Phi', subCount: 21, cell: 'T3', orderFromBottom: 1, status: 'IN_CABINET', borrower: '', purpose: '' },
+      { id: 'HS-2025-002', year: '2025', code: '2025-002', name: 'BĐS 61 Ba Vân, Phường 14, Tân Bình', bank: 'Agribank CN Tân Sơn Nhất / Phú Nhuận', subCount: 3, cell: 'T3', orderFromBottom: 2, status: 'IN_CABINET', borrower: '', purpose: '' },
+      { id: 'HS-2025-003', year: '2025', code: '2025-003', name: 'BĐS 2/1 Đào Duy Từ, Phú Nhuận', bank: 'Agribank CN Tân Sơn Nhất / Phú Nhuận', subCount: 3, cell: 'T3', orderFromBottom: 3, status: 'IN_CABINET', borrower: '', purpose: '' },
+      { id: 'HS-2025-004', year: '2025', code: '2025-004', name: 'Khoản nợ Công ty CP ĐT MinhVietCorp', bank: 'VietinBank CN 1', subCount: 7, cell: 'T3', orderFromBottom: 4, status: 'IN_CABINET', borrower: '', purpose: '' },
+      { id: 'HS-2025-005', year: '2025', code: '2025-005', name: 'Khoản nợ Trần Thị Bích Thủy', bank: 'Agribank CN Trung tâm Sài Gòn', subCount: 11, cell: 'T3', orderFromBottom: 5, status: 'IN_CABINET', borrower: '', purpose: '' },
+      { id: 'HS-2025-006', year: '2025', code: '2025-006', name: 'BĐS 98.14 Tân Hưng, Quận 7', bank: 'Agribank CN Trung tâm Sài Gòn', subCount: 11, cell: 'T3', orderFromBottom: 6, status: 'IN_CABINET', borrower: '', purpose: '' },
+      { id: 'HS-2025-007', year: '2025', code: '2025-007', name: 'Khoản nợ Công ty Liên Hằng', bank: 'AMC - Agribank CN Hóc Môn', subCount: 6, cell: 'T3', orderFromBottom: 7, status: 'IN_CABINET', borrower: '', purpose: '' },
+      { id: 'HS-2025-008', year: '2025', code: '2025-008', name: 'Khoản nợ Bệnh viện Đa khoa Toàn Mỹ', bank: 'AMC - Agribank CN Hóc Môn', subCount: 7, cell: 'T3', orderFromBottom: 8, status: 'IN_CABINET', borrower: '', purpose: '' },
+
+      // --- HỘC T4 (Tầng trên: 2025-009 -> 2025-016, bỏ 2025-011 đã loại) ---
+      { id: 'HS-2025-009', year: '2025', code: '2025-009', name: 'BĐS 276 Minh Phụng, Quận 11', bank: 'Agribank CN Trung tâm Sài Gòn', subCount: 4, cell: 'T4', orderFromBottom: 1, status: 'IN_CABINET', borrower: '', purpose: '' },
+      { id: 'HS-2025-010', year: '2025', code: '2025-010', name: 'Khoản nợ Công ty Thức ăn Gia súc Hiệp Lợi', bank: 'Agribank CN Phú Nhuận', subCount: 6, cell: 'T4', orderFromBottom: 2, status: 'IN_CABINET', borrower: '', purpose: '' },
+      { id: 'HS-2025-012', year: '2025', code: '2025-012', name: 'Khoản nợ Nguyễn Hiếu Thịnh - Trần Võ Sơn Trà', bank: 'VietinBank CN Gia Định', subCount: 2, cell: 'T4', orderFromBottom: 3, status: 'IN_CABINET', borrower: '', purpose: '' },
+      { id: 'HS-2025-013', year: '2025', code: '2025-013', name: 'Khoản nợ Tăng Kỳ Anh - Nguyễn Thị Hạnh', bank: 'VietinBank CN Sài Gòn', subCount: 4, cell: 'T4', orderFromBottom: 4, status: 'IN_CABINET', borrower: '', purpose: '' },
+      { id: 'HS-2025-014', year: '2025', code: '2025-014', name: 'Thửa đất 1265, TBĐ 9, Thanh Xuân', bank: 'Agribank CN Lý Thường Kiệt', subCount: 5, cell: 'T4', orderFromBottom: 5, status: 'IN_CABINET', borrower: '', purpose: '' },
+      { id: 'HS-2025-015', year: '2025', code: '2025-015', name: 'Thửa đất 1231 và 1232, TBĐ 1, Tây Ninh', bank: 'Agribank CN Trung tâm Sài Gòn', subCount: 4, cell: 'T4', orderFromBottom: 6, status: 'IN_CABINET', borrower: '', purpose: '' },
+      { id: 'HS-2025-016', year: '2025', code: '2025-016', name: 'Thửa đất 184, TBĐ 4, Cần Đước, Long An', bank: 'Agribank CN Trung tâm Sài Gòn', subCount: 4, cell: 'T4', orderFromBottom: 7, status: 'IN_CABINET', borrower: '', purpose: '' },
+
+      // --- NGĂN M1-2 & M1-3 (Buồng kính 1: 2025-017 -> 2025-025) ---
+      { id: 'HS-2025-017', year: '2025', code: '2025-017', name: 'Khoản nợ Tòa nhà SEM Thảo Điền', bank: 'Agribank CN Trung tâm Sài Gòn', subCount: 5, cell: 'M1-2', orderFromBottom: 1, status: 'IN_CABINET', borrower: '', purpose: '' },
+      { id: 'HS-2025-018', year: '2025', code: '2025-018', name: 'Thửa đất 32, xã Nhựt Ninh, Tân Trụ, Long An', bank: 'VietinBank CN Nam Sài Gòn', subCount: 10, cell: 'M1-2', orderFromBottom: 2, status: 'IN_CABINET', borrower: '', purpose: '' },
+      { id: 'HS-2025-019', year: '2025', code: '2025-019', name: 'Khoản nợ Công ty Thời Trang', bank: 'AMC - Agribank CN Xuyên Á', subCount: 6, cell: 'M1-2', orderFromBottom: 3, status: 'IN_CABINET', borrower: '', purpose: '' },
+      { id: 'HS-2025-020', year: '2025', code: '2025-020', name: 'Thửa đất 393, TBĐ 5, xã Long Cang, Tây Ninh', bank: 'Agribank CN Lý Thường Kiệt', subCount: 12, cell: 'M1-2', orderFromBottom: 4, status: 'IN_CABINET', borrower: '', purpose: '' },
+      { id: 'HS-2025-021', year: '2025', code: '2025-021', name: 'Thửa đất 706, TBĐ 36, Quận 12', bank: 'Agribank CN Trung tâm Sài Gòn', subCount: 5, cell: 'M1-2', orderFromBottom: 5, status: 'IN_CABINET', borrower: '', purpose: '' },
+
+      { id: 'HS-2025-022', year: '2025', code: '2025-022', name: 'Khoản nợ Ông Đông - Bà Liên', bank: 'VietinBank CN 4', subCount: 11, cell: 'M1-3', orderFromBottom: 1, status: 'IN_CABINET', borrower: '', purpose: '' },
+      { id: 'HS-2025-023', year: '2025', code: '2025-023', name: 'Khoản nợ Công ty TM ĐT XD Hoàng Vân', bank: 'Agribank CN Nhà Bè', subCount: 3, cell: 'M1-3', orderFromBottom: 2, status: 'IN_CABINET', borrower: '', purpose: '' },
+      { id: 'HS-2025-024', year: '2025', code: '2025-024', name: 'Thửa đất 137, TBĐ 10, xã An Nhơn Tây, TP.HCM', bank: 'NCB', subCount: 0, cell: 'M1-3', orderFromBottom: 3, status: 'IN_CABINET', borrower: '', purpose: '' },
+      { id: 'HS-2025-025', year: '2025', code: '2025-025', name: 'Khoản nợ Công ty An Phước Thời', bank: 'Agribank CN Trung tâm Sài Gòn', subCount: 4, cell: 'M1-3', orderFromBottom: 4, status: 'IN_CABINET', borrower: '', purpose: '' },
+
+      // --- HỘC ĐÁY B3-1 & B3-2 (2025-026 -> 2025-038) ---
+      { id: 'HS-2025-026', year: '2025', code: '2025-026', name: 'Thửa đất 469 và 475, TBĐ 22, Phú Mỹ, BR-VT', bank: 'Agribank CN Trung tâm Sài Gòn', subCount: 7, cell: 'B3-1', orderFromBottom: 1, status: 'IN_CABINET', borrower: '', purpose: '' },
+      { id: 'HS-2025-027', year: '2025', code: '2025-027', name: 'Thửa đất 454, TBĐ 30, Long Điền, BR-VT', bank: 'Agribank CN Trung tâm Sài Gòn', subCount: 7, cell: 'B3-1', orderFromBottom: 2, status: 'IN_CABINET', borrower: '', purpose: '' },
+      { id: 'HS-2025-028', year: '2025', code: '2025-028', name: 'Khoản nợ Công ty Tín Thương', bank: 'Agribank CN Chợ Lớn - AMC', subCount: 3, cell: 'B3-1', orderFromBottom: 3, status: 'IN_CABINET', borrower: '', purpose: '' },
+      { id: 'HS-2025-029', year: '2025', code: '2025-029', name: 'Thửa đất 507, phường Tam Phú, Thủ Đức', bank: 'Agribank CN Trung tâm Sài Gòn', subCount: 7, cell: 'B3-1', orderFromBottom: 4, status: 'IN_CABINET', borrower: '', purpose: '' },
+      { id: 'HS-2025-030', year: '2025', code: '2025-030', name: 'Khoản nợ Nhà kho gạo An Giang', bank: 'Agribank CN An Giang - AMC', subCount: 0, cell: 'B3-1', orderFromBottom: 5, status: 'IN_CABINET', borrower: '', purpose: '' },
+      { id: 'HS-2025-031', year: '2025', code: '2025-031', name: 'Thửa đất 1651, Long Thạnh, Thủ Thừa, Long An', bank: 'VietinBank CN Nam Sài Gòn', subCount: 9, cell: 'B3-1', orderFromBottom: 6, status: 'IN_CABINET', borrower: '', purpose: '' },
+
+      { id: 'HS-2025-032', year: '2025', code: '2025-032', name: 'Thửa đất 88 và 89, Bình Trinh Đông, Tân Trụ, Long An', bank: 'VietinBank CN Nam Sài Gòn', subCount: 9, cell: 'B3-2', orderFromBottom: 1, status: 'IN_CABINET', borrower: '', purpose: '' },
+      { id: 'HS-2025-033', year: '2025', code: '2025-033', name: '05 thửa đất, xã Bình Trinh Đông, Tân Trụ', bank: 'VietinBank CN Nam Sài Gòn', subCount: 8, cell: 'B3-2', orderFromBottom: 2, status: 'IN_CABINET', borrower: '', purpose: '' },
+      { id: 'HS-2025-034', year: '2025', code: '2025-034', name: '18 thửa đất, Bảo Lộc, Lâm Đồng', bank: 'VietinBank CN Sài Gòn', subCount: 2, cell: 'B3-2', orderFromBottom: 3, status: 'IN_CABINET', borrower: '', purpose: '' },
+      { id: 'HS-2025-035', year: '2025', code: '2025-035', name: 'Thửa đất 38, 12-19 Đào Duy Từ, Đà Lạt', bank: 'Agribank CN Nhà Bè', subCount: 5, cell: 'B3-2', orderFromBottom: 4, status: 'IN_CABINET', borrower: '', purpose: '' },
+      { id: 'HS-2025-036', year: '2025', code: '2025-036', name: 'Tài sản 14 xe ô tô', bank: 'VietinBank CN Nam Sài Gòn', subCount: 5, cell: 'B3-2', orderFromBottom: 5, status: 'IN_CABINET', borrower: '', purpose: '' },
+      { id: 'HS-2025-037', year: '2025', code: '2025-037', name: 'BĐS Cẩm Mỹ, Đồng Nai', bank: 'VietinBank CN Sài Gòn', subCount: 4, cell: 'B3-2', orderFromBottom: 6, status: 'IN_CABINET', borrower: '', purpose: '' },
+      { id: 'HS-2025-038', year: '2025', code: '2025-038', name: 'Thửa đất 712, Long Thới, Nhà Bè', bank: 'VietinBank CN Sài Gòn', subCount: 1, cell: 'B3-2', orderFromBottom: 7, status: 'IN_CABINET', borrower: '', purpose: '' },
+
+      // --- KHO NĂM 2026: CÁC BUỒNG KÍNH M2, M3, M4 ---
+      { id: 'HS-2026-029', year: '2026', code: '29/2026/HĐDVĐG', name: 'Thửa 539 & 540, TBĐ 51 - Dương Minh Sơn Hải', bank: 'VIB', subCount: 2, cell: 'M2-2', orderFromBottom: 1, status: 'IN_CABINET', borrower: '', purpose: '' },
+      { id: 'HS-2026-036', year: '2026', code: '36/2026/HĐDVĐG', name: 'Khoản nợ Công ty TNHH MTV TMDV Công Nghiệp Đại Dương', bank: 'Agribank CN Nhà Bè', subCount: 11, cell: 'M2-2', orderFromBottom: 2, status: 'IN_CABINET', borrower: '', purpose: '' },
+      { id: 'HS-2026-038', year: '2026', code: '38/2026/HĐDVĐG', name: 'Máy móc ô tô thanh lý (2026)', bank: 'Đơn vị thanh lý', subCount: 1, cell: 'M2-2', orderFromBottom: 3, status: 'IN_CABINET', borrower: '', purpose: '' },
+      { id: 'HS-2026-045', year: '2026', code: '45/2026/HĐDVĐG', name: 'Thửa đất 328, TBĐ 23, Xã Đồng Phú, Đồng Nai', bank: 'Agribank', subCount: 3, cell: 'M2-2', orderFromBottom: 4, status: 'IN_CABINET', borrower: '', purpose: '' },
+      { id: 'HS-2026-058', year: '2026', code: '58/2026/HĐDVĐG', name: 'Khoản nợ Công ty TNHH Xây Dựng 98SG (Gò Vấp)', bank: 'Agribank CN Lý Thường Kiệt', subCount: 3, cell: 'M2-2', orderFromBottom: 5, status: 'IN_CABINET', borrower: '', purpose: '' },
+
+      { id: 'HS-2026-065', year: '2026', code: '65/2026/HĐDVĐG', name: 'Khoản nợ Công ty TNHH TM DV Asean House (Thửa 560, Q12)', bank: 'VietinBank CN Thủ Thiêm', subCount: 2, cell: 'M3-2', orderFromBottom: 1, status: 'IN_CABINET', borrower: '', purpose: '' },
+      { id: 'HS-2026-067', year: '2026', code: '67/2026/HĐDVĐG', name: 'Khoản nợ Công ty TNHH TM DV Tân Nhất Nam (Thửa 560, Q12)', bank: 'VietinBank CN Thủ Thiêm', subCount: 2, cell: 'M3-2', orderFromBottom: 2, status: 'IN_CABINET', borrower: '', purpose: '' },
+      { id: 'HS-2026-070', year: '2026', code: '70/2026/HĐDVĐG', name: 'Thửa đất 101, TBĐ 23, Đồng Phú, Đồng Nai - Nguyễn Thanh Phúc', bank: 'Agribank', subCount: 2, cell: 'M3-2', orderFromBottom: 3, status: 'IN_CABINET', borrower: '', purpose: '' },
+      { id: 'HS-2026-082', year: '2026', code: '82/2026/HĐDVĐGKN', name: 'Khoản nợ bà Vũ Thị Thủy (Thửa 117, TBĐ 4, Hóc Môn)', bank: 'Agribank CN Trung tâm Sài Gòn', subCount: 2, cell: 'M3-2', orderFromBottom: 4, status: 'IN_CABINET', borrower: '', purpose: '' },
+      { id: 'HS-2026-086', year: '2026', code: '86/2026/HĐDVĐG', name: 'Thửa đất 249, TBĐ 70, Mỹ Thới, An Giang - Lê Công Thái', bank: 'Agribank', subCount: 1, cell: 'M3-2', orderFromBottom: 5, status: 'IN_CABINET', borrower: '', purpose: '' },
+
+      { id: 'HS-2026-100', year: '2026', code: '100/2026/HĐDVĐG', name: 'Thửa đất 107, TBĐ 14, Củ Chi - Nguyễn Duy Vinh (Hiệp Lợi)', bank: 'Agribank CN Phú Nhuận', subCount: 1, cell: 'M4-2', orderFromBottom: 1, status: 'IN_CABINET', borrower: '', purpose: '' },
+      { id: 'HS-2026-104', year: '2026', code: '104/2026/HĐDVĐG', name: 'Thửa đất 400 và 470, TBĐ 152, Bình Tân - Phạm Thị Oanh', bank: 'Agribank CN Phú Nhuận', subCount: 1, cell: 'M4-2', orderFromBottom: 2, status: 'IN_CABINET', borrower: '', purpose: '' },
+      { id: 'HS-2026-836', year: '2026', code: 'QC-836/2026', name: 'Thửa đất 580, TBĐ 35, Phước Hiệp, Củ Chi - Phạm Thị Oanh', bank: 'Agribank CN Phú Nhuận', subCount: 1, cell: 'M4-2', orderFromBottom: 3, status: 'IN_CABINET', borrower: '', purpose: '' },
+      { id: 'HS-2026-830', year: '2026', code: 'TB-830/2026', name: 'Thửa đất 501, TBĐ 79, số 08 Đường 27, Bình Trưng - Lê Thị Thu Hương', bank: 'Agribank CN Nhà Bè', subCount: 1, cell: 'M4-2', orderFromBottom: 4, status: 'IN_CABINET', borrower: '', purpose: '' },
+      { id: 'HS-2026-818', year: '2026', code: 'TB-818/2026', name: '05 Thửa đất 735-739, TBĐ 2, Chơn Thành, Bình Phước (Đồng Nai)', bank: 'VIB', subCount: 1, cell: 'M4-2', orderFromBottom: 5, status: 'IN_CABINET', borrower: '', purpose: '' }
+    ];
+    /*__INITIAL_DOSSIERS_END__*/
+
+    const STORAGE_KEY = 'DGHD_MIEN_NAM_CABINET_GITHUB_V5';
+    let dossiers = [];
+    let activeCellId = 'M3-2';
+    let selectedDossierId = 'HS-2026-070';
+    let spotlightMode = true;
+    let currentSearchQuery = '';
+
+    function loadState() {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        try { dossiers = JSON.parse(saved); } catch (e) { dossiers = JSON.parse(JSON.stringify(INITIAL_DOSSIERS)); }
+      } else {
+        dossiers = JSON.parse(JSON.stringify(INITIAL_DOSSIERS));
+      }
+    }
+
+    // Cầu nối Kép: Lưu LocalStorage trên GitHub Pages & Tự động đồng bộ nếu chạy trên Google Apps Script
+    function saveState() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(dossiers));
+      if (typeof google !== 'undefined' && google.script && google.script.run) {
+        google.script.run.syncCabinetDataToSheet(JSON.stringify(dossiers));
+      }
+    }
+
+    function getInCabinetStack(cellId) {
+      return dossiers
+        .filter(d => d.status === 'IN_CABINET' && d.cell === cellId)
+        .sort((a, b) => (a.orderFromBottom || 1) - (b.orderFromBottom || 1));
+    }
+
+    function reindexStack(cellId) {
+      const list = getInCabinetStack(cellId);
+      list.forEach((item, idx) => { item.orderFromBottom = idx + 1; });
+    }
+
+    // Xác định Hồ sơ X (nằm đè phía trên) và Hồ sơ Y (nằm lót phía dưới)
+    function getNeighborsXY(doc) {
+      if (!doc || doc.status !== 'IN_CABINET' || !doc.cell) return { aboveX: null, belowY: null, total: 0 };
+      const stack = getInCabinetStack(doc.cell);
+      const idx = stack.findIndex(item => item.id === doc.id);
+      return {
+        aboveX: (idx > -1 && idx < stack.length - 1) ? stack[idx + 1] : null,
+        belowY: idx > 0 ? stack[idx - 1] : null,
+        total: stack.length
+      };
+    }
+
+    // =========================================================================
+    // 3. ĐỒ HỌA MINH HỌA TỦ HỒ SƠ (PHÁT SÁNG NGĂN & VẠCH HỒ SƠ)
+    // =========================================================================
+    function renderShelfGraphicHTML(cell, heightCls = 'h-24') {
+      const cellDocs = getInCabinetStack(cell.id);
+      const selectedDoc = dossiers.find(d => d.id === selectedDossierId);
+      const isTargetShelf = selectedDoc && selectedDoc.status === 'IN_CABINET' && selectedDoc.cell === cell.id;
+      const shouldDim = spotlightMode && selectedDoc && selectedDoc.status === 'IN_CABINET' && !isTargetShelf;
+
+      const reversed = [...cellDocs].reverse();
+      const stackBarsHtml = reversed.map(doc => {
+        const isTargetFile = doc.id === selectedDossierId;
+        if (isTargetFile) {
+          return `
+            <div class="target-file-bar w-full my-0.5 flex items-center justify-end pr-1">
+              <span class="absolute -right-2 -top-5 px-1.5 py-0.5 rounded bg-amber-400 text-slate-950 font-black text-[10px] shadow-lg whitespace-nowrap z-30">
+                👈 #${doc.orderFromBottom}↑ (${doc.code})
+              </span>
+            </div>
+          `;
+        }
+        return `<div class="w-full h-1.5 rounded-sm ${doc.year === '2025' ? 'bg-sky-400/60' : 'bg-emerald-400/60'}"></div>`;
+      }).join('');
+
+      return `
+        <div
+          onclick="selectShelf('${cell.id}')"
+          class="shelf-cavity rounded-lg p-2 cursor-pointer flex flex-col justify-between ${heightCls} ${
+            isTargetShelf ? 'spotlight-shelf' : shouldDim ? 'dimmed-shelf' : ''
+          }"
+        >
+          <div class="flex items-center justify-between">
+            <span class="text-[11px] font-extrabold ${isTargetShelf ? 'text-amber-400' : 'text-slate-300'}">${cell.id}</span>
+            <span class="text-[10px] px-1.5 py-0.2 rounded ${
+              isTargetShelf ? 'bg-amber-500 text-slate-950 font-black' : 'bg-slate-800 text-slate-400'
+            }">${cellDocs.length} tập</span>
+          </div>
+          <div class="flex flex-col justify-end space-y-0.5 px-1 pt-2 overflow-visible">
+            ${stackBarsHtml || '<div class="text-[9px] text-slate-600 text-center">Trống</div>'}
+          </div>
+        </div>
+      `;
+    }
+
+    function renderCabinetGraphic() {
+      document.getElementById('graphicTopTier').innerHTML = CABINET_CELLS
+        .filter(c => c.tier === 'TOP')
+        .map(c => `<div class="wood-compartment rounded-xl p-1.5">${renderShelfGraphicHTML(c, 'h-24')}</div>`)
+        .join('');
+
+      let midHtml = '';
+      for (let col = 1; col <= 4; col++) {
+        const shelves = CABINET_CELLS.filter(c => c.tier === 'MID' && c.col === col);
+        midHtml += `
+          <div class="glass-column space-y-1.5">
+            <div class="text-[9px] font-bold text-center text-amber-200/90 uppercase tracking-wider">Buồng Kính ${col}</div>
+            ${shelves.map(c => renderShelfGraphicHTML(c, 'h-20')).join('')}
+          </div>
+        `;
+      }
+      document.getElementById('graphicMidTier').innerHTML = midHtml;
+
+      let botHtml = '';
+      for (let col = 1; col <= 4; col++) {
+        const shelves = CABINET_CELLS.filter(c => c.tier === 'BOT' && c.col === col);
+        botHtml += `
+          <div class="wood-compartment rounded-xl p-1.5 space-y-1.5">
+            <div class="text-[9px] font-bold text-center text-amber-200/80 uppercase">Hộc Đáy ${col}</div>
+            ${shelves.map(c => renderShelfGraphicHTML(c, 'h-20')).join('')}
+          </div>
+        `;
+      }
+      document.getElementById('graphicBotTier').innerHTML = botHtml;
+    }
+
+    // =========================================================================
+    // 4. MỤC CHỈ DẪN KẸP GIỮA HỒ SƠ X (TRÊN) VÀ HỒ SƠ Y (DƯỚI)
+    // =========================================================================
+    function renderConciseGuideAndCutaway() {
+      const guideBox = document.getElementById('conciseGuideBox');
+      const doc = dossiers.find(d => d.id === selectedDossierId);
+
+      if (!doc) {
+        guideBox.innerHTML = `<div class="text-xs text-slate-400 italic py-4 text-center">Nhập tìm kiếm hoặc chọn 1 hồ sơ để xem vị trí đồ họa trên tủ.</div>`;
+      } else if (doc.status === 'BORROWED') {
+        guideBox.innerHTML = `
+          <div class="p-3 rounded-xl bg-rose-950/80 border-2 border-rose-500 text-xs space-y-2">
+            <div class="font-extrabold text-rose-300 uppercase">⚠️ Đang rút lưu ngoài tủ</div>
+            <div class="font-bold text-white text-sm">${doc.code} — ${doc.name}</div>
+            <div class="text-rose-200">Người nhận: <strong>${doc.borrower}</strong> (${doc.purpose || ''})</div>
+            <div class="text-slate-400">Vị trí gốc trước khi rút: <strong>Ngăn ${doc.lastCell || doc.cell} (Tập #${doc.lastOrder || 1}↑)</strong></div>
+            <button onclick="openReturnModal('${doc.id}')" class="w-full py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black">
+              📥 Trả Nguyên Túi Vào Tủ
+            </button>
+          </div>
+        `;
+      } else {
+        const { aboveX, belowY, total } = getNeighborsXY(doc);
+        const cellMeta = CABINET_CELLS.find(c => c.id === doc.cell);
+
+        guideBox.innerHTML = `
+          <div class="space-y-2 text-xs">
+            <div class="flex items-center justify-between bg-slate-800 px-3 py-2 rounded-lg border border-slate-700">
+              <span class="font-bold text-amber-400">NGĂN ${doc.cell}</span>
+              <span class="px-2 py-0.5 rounded bg-amber-500 text-slate-950 font-black">Tập #${doc.orderFromBottom} / ${total} từ dưới lên</span>
+            </div>
+            <div class="text-[11px] text-slate-400 px-1">${cellMeta ? cellMeta.name : ''}</div>
+
+            <!-- HỒ SƠ X (TRÊN) -->
+            <div class="p-2.5 rounded-xl bg-slate-800/90 border-l-4 border-sky-400">
+              <div class="text-[10px] font-bold text-sky-400 uppercase">⬆️ Hồ sơ X (Đè ngay phía TRÊN):</div>
+              ${
+                aboveX
+                  ? `<div class="font-bold text-white mt-0.5">[#${aboveX.orderFromBottom}↑] ${aboveX.code} —${aboveX.name}</div>`
+                  : `<div class="text-emerald-400 font-semibold mt-0.5">Không có (Tập này nằm TRÊN CÙNG của chồng)</div>`
+              }
+            </div>
+
+            <!-- HỒ SƠ CẦN LẤY (Ở GIỮA X VÀ Y) -->
+            <div class="p-3 rounded-xl bg-amber-500 text-slate-950 font-black shadow-lg flex items-center justify-between gap-2">
+              <div class="min-w-0">
+                <div class="text-[10px] uppercase opacity-80">🎯 Hồ sơ cần lấy (Ở giữa X và Y):</div>
+                <div class="text-sm leading-snug">[#${doc.orderFromBottom}↑] ${doc.code} — ${doc.name}</div>
+              </div>
+              <div class="flex flex-col gap-1 shrink-0">
+                <button onclick="openWithdrawModal('${doc.id}')" class="px-2.5 py-1 rounded bg-rose-600 hover:bg-rose-500 text-white text-[11px] font-bold">
+                  Rút Lưu
+                </button>
+                <button onclick="openEditModal('${doc.id}')" class="px-2.5 py-1 rounded bg-slate-900/80 text-amber-300 text-[10px] font-bold">
+                  ✎ Sửa
+                </button>
+              </div>
+            </div>
+
+            <!-- HỒ SƠ Y (DƯỚI) -->
+            <div class="p-2.5 rounded-xl bg-slate-800/90 border-l-4 border-amber-600">
+              <div class="text-[10px] font-bold text-amber-400 uppercase">⬇️ Hồ sơ Y (Lót ngay phía DƯỚI):</div>
+              ${
+                belowY
+                  ? `<div class="font-bold text-white mt-0.5">[#${belowY.orderFromBottom}↑] ${belowY.code} —${belowY.name}</div>`
+                  : `<div class="text-amber-200 font-semibold mt-0.5">Sát mặt gỗ đáy kệ (Đây là Tập #1 dưới cùng)</div>`
+              }
+            </div>
+          </div>
+        `;
+      }
+
+      // MẶT CẮT PHÓNG TO CHỒNG HỒ SƠ TRONG NGĂN
+      document.getElementById('cutawayShelfBadge').textContent = activeCellId;
+      const stack = getInCabinetStack(activeCellId);
+      document.getElementById('cutawayCountText').textContent = `${stack.length} tập (Đếm từ dưới lên)`;
+
+      const listEl = document.getElementById('cutawayStackList');
+      if (!stack.length) {
+        listEl.innerHTML = `<div class="text-center text-slate-500 text-xs py-10">Ngăn ${activeCellId} đang trống.</div>`;
+        return;
+      }
+
+      const selectedNeighbors = doc && doc.cell === activeCellId ? getNeighborsXY(doc) : { aboveX: null, belowY: null };
+
+      listEl.innerHTML = [...stack].reverse().map(item => {
+        const isTarget = item.id === selectedDossierId;
+        const isAboveX = selectedNeighbors.aboveX && selectedNeighbors.aboveX.id === item.id;
+        const isBelowY = selectedNeighbors.belowY && selectedNeighbors.belowY.id === item.id;
+
+        let badgeRole = '';
+        if (isTarget) badgeRole = `<span class="px-1.5 py-0.5 rounded bg-slate-950 text-amber-300 text-[10px] font-black">LẤY</span>`;
+        else if (isAboveX) badgeRole = `<span class="px-1.5 py-0.5 rounded bg-sky-500/20 text-sky-300 border border-sky-400/40 text-[10px] font-bold">X (TRÊN)</span>`;
+        else if (isBelowY) badgeRole = `<span class="px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-400/40 text-[10px] font-bold">Y (DƯỚI)</span>`;
+
+        return `
+          <div
+            onclick="focusDossier('${item.id}')"
+            class="rounded-lg px-2.5 py-2 cursor-pointer transition flex items-center justify-between gap-2 text-xs ${
+              isTarget
+                ? 'slice-pullout bg-amber-400 text-slate-950 font-black border-2 border-white'
+                : isAboveX
+                  ? 'bg-slate-800 border-2 border-sky-400 text-white'
+                  : isBelowY
+                    ? 'bg-slate-800 border-2 border-amber-500 text-white'
+                    : 'bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800'
+            }"
+          >
+            <div class="flex items-center gap-2 min-w-0">
+              <span class="px-1.5 py-0.5 rounded font-black text-[11px] ${isTarget ? 'bg-slate-950 text-amber-400' : 'bg-slate-950 text-slate-300'}">
+                #${item.orderFromBottom}↑
+              </span>
+              <div class="truncate">
+                <span class="font-bold">${item.code}</span> — <span>${item.name}</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-1 shrink-0" onclick="event.stopPropagation()">
+              ${badgeRole}
+              <button onclick="moveOrder('${item.id}', 1)" title="Đẩy lên (+1)" class="w-5 h-5 rounded bg-slate-700 hover:bg-slate-600 text-white text-[9px]">▲</button>
+              <button onclick="moveOrder('${item.id}', -1)" title="Hạ xuống (-1)" class="w-5 h-5 rounded bg-slate-700 hover:bg-slate-600 text-white text-[9px]">▼</button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // =========================================================================
+    // 5. DANH SÁCH HỒ SƠ & KHAY ĐANG RÚT LƯU
+    // =========================================================================
+    function renderBorrowedTray() {
+      const list = dossiers.filter(d => d.status === 'BORROWED');
+      document.getElementById('borrowedCountText').textContent = `${list.length} túi`;
+      document.getElementById('borrowedPillsContainer').innerHTML = list.map(d => `
+        <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-lg bg-slate-800 border border-rose-500/60 text-xs">
+          <span class="font-bold text-rose-400">${d.code}</span>
+          <span class="text-slate-300 truncate max-w-[160px]">${d.name}</span>
+          <span class="text-slate-400">(${d.borrower})</span>
+          <button onclick="openReturnModal('${d.id}')" class="px-2 py-0.5 rounded bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-[10px]">
+            📥 Trả vào tủ
+          </button>
+        </div>
+      `).join('');
+    }
+
+    function renderDossierList() {
+      const yearF = document.getElementById('filterYear').value;
+      const statusF = document.getElementById('filterStatus').value;
+      const cellF = document.getElementById('filterCell').value;
+      const q = currentSearchQuery.toLowerCase();
+
+      const filtered = dossiers.filter(d => {
+        if (yearF !== 'ALL' && d.year !== yearF) return false;
+        if (statusF !== 'ALL' && d.status !== statusF) return false;
+        if (cellF !== 'ALL' && d.cell !== cellF) return false;
+        if (q && !(d.code.toLowerCase().includes(q) || d.name.toLowerCase().includes(q) || (d.bank && d.bank.toLowerCase().includes(q)))) return false;
+        return true;
+      });
+
+      document.getElementById('listCountBadge').textContent = filtered.length;
+      document.getElementById('dossierListContainer').innerHTML = filtered.map(d => {
+        const isSel = d.id === selectedDossierId;
+        return `
+          <div
+            onclick="focusDossier('${d.id}')"
+            class="p-2.5 rounded-xl border cursor-pointer transition text-xs ${
+              isSel ? 'bg-amber-500/15 border-amber-400 ring-1 ring-amber-400' : 'bg-slate-950/60 hover:bg-slate-800 border-slate-800'
+            }"
+          >
+            <div class="flex items-center justify-between mb-1">
+              <div class="flex items-center gap-1.5">
+                <span class="px-1.5 py-0.5 rounded text-[10px] font-bold ${d.year === '2025' ? 'bg-sky-950 text-sky-300 border border-sky-700' : 'bg-emerald-950 text-emerald-300 border border-emerald-700'}">${d.year}</span>
+                <span class="font-extrabold text-amber-300">${d.code}</span>
+              </div>
+              ${
+                d.status === 'BORROWED'
+                  ? `<span class="px-1.5 py-0.5 rounded bg-rose-600 text-white font-bold text-[10px]">ĐANG RÚT LƯU</span>`
+                  : `<span class="px-2 py-0.5 rounded bg-slate-800 text-emerald-300 font-bold text-[11px]">Ngăn ${d.cell} · #${d.orderFromBottom}↑</span>`
+              }
+            </div>
+            <div class="font-semibold text-white">${d.name}</div>
+            <div class="flex items-center justify-between text-[11px] text-slate-400 mt-1">
+              <span class="truncate">${d.bank || ''}</span>
+              <button onclick="event.stopPropagation(); openEditModal('${d.id}')" class="text-indigo-400 hover:underline shrink-0 ml-2">Sửa</button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function renderAll() {
+      renderCabinetGraphic();
+      renderConciseGuideAndCutaway();
+      renderBorrowedTray();
+      renderDossierList();
+    }
+
+    // =========================================================================
+    // 6. XỬ LÝ SỰ KIỆN ĐỊNH VỊ, RÚT & TRẢ HỒ SƠ
+    // =========================================================================
+    function focusDossier(id) {
+      selectedDossierId = id;
+      spotlightMode = true;
+      const doc = dossiers.find(d => d.id === id);
+      if (doc && doc.cell) activeCellId = doc.cell;
+      renderAll();
+    }
+
+    function selectShelf(cellId) {
+      activeCellId = cellId;
+      const stack = getInCabinetStack(cellId);
+      if (stack.length > 0) {
+        selectedDossierId = stack[0].id;
+        spotlightMode = true;
+      } else {
+        selectedDossierId = null;
+      }
+      renderAll();
+    }
+
+    function resetSpotlight() {
+      spotlightMode = false;
+      renderAll();
+    }
+
+    function handleSearch(val) {
+      currentSearchQuery = val.trim();
+      if (currentSearchQuery) {
+        const q = currentSearchQuery.toLowerCase();
+        const hit = dossiers.find(d => d.code.toLowerCase().includes(q) || d.name.toLowerCase().includes(q) || (d.bank && d.bank.toLowerCase().includes(q)));
+        if (hit) {
+          selectedDossierId = hit.id;
+          spotlightMode = true;
+          if (hit.cell) activeCellId = hit.cell;
+        }
+      }
+      renderAll();
+    }
+
+    function clearSearch() {
+      document.getElementById('globalSearch').value = '';
+      currentSearchQuery = '';
+      spotlightMode = false;
+      renderAll();
+    }
+
+    function moveOrder(docId, delta) {
+      const doc = dossiers.find(d => d.id === docId);
+      if (!doc || doc.status !== 'IN_CABINET') return;
+      const stack = getInCabinetStack(doc.cell);
+      const idx = stack.findIndex(d => d.id === docId);
+      const targetIdx = idx + delta;
+      if (targetIdx < 0 || targetIdx >= stack.length) return;
+
+      const tmp = stack[idx].orderFromBottom;
+      stack[idx].orderFromBottom = stack[targetIdx].orderFromBottom;
+      stack[targetIdx].orderFromBottom = tmp;
+      saveState();
+      renderAll();
+    }
+
+    function openWithdrawModal(docId) {
+      const doc = dossiers.find(d => d.id === docId);
+      if (!doc) return;
+      document.getElementById('withdrawDocId').value = doc.id;
+      document.getElementById('withdrawDossierInfo').innerHTML = `
+        <div class="font-bold text-white">${doc.code} — ${doc.name}</div>
+        <div class="text-slate-400 mt-1">Vị trí hiện tại: <strong>Ngăn ${doc.cell} · Tập #${doc.orderFromBottom} từ dưới lên</strong></div>
+      `;
+      openModal('modalWithdraw');
+    }
+
+    function confirmWithdrawDossier(e) {
+      e.preventDefault();
+      const docId = document.getElementById('withdrawDocId').value;
+      const doc = dossiers.find(d => d.id === docId);
+      if (!doc) return;
+
+      doc.lastCell = doc.cell;
+      doc.lastOrder = doc.orderFromBottom;
+      doc.status = 'BORROWED';
+      doc.borrower = document.getElementById('wBorrower').value.trim();
+      doc.purpose = document.getElementById('wPurpose').value;
+
+      reindexStack(doc.cell);
+      saveState();
+      closeModal('modalWithdraw');
+      renderAll();
+    }
+
+    function openReturnModal(docId) {
+      const doc = dossiers.find(d => d.id === docId);
+      if (!doc) return;
+      const cell = doc.lastCell || doc.cell || activeCellId;
+      const topOrder = getInCabinetStack(cell).length + 1;
+      document.getElementById('returnDocId').value = doc.id;
+      document.getElementById('returnDossierInfo').innerHTML = `
+        <div class="font-bold text-white">${doc.code} — ${doc.name}</div>
+        <div class="text-slate-400 mt-0.5">Ngăn trước khi rút: <strong>${cell} (Vị trí cũ #${doc.lastOrder || 1}↑)</strong></div>
+      `;
+      document.getElementById('returnTopDesc').textContent = `Đặt lên đỉnh chồng Ngăn ${cell} → Nhận vị trí Tập #${topOrder} từ dưới lên.`;
+      document.getElementById('returnExactDesc').textContent = `Nhét lại khe số #${doc.lastOrder || 1} tại Ngăn ${cell} (các tập phía trên tự động +1).`;
+      document.getElementById('returnNewCellSelect').value = cell;
+      openModal('modalReturn');
+    }
+
+    function confirmReturnDossier(mode) {
+      const docId = document.getElementById('returnDocId').value;
+      const doc = dossiers.find(d => d.id === docId);
+      if (!doc) return;
+
+      let cell = doc.lastCell || doc.cell || activeCellId;
+      if (mode === 'NEW_CELL') {
+        cell = document.getElementById('returnNewCellSelect').value;
+      }
+
+      const stack = getInCabinetStack(cell);
+      if (mode === 'EXACT_OLD_POS') {
+        const ins = Math.min(Math.max(1, doc.lastOrder || 1), stack.length + 1);
+        stack.forEach(item => { if (item.orderFromBottom >= ins) item.orderFromBottom += 1; });
+        doc.orderFromBottom = ins;
+      } else {
+        doc.orderFromBottom = stack.length + 1;
+      }
+
+      doc.cell = cell;
+      doc.status = 'IN_CABINET';
+      doc.borrower = '';
+      doc.purpose = '';
+      reindexStack(cell);
+      activeCellId = cell;
+      selectedDossierId = doc.id;
+      spotlightMode = true;
+      saveState();
+      closeModal('modalReturn');
+      renderAll();
+    }
+
+    // =========================================================================
+    // 7. THÊM / SỬA / XẾP NHANH & XUẤT FILE INDEX.HTML CẬP NHẬT GITHUB
+    // =========================================================================
+    function populateDropdowns() {
+      const html = CABINET_CELLS.map(c => `<option value="${c.id}">${c.id} — ${c.name}</option>`).join('');
+      document.getElementById('fCell').innerHTML = html;
+      document.getElementById('qsCell').innerHTML = html;
+      document.getElementById('returnNewCellSelect').innerHTML = html;
+      document.getElementById('filterCell').innerHTML = `<option value="ALL">Mọi ngăn (24)</option>` +
+        CABINET_CELLS.map(c => `<option value="${c.id}">Ngăn ${c.id}</option>`).join('');
+    }
+
+    function openModal(id) {
+      const el = document.getElementById(id);
+      el.classList.remove('hidden');
+      el.classList.add('flex');
+      if (id === 'modalAddEdit' && !document.getElementById('editId').value) {
+        document.getElementById('fCell').value = activeCellId;
+        document.getElementById('fOrder').value = getInCabinetStack(activeCellId).length + 1;
+      }
+      if (id === 'modalQuickStack') {
+        document.getElementById('qsCell').value = activeCellId;
+        renderQuickStackModal();
+      }
+    }
+
+    function closeModal(id) {
+      const el = document.getElementById(id);
+      el.classList.add('hidden');
+      el.classList.remove('flex');
+      if (id === 'modalAddEdit') {
+        document.getElementById('formDossier').reset();
+        document.getElementById('editId').value = '';
+      }
+    }
+
+    function openEditModal(docId) {
+      const doc = dossiers.find(d => d.id === docId);
+      if (!doc) return;
+      document.getElementById('editId').value = doc.id;
+      document.getElementById('fYear').value = doc.year || '2026';
+      document.getElementById('fCode').value = doc.code || '';
+      document.getElementById('fName').value = doc.name || '';
+      document.getElementById('fBank').value = doc.bank || '';
+      document.getElementById('fSubCount').value = doc.subCount || 0;
+      document.getElementById('fCell').value = doc.cell || activeCellId;
+      document.getElementById('fOrder').value = doc.orderFromBottom || 1;
+      openModal('modalAddEdit');
+    }
+
+    function saveDossierForm(e) {
+      e.preventDefault();
+      const editId = document.getElementById('editId').value;
+      const year = document.getElementById('fYear').value;
+      const code = document.getElementById('fCode').value.trim();
+      const name = document.getElementById('fName').value.trim();
+      const bank = document.getElementById('fBank').value.trim();
+      const subCount = parseInt(document.getElementById('fSubCount').value || '0', 10);
+      const cell = document.getElementById('fCell').value;
+      const orderFromBottom = parseInt(document.getElementById('fOrder').value || '1', 10);
+
+      if (editId) {
+        const doc = dossiers.find(d => d.id === editId);
+        if (doc) {
+          const oldCell = doc.cell;
+          Object.assign(doc, { year, code, name, bank, subCount, cell, orderFromBottom });
+          if (oldCell) reindexStack(oldCell);
+          reindexStack(cell);
+          selectedDossierId = doc.id;
+        }
+      } else {
+        const newId = 'HS-' + Date.now();
+        dossiers.push({ id: newId, year, code, name, bank, subCount, cell, orderFromBottom, status: 'IN_CABINET', borrower: '', purpose: '' });
+        reindexStack(cell);
+        selectedDossierId = newId;
+      }
+
+      activeCellId = cell;
+      spotlightMode = true;
+      saveState();
+      closeModal('modalAddEdit');
+      renderAll();
+    }
+
+    function renderQuickStackModal() {
+      const cellId = document.getElementById('qsCell').value;
+      const q = (document.getElementById('qsSearch').value || '').toLowerCase().trim();
+      const inStack = getInCabinetStack(cellId);
+      const avail = dossiers.filter(d => {
+        if (d.status === 'IN_CABINET' && d.cell === cellId) return false;
+        if (q && !(d.code.toLowerCase().includes(q) || d.name.toLowerCase().includes(q))) return false;
+        return true;
+      });
+
+      document.getElementById('qsAvailableList').innerHTML = avail.map(d => `
+        <div onclick="assignQuickStack('${d.id}')" class="p-2 rounded bg-slate-900 hover:bg-indigo-950 border border-slate-800 cursor-pointer flex justify-between items-center">
+          <span class="truncate pr-2"><strong>${d.code}</strong> — ${d.name}</span>
+          <span class="text-indigo-400 font-bold shrink-0">+ Đặt lên</span>
+        </div>
+      `).join('');
+
+      document.getElementById('qsCurrentStackList').innerHTML = [...inStack].reverse().map(d => `
+        <div class="p-2 rounded bg-slate-900 border border-amber-500/40 flex justify-between items-center">
+          <span class="truncate"><strong class="text-amber-400">#${d.orderFromBottom}↑</strong> ${d.code} — ${d.name}</span>
+        </div>
+      `).join('') || '<div class="text-center text-slate-500 py-8">Ngăn đang trống.</div>';
+    }
+
+    function assignQuickStack(docId) {
+      const cellId = document.getElementById('qsCell').value;
+      const doc = dossiers.find(d => d.id === docId);
+      if (!doc) return;
+      const oldCell = doc.cell;
+      doc.status = 'IN_CABINET';
+      doc.cell = cellId;
+      doc.orderFromBottom = getInCabinetStack(cellId).length + 1;
+      if (oldCell) reindexStack(oldCell);
+      reindexStack(cellId);
+      activeCellId = cellId;
+      selectedDossierId = doc.id;
+      saveState();
+      renderQuickStackModal();
+      renderAll();
+    }
+
+    // Tự động xuất ra file index.html mới có nhúng sẵn vị trí vừa sắp xếp để upload thẳng lên GitHub
+    function downloadUpdatedHTMLFile() {
+      const currentHTML = document.documentElement.outerHTML;
+      const newDossiersBlock = '/*__INITIAL_DOSSIERS_START__*/\n    const INITIAL_DOSSIERS = ' + JSON.stringify(dossiers, null, 2) + ';\n    /*__INITIAL_DOSSIERS_END__*/';
+      const updatedHTML = '<!DOCTYPE html>\n' + currentHTML.replace(
+        /\/\*__INITIAL_DOSSIERS_START__\*\/[\s\S]*?\/\*__INITIAL_DOSSIERS_END__\*\//,
+        newDossiersBlock
+      );
+
+      const blob = new Blob([updatedHTML], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'index.html';
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function exportDataJSON() {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(dossiers, null, 2));
+      const a = document.createElement('a');
+      a.href = dataStr;
+      a.download = `tu_ho_so_DGHD_MienNam_${new Date().toISOString().slice(0,10)}.json`;
+      a.click();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadState();
+      populateDropdowns();
+      renderAll();
+    });
+  </script>
+</body>
+</html>
